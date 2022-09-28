@@ -12,13 +12,15 @@
   margin: 0 auto;
   position: relative;
   border-radius: 4px;
+
+  top: 20px;
+  position: sticky;
 }
 
 /* Shopping Cart container */
 .shopping-cart {
   flex: 0 1 auto;
   width: 100px;
-  height: 50;
   margin-left: auto;
   cursor: pointer;
 }
@@ -40,5 +42,79 @@
   margin: 0;
 }
 .header-title {
-  font-size: 50px;
+  font-size: 28px;
+}
+
+/* Media Querys - Mobile, tablet, landscape */
+
+@media screen and (min-width: 1024px) {
+  /* Slogan Titles */
+  .header-title {
+    font-size: 46px;
+  }
+}
+
+/* For Mobile Portrait View */
+@media screen and (max-device-width: 480px) and (orientation: portrait) {
+  .header-container {
+    top: 0;
+    height: 100px;
+  }
+
+  /* Slogan and titles */
+  .header-slogan-container {
+    flex: 0 1 auto;
+    position: absolute;
+    text-align: center;
+    left: 35%;
+    transform: translateX(-50%);
+  }
+  .header-title {
+    font-size: 24px;
+    margin-left: 10px;
+  }
+  .header-subtitle {
+    font-size: 16px;
+    margin-left: 10px;
+  }
+  /* ===== */
+
+  /* Shopping cart */
+  .shopping-cart {
+    flex: 0 1 auto;
+    width: 100px;
+    height: 20;
+    margin-left: 270px;
+    cursor: pointer;
+  }
+  .shopping-cart img {
+    height: 40px;
+    width: 40px;
+  }
+  /* ===== */
+}
+
+/* For Mobile Landscape View */
+@media screen and (max-device-width: 640px) {
+  .header-container {
+    top: 0;
+    height: 100px;
+  }
+  /* Slogan and titles */
+  .header-slogan-container {
+    flex: 0 1 auto;
+    position: absolute;
+    text-align: center;
+    left: 35%;
+    transform: translateX(-50%);
+  }
+  .header-title {
+    font-size: 24px;
+    margin-left: 10px;
+  }
+  .header-subtitle {
+    font-size: 16px;
+    margin-left: 10px;
+  }
+  /* ===== */
 }
