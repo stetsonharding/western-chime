@@ -1,0 +1,40 @@
+.search-input-container {
+  width: 80%;
+
+  margin: 30px auto;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 2px;
+
+  font-weight: bold;
+  font-size: 14px;
+  font-family: "Viner Hand ITC", Times New Roman, cursive;
+  letter-spacing: 2px;
+
+  color: #7b3018;
+  box-shadow: 1px 1px 10px black;
+}
+
+/* Bold Placeholder all browser support */
+.search-input::-webkit-input-placeholder {
+  color: black;
+  font-weight: bold;
+}
+
+.search-input::-moz-placeholder {
+  color: black;
+  font-weight: bold;
+}
+
+.search-input:-ms-input-placeholder {
+  color: black;
+  font-weight: bold;
+}
+
+.search-input:-o-input-placeholder {
+  color: black;
+  font-weight: bold;
+}

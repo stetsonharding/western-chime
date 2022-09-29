@@ -34,3 +34,12 @@
   width: 80px;
   cursor: pointer;
 }
+
+/* Container for search input and beer cards */
+.search-api-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
