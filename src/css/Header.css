@@ -4,17 +4,16 @@
   justify-content: flex-start;
   justify-content: center;
   align-items: center;
+  margin: 0 auto;
+  border-radius: 4px;
 
   background-color: #7b3018;
 
   height: 135px;
-  max-width: 1900px;
-  margin: 0 auto;
-  position: relative;
-  border-radius: 4px;
+  max-width: 1700px;
 
+  position: relative;
   top: 20px;
-  position: sticky;
 }
 
 /* Shopping Cart container */

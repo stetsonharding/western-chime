@@ -6,6 +6,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   box-sizing: border-box;
+
+  background-image: url(./Assets/main-background.jpg);
+  background-color: black;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 code {
