@@ -35,13 +35,6 @@
   cursor: pointer;
 }
 
-.page-buttons img:hover {
-  padding: 20px;
-  height: 80px;
-  width: 80px;
-  cursor: pointer;
-}
-
 /* Container for search input and beer cards */
 .search-api-container {
   height: 100%;
@@ -69,4 +62,54 @@
   color: #7b3018;
   transition: 0.3s;
   text-decoration: underline;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  /* Resize page buttons */
+  .page-buttons img {
+    padding: 5px;
+    height: 23px;
+    width: 23px;
+    cursor: pointer;
+  }
+  /* ===== */
+
+  /* Beer filter buttons */
+  .beer-filters-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+  }
+  .beer-filters-container > p {
+    font-size: 20px;
+  }
+  /* === */
+}
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  /* Resize page buttons */
+  .page-buttons img {
+    padding: 10px;
+    height: 38px;
+    width: 38px;
+    cursor: pointer;
+  }
+}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .page-buttons img {
+    padding: 15px;
+    height: 65px;
+    width: 65px;
+    cursor: pointer;
+  }
+}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
 }
