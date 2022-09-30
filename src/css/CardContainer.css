@@ -1,3 +1,10 @@
+@font-face {
+  font-family: "Western";
+  src: local("MyFont"), url(../fonts/Montague.ttf) format("woff");
+  /* other formats include: 'woff2', 'truetype, 'opentype',
+                            'embedded-opentype', and 'svg' */
+}
+
 /* Card Container */
 .card-container {
   background-image: url(../Assets/card-background.jpg);
@@ -42,4 +49,24 @@
   display: flex;
   align-items: flex-start;
   flex-direction: column;
+}
+
+/* Beer filter buttons */
+.beer-filters-container {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+.beer-filters-container > p {
+  font-size: 28px;
+  margin: 0;
+  color: rgb(14, 14, 14);
+  letter-spacing: 3px;
+  font-family: Western;
+  cursor: pointer;
+}
+.beer-filters-container > p:hover {
+  color: #7b3018;
+  transition: 0.3s;
+  text-decoration: underline;
 }

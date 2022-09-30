@@ -21,6 +21,10 @@ function CardContainer() {
           <div className="search-input-container">
             <SearchInput />
           </div>
+          <div className="beer-filters-container">
+            <p>Filter beers by IBU</p>
+            <p>Filter beers by ABV</p>
+          </div>
           {/* === */}
 
           {/* Mapping Card Components goes here */}
