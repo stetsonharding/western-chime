@@ -4,6 +4,8 @@
   border-radius: 10px;
   background-color: #943c1f;
   margin: 10px;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
+    rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
 }
 
 /* Favorite and add to cart */
@@ -39,22 +41,25 @@
 }
 .beverage-name {
   font-size: 18px;
-  margin: 0;
   font-family: "Viner Hand ITC", Times New Roman, cursive;
   color: white;
   letter-spacing: 2px;
   font-weight: bold;
+  margin: 8px;
 }
 .beverage-price {
   margin: 5px;
   color: white;
+  font-size: 18px;
+  letter-spacing: 1px;
+  font-style: oblique;
 }
 /* === */
 
 /* Revolver and bullet */
 .revolver-container {
   display: flex;
-  height: 100px;
+  height: 75px;
   width: 200px;
   justify-content: flex-start;
   align-items: center;
@@ -78,7 +83,7 @@
 /* Rotating revolver  */
 .card:hover .revolver-img {
   rotate: -10deg;
-  transition: 0.5s;
+  transition: 0.8s;
 }
 
 /* calling keyframe showing bullet*/
