@@ -1,5 +1,5 @@
 .card {
-  height: 280px;
+  min-height: 305px;
   width: 220px;
   border-radius: 10px;
   background-color: #943c1f;
@@ -33,11 +33,17 @@
 .beverage-info {
   width: 100%;
   text-align: center;
-  padding: 0;
-  margin: 0;
 }
 
-.beverage-info > p {
-  padding: 0;
+.beverage-name {
+  font-size: 18px;
+  margin: 0;
+  font-family: "Viner Hand ITC", Times New Roman, cursive;
+  color: white;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+.beverage-price {
   margin: 5px;
+  color: white;
 }

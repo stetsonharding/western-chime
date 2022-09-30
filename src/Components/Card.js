@@ -31,12 +31,12 @@ function Card() {
       </div>
 
       <div className="beverage-info">
-        <p>Best Beer</p>
-        <p>Price: $28</p>
+        <p className="beverage-name">Best Beer</p>
+        <p className="beverage-price"> $28</p>
       </div>
 
       <div className="learn-more-container beverage-info">
-        <p>More</p>
+        <p>More Info</p>
       </div>
     </div>
   );
