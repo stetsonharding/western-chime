@@ -6,6 +6,7 @@ import "../css/Card.css";
 import ImageNotLiked from "../Assets/imageNotLiked.png";
 import AddToCart from "../Assets/addtocart.png";
 import beerTest from "../Assets/beertest.png";
+import revolver from "../Assets/revolver.png";
 
 function Card() {
   return (
@@ -30,13 +31,25 @@ function Card() {
         <img src={beerTest} height="120" width="30" alt="Beverage" />
       </div>
 
-      <div className="beverage-info">
+      <div className="beverage-info-container">
         <p className="beverage-name">Best Beer</p>
         <p className="beverage-price"> $28</p>
       </div>
 
-      <div className="learn-more-container beverage-info">
-        <p>More Info</p>
+      <div className="revolver-container beverage-info">
+        <img
+          src={revolver}
+          alt="Revolver weapon"
+          height="35"
+          width="40"
+          className="revolver-img"
+        />
+
+        <div className="revolver-bullet"></div>
+
+        <div className="learn-more">
+          <span>Learn More</span>
+        </div>
       </div>
     </div>
   );

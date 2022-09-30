@@ -6,35 +6,37 @@
   margin: 10px;
 }
 
+/* Favorite and add to cart */
 .card-interactions {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
 }
-
 .favorite-button,
 .addToCart-button {
   margin: 12px 8px;
   cursor: pointer;
 }
-
 .card-image-container {
   width: 100%;
   text-align: center;
 }
+/* === */
 
+/* beverage image */
 .card-image img {
   box-shadow: 1px 1px 1px black;
   background-color: white;
   border-radius: 5px;
 }
+/* === */
 
-.beverage-info {
+/* beverage name and price */
+.beverage-info-container {
   width: 100%;
   text-align: center;
 }
-
 .beverage-name {
   font-size: 18px;
   margin: 0;
@@ -46,4 +48,72 @@
 .beverage-price {
   margin: 5px;
   color: white;
+}
+/* === */
+
+/* Revolver and bullet */
+.revolver-container {
+  display: flex;
+  height: 100px;
+  width: 200px;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 20px;
+}
+.revolver-container img {
+  padding-top: 12px;
+}
+/* === */
+
+/* Bullet animation and hover */
+.revolver-bullet {
+  background-color: #943c1f;
+  border-radius: 10px;
+  height: 5px;
+  width: 5px;
+  position: relative;
+  display: none;
+}
+
+/* Rotating revolver  */
+.card:hover .revolver-img {
+  rotate: -10deg;
+  transition: 0.5s;
+}
+
+/* calling keyframe showing bullet*/
+.card:hover .revolver-bullet {
+  display: block;
+  animation: myfirst 2s;
+}
+
+@keyframes myfirst {
+  0% {
+    background: yellow;
+    left: 0px;
+    right: 0px;
+  }
+  100% {
+    background: white;
+    left: 100px;
+    right: 120px;
+    background-color: #943c1f;
+    display: none;
+  }
+}
+/* === */
+
+/* Learn more button */
+.learn-more {
+  height: 55px;
+  width: 50%;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  color: white;
+  font-style: italic;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
 }
