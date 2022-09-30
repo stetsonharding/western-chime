@@ -20,6 +20,15 @@
   margin: 0 auto;
 }
 
+/* All cards Container */
+.all-cards-container {
+  width: 95%;
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
 /* Page Buttons */
 .page-button-container {
   display: flex;

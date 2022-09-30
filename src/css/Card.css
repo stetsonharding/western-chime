@@ -1,0 +1,43 @@
+.card {
+  height: 280px;
+  width: 220px;
+  border-radius: 10px;
+  background-color: #943c1f;
+  margin: 10px;
+}
+
+.card-interactions {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.favorite-button,
+.addToCart-button {
+  margin: 12px 8px;
+  cursor: pointer;
+}
+
+.card-image-container {
+  width: 100%;
+  text-align: center;
+}
+
+.card-image img {
+  box-shadow: 1px 1px 1px black;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.beverage-info {
+  width: 100%;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+
+.beverage-info > p {
+  padding: 0;
+  margin: 5px;
+}

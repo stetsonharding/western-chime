@@ -6,6 +6,7 @@ import nextButton from "../Assets/nextbutton.png";
 import prevButton from "../Assets/prevbutton.png";
 
 import SearchInput from "./SearchInput";
+import Card from "./Card";
 
 function CardContainer() {
   return (
@@ -26,8 +27,19 @@ function CardContainer() {
             <p>Filter beers by ABV</p>
           </div>
           {/* === */}
-
           {/* Mapping Card Components goes here */}
+          <div className="all-cards-container">
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+          </div>
 
           {/* === */}
         </div>
