@@ -13,17 +13,16 @@
   background-color: #000;
   border-radius: 4px;
   max-width: 1700px;
-  height: 80%;
+  height: fit-content;
   position: relative;
   top: 40px;
-  filter: brightness(95%);
   margin: 0 auto;
 }
 
 /* All cards Container */
 .all-cards-container {
   width: 95%;
-  margin: 25px 40px;
+  margin: 25px 30px;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -36,6 +35,7 @@
   padding: 0 10 0 0;
   height: 100%;
   align-items: center;
+  height: fit-content;
 }
 .page-buttons img {
   padding: 20px;

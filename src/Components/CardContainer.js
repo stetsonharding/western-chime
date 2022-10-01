@@ -40,7 +40,6 @@ function CardContainer() {
             <Card />
             <Card />
           </div>
-
           {/* === */}
         </div>
 
