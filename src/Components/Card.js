@@ -5,10 +5,10 @@ import "../css/Card.css";
 //images
 import ImageNotLiked from "../Assets/imageNotLiked.png";
 import AddToCart from "../Assets/addtocart.png";
-import beerTest from "../Assets/beertest.png";
+
 import revolver from "../Assets/revolver.png";
 
-function Card() {
+function Card({ img, name, price }) {
   return (
     <div className="card">
       <div className="card-interactions">
@@ -28,12 +28,12 @@ function Card() {
         />
       </div>
       <div className="card-image-container">
-        <img src={beerTest} height="120" width="30" alt="Beverage" />
+        <img src={img} height="120" width="30" alt="Beverage" />
       </div>
 
       <div className="beverage-info-container">
-        <p className="beverage-name">Best Beer</p>
-        <p className="beverage-price"> $28</p>
+        <p className="beverage-name">{name}</p>
+        <p className="beverage-price">${price}</p>
       </div>
 
       <div className="revolver-container beverage-info">
