@@ -9,8 +9,9 @@
     rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
 }
 .card:hover {
-  box-shadow: 2px 12px 15px rgb(11, 11, 11);
+  box-shadow: 2px 19px 22px rgb(11, 11, 11);
   transition: 0.2s;
+  cursor: pointer;
 }
 /* === */
 
@@ -26,17 +27,12 @@
   margin: 12px 8px;
   cursor: pointer;
 }
+/* === */
+
+/* Card Beverage Image */
 .card-image-container {
   width: 100%;
   text-align: center;
-}
-/* === */
-
-/* beverage image */
-.card-image img {
-  box-shadow: 1px 1px 1px black;
-  background-color: white;
-  border-radius: 5px;
 }
 /* === */
 
@@ -44,14 +40,19 @@
 .beverage-info-container {
   width: 100%;
   text-align: center;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 .beverage-name {
-  font-size: 18px;
+  font-size: 16px;
   font-family: "Viner Hand ITC", Times New Roman, cursive;
   color: white;
   letter-spacing: 2px;
-  font-weight: bold;
-  margin: 8px;
+  font-weight: 600;
+  padding: 0px 3px;
 }
 .beverage-price {
   margin: 5px;
@@ -59,17 +60,19 @@
   font-size: 18px;
   letter-spacing: 1px;
   font-style: oblique;
+  justify-self: flex-end;
 }
 /* === */
 
 /* Revolver and bullet */
 .revolver-container {
   display: flex;
-  height: 75px;
+  height: 40px;
   width: 200px;
   justify-content: flex-start;
   align-items: center;
   padding-left: 20px;
+  padding-bottom: 20px;
 }
 .revolver-container img {
   padding-top: 12px;
