@@ -10,11 +10,11 @@ import prevButton from "../Assets/prevbutton.png";
 import SearchInput from "./SearchInput";
 import Card from "./Card";
 
-function CardContainer({ beverages, errorMessage }) {
+function CardContainer({ beverages, errorMessage, NextPage, PreviousPage }) {
   return (
     <div className="card-container">
       <div className="page-button-container">
-        <span className="page-buttons">
+        <span className="page-buttons" onClick={() => PreviousPage()}>
           <img src={prevButton} alt="Previous Page" />
         </span>
 
@@ -50,7 +50,7 @@ function CardContainer({ beverages, errorMessage }) {
           {/* === */}
           {/* Error Message */}
         </div>
-        <span className="page-buttons">
+        <span className="page-buttons" onClick={() => NextPage()}>
           <img src={nextButton} alt="Next Page" />
         </span>
       </div>
