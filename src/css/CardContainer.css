@@ -104,6 +104,25 @@
   }
   /* === */
 }
+
+/* Error Message */
+.error-message-container {
+  text-align: center;
+  width: 100%;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.error-message-container p {
+  font-style: italic;
+  font-size: 28px;
+  color: #f31808;
+  font-weight: bolder;
+  font-family: "Viner Hand ITC", Times New Roman, cursive;
+}
+/* === */
+
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
   /* Resize page buttons */

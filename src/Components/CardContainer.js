@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 import "../css/CardContainer.css";
 
@@ -10,27 +10,7 @@ import prevButton from "../Assets/prevbutton.png";
 import SearchInput from "./SearchInput";
 import Card from "./Card";
 
-function CardContainer() {
-  const [beverages, setBeverages] = useState([]);
-  const [errorMessage, setErrorMessage] = useState("");
-
-  // Fetching Api and storing results in state.
-  const GetApiBeverages = async () => {
-    const URL = "https://api.punkapi.com/v2/beers?page=1&per_page=10";
-
-    const APIbeverages = await fetch(URL);
-    if (!APIbeverages.ok) {
-      setErrorMessage("Oh no! Someones fussin' with our invitory! Try Again!");
-    }
-    const data = await APIbeverages.json();
-
-    setBeverages(data);
-  };
-
-  useEffect(() => {
-    GetApiBeverages();
-  }, []);
-
+function CardContainer({ beverages, errorMessage }) {
   return (
     <div className="card-container">
       <div className="page-button-container">
@@ -51,6 +31,12 @@ function CardContainer() {
           </div>
           {/* === */}
           {/* Mapping Card Components goes here */}
+          {errorMessage && (
+            <div className="error-message-container">
+              <p>{errorMessage}</p>
+            </div>
+          )}
+          {/* ==== */}
           <div className="all-cards-container">
             {beverages.map((beverage, index) => (
               <Card
@@ -62,8 +48,8 @@ function CardContainer() {
             ))}
           </div>
           {/* === */}
+          {/* Error Message */}
         </div>
-
         <span className="page-buttons">
           <img src={nextButton} alt="Next Page" />
         </span>
