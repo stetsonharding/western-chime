@@ -44,6 +44,7 @@ function App() {
         errorMessage={errorMessage}
         NextPage={NextPage}
         PreviousPage={PreviousPage}
+        currentPage={currentPage}
       />
     </div>
   );

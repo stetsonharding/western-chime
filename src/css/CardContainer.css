@@ -44,6 +44,12 @@
   width: 80px;
   cursor: pointer;
 }
+.page-buttons {
+  background-color: transparent;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
 
 /* Container for search input and beer cards */
 .search-api-container {

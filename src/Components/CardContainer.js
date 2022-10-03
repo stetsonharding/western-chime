@@ -10,15 +10,33 @@ import prevButton from "../Assets/prevbutton.png";
 import SearchInput from "./SearchInput";
 import Card from "./Card";
 
-function CardContainer({ beverages, errorMessage, NextPage, PreviousPage }) {
+function CardContainer({
+  beverages,
+  errorMessage,
+  NextPage,
+  PreviousPage,
+  currentPage,
+}) {
+  console.log(beverages.length);
   return (
     <div className="card-container">
       <div className="page-button-container">
-        <span className="page-buttons" onClick={() => PreviousPage()}>
-          <img src={prevButton} alt="Previous Page" />
-        </span>
+        <button
+          className="page-buttons"
+          onClick={() => PreviousPage()}
+          disabled={currentPage === 1 ? true : false}
+        >
+          <img
+            src={prevButton}
+            alt="Previous Page"
+            style={{
+              opacity: currentPage === 1 ? ".6" : "1",
+              cursor: currentPage === 1 && "not-allowed",
+            }}
+          />
+        </button>
 
-        {/* Container for search input and beer cards. */}
+        {/* Container for search input, beer cards, and filter */}
         <div className="search-api-container">
           {/* Search Input component */}
           <div className="search-input-container">
@@ -30,13 +48,14 @@ function CardContainer({ beverages, errorMessage, NextPage, PreviousPage }) {
             <p>Filter beers by ABV</p>
           </div>
           {/* === */}
-          {/* Mapping Card Components goes here */}
+          {/* API error message */}
           {errorMessage && (
             <div className="error-message-container">
               <p>{errorMessage}</p>
             </div>
           )}
           {/* ==== */}
+          {/* Mapping Cards*/}
           <div className="all-cards-container">
             {beverages.map((beverage, index) => (
               <Card
@@ -48,11 +67,21 @@ function CardContainer({ beverages, errorMessage, NextPage, PreviousPage }) {
             ))}
           </div>
           {/* === */}
-          {/* Error Message */}
         </div>
-        <span className="page-buttons" onClick={() => NextPage()}>
-          <img src={nextButton} alt="Next Page" />
-        </span>
+        <button
+          className="page-buttons"
+          onClick={() => NextPage()}
+          disabled={beverages.length === 10 ? false : true}
+        >
+          <img
+            src={nextButton}
+            alt="Next Page"
+            style={{
+              opacity: beverages.length !== 10 ? ".6" : "1",
+              cursor: beverages.length !== 10 && "not-allowed",
+            }}
+          />
+        </button>
       </div>
     </div>
   );
