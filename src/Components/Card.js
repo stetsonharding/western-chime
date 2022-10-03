@@ -29,6 +29,20 @@ function Card({ img, name, price }) {
       </div>
       <div className="card-image-container">
         <img src={img} height="120" width="30" alt="Beverage" />
+        <br />
+        {img === "https://images.punkapi.com/v2/keg.png" && (
+          <p
+            style={{
+              fontSize: "12px",
+              fontStyle: "italic",
+              padding: "0",
+              margin: "0",
+              color: "white",
+            }}
+          >
+            Keg Only
+          </p>
+        )}
       </div>
 
       <div className="beverage-info-container">

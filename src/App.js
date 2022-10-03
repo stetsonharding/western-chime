@@ -17,6 +17,14 @@ function App() {
       try {
         const response = await fetch(URL);
         const data = await response.json();
+
+        //If there is no beverage image, set image as "keg-only".
+        data.filter((item) =>
+          item.image_url === null
+            ? (item.image_url = "https://images.punkapi.com/v2/keg.png")
+            : null
+        );
+
         setBeverages(data);
       } catch (err) {
         setErrorMessage(
