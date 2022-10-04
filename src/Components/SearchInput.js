@@ -15,7 +15,7 @@ function SearchInput({ onSearchSubmit }) {
   //Submit a new search
   useEffect(() => {
     onSearchSubmit(searchQuery);
-  }, [searchQuery, onSearchSubmit]);
+  }, [searchQuery]);
 
   return (
     <>

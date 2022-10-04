@@ -34,10 +34,9 @@ function App() {
       setErrorMessage("Oh no! Someones fussin' with our invitory! Try Again!");
     }
   };
-
   useEffect(() => {
     GetApiBeverages();
-  }, []);
+  }, [currentPage]);
 
   // Pagination for next and prev pages
   const PreviousPage = () => {
@@ -56,8 +55,9 @@ function App() {
       const data = await response.json();
       //Make sure all beverages have a image.
       AddImage(data);
-      //setting beverage data to state
+
       setBeverages(data);
+      console.log(data);
     } else {
       GetApiBeverages();
     }
