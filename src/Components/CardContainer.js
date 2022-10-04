@@ -16,8 +16,11 @@ function CardContainer({
   NextPage,
   PreviousPage,
   currentPage,
+  onSearchSubmit,
 }) {
-  console.log(beverages.length);
+  //Used for enable/disable next page button.
+  const DISABLED_LENGTH = beverages.length;
+
   return (
     <div className="card-container">
       <div className="page-button-container">
@@ -40,7 +43,7 @@ function CardContainer({
         <div className="search-api-container">
           {/* Search Input component */}
           <div className="search-input-container">
-            <SearchInput />
+            <SearchInput onSearchSubmit={(query) => onSearchSubmit(query)} />
           </div>
           {/* Filter btns */}
           <div className="beer-filters-container">
@@ -71,14 +74,14 @@ function CardContainer({
         <button
           className="page-buttons"
           onClick={() => NextPage()}
-          disabled={beverages.length === 10 ? false : true}
+          disabled={beverages.length === DISABLED_LENGTH ? false : true}
         >
           <img
             src={nextButton}
             alt="Next Page"
             style={{
-              opacity: beverages.length !== 10 ? ".6" : "1",
-              cursor: beverages.length !== 10 && "not-allowed",
+              opacity: beverages.length !== DISABLED_LENGTH ? ".6" : "1",
+              cursor: beverages.length !== DISABLED_LENGTH && "not-allowed",
             }}
           />
         </button>
