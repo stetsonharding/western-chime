@@ -19,7 +19,7 @@ function CardContainer({
   onSearchSubmit,
 }) {
   //Used for enable/disable next page button.
-  const DISABLED_LENGTH = beverages.length;
+  const DISABLED_LENGTH = 15;
 
   return (
     <div className="card-container">

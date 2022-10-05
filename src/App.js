@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import "./App.css";
 
+import _ from "lodash";
+
 //Components
 import Header from "./Components/Header";
 import CardContainer from "./Components/CardContainer";
@@ -47,7 +49,7 @@ function App() {
   };
 
   //Searching for beverages based on users search query.
-  const onSearchSubmit = async (query) => {
+  const onSearchSubmit = _.memoize(async (query) => {
     if (query !== "") {
       const response = await fetch(
         `https://api.punkapi.com/v2/beers?beer_name=${query}`
@@ -61,7 +63,7 @@ function App() {
     } else {
       GetApiBeverages();
     }
-  };
+  });
 
   return (
     <div className="App">
