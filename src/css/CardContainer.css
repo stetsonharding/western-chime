@@ -121,10 +121,9 @@
   align-items: center;
 }
 .error-message-container p {
-  font-style: italic;
   font-size: 28px;
-  color: #f31808;
-  font-weight: bolder;
+  color: black;
+  font-weight: 600;
   font-family: "Viner Hand ITC", Times New Roman, cursive;
 }
 /* === */

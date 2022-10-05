@@ -51,20 +51,32 @@ function App() {
   //Searching for beverages based on users search query.
   const onSearchSubmit = _.memoize(async (query) => {
     if (query !== "") {
-      const response = await fetch(
-        `https://api.punkapi.com/v2/beers?beer_name=${query}`
-      );
-      const data = await response.json();
-      //Make sure all beverages have a image.
-      AddImage(data);
-
-      setBeverages(data);
-      console.log(data);
+      try {
+        const response = await fetch(
+          `https://api.punkapi.com/v2/beers?beer_name=${query}`
+        );
+        const data = await response.json();
+        //Make sure all beverages have a image.
+        if (data.length === 0) {
+          setErrorMessage(
+            `Shucks! We can't seem to find ${query}. Try Lookin' for another?`
+          );
+          setBeverages([]);
+        } else {
+          AddImage(data);
+          setBeverages(data);
+          setErrorMessage("");
+        }
+      } catch (err) {
+        setErrorMessage(`There seems to be an error!`);
+        setBeverages([]);
+      }
     } else {
       GetApiBeverages();
+      setErrorMessage("");
     }
   });
-
+  console.log(errorMessage);
   return (
     <div className="App">
       <Header />
