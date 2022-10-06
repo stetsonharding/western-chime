@@ -17,6 +17,7 @@ function CardContainer({
   PreviousPage,
   currentPage,
   onSearchSubmit,
+  setBeverages,
 }) {
   //Used for enable/disable next page button.
   const DISABLED_LENGTH = 15;
@@ -66,6 +67,10 @@ function CardContainer({
                 img={beverage.image_url}
                 name={beverage.name}
                 price={beverage.srm}
+                beverage={beverage}
+                index={index}
+                beverages={beverages}
+                setBeverages={setBeverages}
               />
             ))}
           </div>

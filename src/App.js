@@ -30,8 +30,9 @@ function App() {
 
       //Make sure all beverages have a image.
       AddImage(data);
-      //setting beverage data to state
-      setBeverages(data);
+      //Adding isFavorited property to each beverage and setting final result to state.
+      let finalData = data.map((obj) => ({ ...obj, isFavorited: false }));
+      setBeverages(finalData);
     } catch (err) {
       setErrorMessage("Oh no! Someones fussin' with our invitory! Try Again!");
     }
@@ -76,7 +77,7 @@ function App() {
       setErrorMessage("");
     }
   });
-  console.log(errorMessage);
+
   return (
     <div className="App">
       <Header />
@@ -87,6 +88,7 @@ function App() {
         PreviousPage={PreviousPage}
         currentPage={currentPage}
         onSearchSubmit={onSearchSubmit}
+        setBeverages={setBeverages}
       />
     </div>
   );

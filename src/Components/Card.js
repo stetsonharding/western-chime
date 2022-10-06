@@ -4,21 +4,56 @@ import "../css/Card.css";
 
 //images
 import ImageNotLiked from "../Assets/imageNotLiked.png";
+import ImageLiked from "../Assets/ImageLiked.png";
 import AddToCart from "../Assets/addtocart.png";
-
 import revolver from "../Assets/revolver.png";
 
-function Card({ img, name, price }) {
-  return (
-    <div className="card">
-      <div className="card-interactions">
+function Card({ img, name, price, beverage, index, beverages, setBeverages }) {
+  const favoriteImage = (id) => {
+    const newArr = beverages.map((beverage) => {
+      if (beverage.id === id) {
+        return {
+          ...beverage,
+          isFavorited: !beverage.isFavorited,
+        };
+      }
+      return beverage;
+    });
+
+    setBeverages(newArr);
+  };
+
+  //Returns image based on if hovered or not.
+  const favoriteIcon = () => {
+    if (beverage.isFavorited) {
+      return (
         <img
+          onClick={() => favoriteImage(beverage.id)}
+          src={ImageLiked}
+          height="30"
+          width="30"
+          alt="favorite Button"
+          className="favorite-button"
+        />
+      );
+    } else {
+      return (
+        <img
+          onClick={() => favoriteImage(beverage.id)}
           src={ImageNotLiked}
           height="30"
           width="30"
           alt="favorite Button"
           className="favorite-button"
         />
+      );
+    }
+  };
+
+  return (
+    <div className="card">
+      <div className="card-interactions">
+        {favoriteIcon()}
         <img
           src={AddToCart}
           height="30"
