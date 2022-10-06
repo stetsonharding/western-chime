@@ -11,6 +11,7 @@ function App() {
   const [beverages, setBeverages] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const [favoritedBeverages, setFavoritedBeverages] = useState([]);
 
   //If there is no beverage image, set image as "keg-only".
   const AddImage = (data) => {
@@ -89,6 +90,7 @@ function App() {
         currentPage={currentPage}
         onSearchSubmit={onSearchSubmit}
         setBeverages={setBeverages}
+        setFavoritedBeverages={setFavoritedBeverages}
       />
     </div>
   );

@@ -18,6 +18,7 @@ function CardContainer({
   currentPage,
   onSearchSubmit,
   setBeverages,
+  setFavoritedBeverages,
 }) {
   //Used for enable/disable next page button.
   const DISABLED_LENGTH = 15;
@@ -71,6 +72,7 @@ function CardContainer({
                 index={index}
                 beverages={beverages}
                 setBeverages={setBeverages}
+                setFavoritedBeverages={setFavoritedBeverages}
               />
             ))}
           </div>

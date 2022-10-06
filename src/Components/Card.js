@@ -8,7 +8,16 @@ import ImageLiked from "../Assets/ImageLiked.png";
 import AddToCart from "../Assets/addtocart.png";
 import revolver from "../Assets/revolver.png";
 
-function Card({ img, name, price, beverage, index, beverages, setBeverages }) {
+function Card({
+  img,
+  name,
+  price,
+  beverage,
+  index,
+  beverages,
+  setBeverages,
+  setFavoritedBeverages,
+}) {
   const favoriteImage = (id) => {
     const newArr = beverages.map((beverage) => {
       if (beverage.id === id) {
@@ -20,6 +29,11 @@ function Card({ img, name, price, beverage, index, beverages, setBeverages }) {
       return beverage;
     });
 
+    //Filtering all beverages that are favorited and setting to state.
+    let favorited = newArr.filter((item) => item.isFavorited === true);
+    setFavoritedBeverages(favorited);
+
+    //Updating all beverages state when favorited.
     setBeverages(newArr);
   };
 
