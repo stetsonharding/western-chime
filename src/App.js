@@ -12,6 +12,7 @@ function App() {
   const [errorMessage, setErrorMessage] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [favoritedBeverages, setFavoritedBeverages] = useState([]);
+  const [cartItems, setCartItems] = useState([]);
 
   //If there is no beverage image, set image as "keg-only".
   const AddImage = (data) => {
@@ -31,8 +32,12 @@ function App() {
 
       //Make sure all beverages have a image.
       AddImage(data);
-      //Adding isFavorited property to each beverage and setting final result to state.
-      let finalData = data.map((obj) => ({ ...obj, isFavorited: false }));
+      //Adding isFavorited and isAddedToCart property's to each beverage and setting final result to state.
+      let finalData = data.map((obj) => ({
+        ...obj,
+        isFavorited: false,
+        isAddedToCart: false,
+      }));
       setBeverages(finalData);
     } catch (err) {
       setErrorMessage("Oh no! Someones fussin' with our invitory! Try Again!");
@@ -78,7 +83,7 @@ function App() {
       setErrorMessage("");
     }
   });
-
+  console.log(cartItems);
   return (
     <div className="App">
       <Header />
@@ -91,6 +96,7 @@ function App() {
         onSearchSubmit={onSearchSubmit}
         setBeverages={setBeverages}
         setFavoritedBeverages={setFavoritedBeverages}
+        setCartItems={setCartItems}
       />
     </div>
   );
