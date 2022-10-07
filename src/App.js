@@ -6,6 +6,7 @@ import _ from "lodash";
 //Components
 import Header from "./Components/Header";
 import CardContainer from "./Components/CardContainer";
+import LearnMoreModal from "./Components/LearnMoreModal";
 
 function App() {
   const [beverages, setBeverages] = useState([]);
@@ -13,6 +14,7 @@ function App() {
   const [currentPage, setCurrentPage] = useState(1);
   const [favoritedBeverages, setFavoritedBeverages] = useState([]);
   const [cartItems, setCartItems] = useState([]);
+  const [isLeanMoreModalShown, setIsLearnMoreModalShown] = useState(false);
 
   //If there is no beverage image, set image as "keg-only".
   const AddImage = (data) => {
@@ -83,9 +85,10 @@ function App() {
       setErrorMessage("");
     }
   });
-  console.log(cartItems);
+
   return (
     <div className="App">
+      {isLeanMoreModalShown && <LearnMoreModal />}
       <Header />
       <CardContainer
         beverages={beverages}
@@ -97,6 +100,7 @@ function App() {
         setBeverages={setBeverages}
         setFavoritedBeverages={setFavoritedBeverages}
         setCartItems={setCartItems}
+        setIsLearnMoreModalShown={setIsLearnMoreModalShown}
       />
     </div>
   );

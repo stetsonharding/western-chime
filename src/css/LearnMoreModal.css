@@ -1,0 +1,95 @@
+.modal-container {
+  display: flex;
+  background-color: #e6e7cb;
+  border: 2px solid black;
+  width: 100%;
+  max-width: 750px;
+  min-height: 500px;
+
+  /* //Centering modal */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  /* == */
+}
+
+.title {
+  font-size: 60px;
+  letter-spacing: 1px;
+  font-family: "Viner Hand ITC", Times New Roman, cursive;
+  position: relative;
+  left: 70px;
+  color: #e3bb67;
+  width: 400px;
+}
+
+/* Image Container */
+.beverage-image-container {
+  width: 300px;
+  height: 495px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2px;
+  background-color: #7b3018;
+}
+/* == */
+
+/* Container for beverage, abv, ibu, description */
+.beverage-data-container {
+  display: flex;
+  border-top: 1px solid black;
+  width: 500px;
+  margin-left: 10px;
+}
+/* == */
+
+/* Container for abv and ibu */
+.data {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-right: 1px solid black;
+  width: 150px;
+}
+/* == */
+
+/* abv, ibu styles */
+.beverage-details {
+  width: 200px;
+  height: 60px;
+  border-bottom: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+}
+
+/* Beverage Description */
+.description {
+  margin: 10px;
+  letter-spacing: 1px;
+}
+/* == */
+
+/* Add to cart button */
+.cart-button-container {
+  text-align: center;
+}
+#add-to-cart {
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #e3bb67;
+  color: #7b3018;
+  letter-spacing: 1px;
+  border: none;
+  font-weight: bold;
+  outline: 1px solid black;
+}
+#add-to-cart:hover {
+  color: black;
+  cursor: pointer;
+}
+/* == */
