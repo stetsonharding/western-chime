@@ -20,7 +20,7 @@ function CardContainer({
   setBeverages,
   setFavoritedBeverages,
   setCartItems,
-  setIsLearnMoreModalShown,
+  setLearnMoreModalData,
 }) {
   //Used for enable/disable next page button.
   const DISABLED_LENGTH = 15;
@@ -76,7 +76,7 @@ function CardContainer({
                 setBeverages={setBeverages}
                 setFavoritedBeverages={setFavoritedBeverages}
                 setCartItems={setCartItems}
-                setIsLearnMoreModalShown={setIsLearnMoreModalShown}
+                setLearnMoreModalData={setLearnMoreModalData}
               />
             ))}
           </div>

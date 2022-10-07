@@ -14,7 +14,7 @@ function App() {
   const [currentPage, setCurrentPage] = useState(1);
   const [favoritedBeverages, setFavoritedBeverages] = useState([]);
   const [cartItems, setCartItems] = useState([]);
-  const [isLeanMoreModalShown, setIsLearnMoreModalShown] = useState(false);
+  const [learnMoreModalData, setLearnMoreModalData] = useState();
 
   //If there is no beverage image, set image as "keg-only".
   const AddImage = (data) => {
@@ -87,9 +87,11 @@ function App() {
 
   return (
     <div className="App">
-      {isLeanMoreModalShown && (
-        <LearnMoreModal setIsLearnMoreModalShown={setIsLearnMoreModalShown} />
-      )}
+      <LearnMoreModal
+        setLearnMoreModalData={setLearnMoreModalData}
+        learnMoreModalData={learnMoreModalData}
+      />
+
       <Header />
       <CardContainer
         beverages={beverages}
@@ -101,7 +103,7 @@ function App() {
         setBeverages={setBeverages}
         setFavoritedBeverages={setFavoritedBeverages}
         setCartItems={setCartItems}
-        setIsLearnMoreModalShown={setIsLearnMoreModalShown}
+        setLearnMoreModalData={setLearnMoreModalData}
       />
     </div>
   );

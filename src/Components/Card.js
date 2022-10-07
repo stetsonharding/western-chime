@@ -19,7 +19,7 @@ function Card({
   setBeverages,
   setFavoritedBeverages,
   setCartItems,
-  setIsLearnMoreModalShown,
+  setLearnMoreModalData,
 }) {
   const favoriteImage = (id) => {
     const newArr = beverages.map((beverage) => {
@@ -153,7 +153,9 @@ function Card({
         <div className="revolver-bullet"></div>
 
         <div className="learn-more">
-          <span onClick={() => setIsLearnMoreModalShown(true)}>Learn More</span>
+          <span onClick={() => setLearnMoreModalData(beverage)}>
+            Learn More
+          </span>
         </div>
       </div>
     </div>
