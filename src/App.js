@@ -32,7 +32,6 @@ function App() {
       const response = await fetch(URL);
       const data = await response.json();
 
-      //Make sure all beverages have a image.
       AddImage(data);
       //Adding isFavorited and isAddedToCart property's to each beverage and setting final result to state.
       let finalData = data.map((obj) => ({
@@ -65,7 +64,7 @@ function App() {
           `https://api.punkapi.com/v2/beers?beer_name=${query}`
         );
         const data = await response.json();
-        //Make sure all beverages have a image.
+
         if (data.length === 0) {
           setErrorMessage(
             `Shucks! We can't seem to find ${query}. Try Lookin' for another?`
@@ -88,7 +87,9 @@ function App() {
 
   return (
     <div className="App">
-      {isLeanMoreModalShown && <LearnMoreModal />}
+      {isLeanMoreModalShown && (
+        <LearnMoreModal setIsLearnMoreModalShown={setIsLearnMoreModalShown} />
+      )}
       <Header />
       <CardContainer
         beverages={beverages}
