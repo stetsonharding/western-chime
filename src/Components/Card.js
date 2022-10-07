@@ -124,7 +124,7 @@ function Card({
         {img === "https://images.punkapi.com/v2/keg.png" && (
           <p
             style={{
-              fontSize: "12px",
+              fontSize: "8px",
               fontStyle: "italic",
               padding: "0",
               margin: "0",

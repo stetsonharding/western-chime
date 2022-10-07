@@ -29,7 +29,7 @@
 }
 
 .title {
-  font-size: 30px;
+  font-size: 40px;
   letter-spacing: 1px;
   font-family: "Viner Hand ITC", Times New Roman, cursive;
   position: relative;
@@ -95,14 +95,14 @@
   padding: 10px;
   border-radius: 5px;
   background-color: #e3bb67;
-  color: #7b3018;
+  color: black;
   letter-spacing: 1px;
   border: none;
   font-weight: bold;
   outline: 1px solid black;
 }
 #add-to-cart:hover {
-  color: black;
+  color: #7b3018;
   cursor: pointer;
 }
 /* == */

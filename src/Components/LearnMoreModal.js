@@ -2,8 +2,6 @@ import React from "react";
 
 import "../css/LearnMoreModal.css";
 
-import TestImage from "../Assets/beertest.png";
-
 function LearnMoreModal({ setLearnMoreModalData, learnMoreModalData }) {
   console.log(learnMoreModalData);
   return (
@@ -43,7 +41,7 @@ function LearnMoreModal({ setLearnMoreModalData, learnMoreModalData }) {
                   console.log("hi");
                 }}
               >
-                Add to cart $24
+                Add to cart ${learnMoreModalData.srm}
               </button>
             </div>
           </div>
