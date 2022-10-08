@@ -1,0 +1,39 @@
+/* Shopping Cart container and cart size */
+.shopping-cart {
+  flex: 0 1 auto;
+  width: 100px;
+  margin-left: auto;
+  cursor: pointer;
+  z-index: 2;
+}
+.cart-size {
+  width: 20px;
+  height: 18px;
+  border-radius: 20px;
+  background-color: white;
+  position: relative;
+  left: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* == */
+
+/* Cart Quick View */
+.cart-quickview {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  color: #0a0a0a;
+  z-index: 1;
+  height: 500px;
+  width: 400px;
+  position: absolute;
+  top: 100px;
+  right: 110px;
+  border-radius: 2%;
+  background-color: #fafafa;
+  text-align: center;
+}
