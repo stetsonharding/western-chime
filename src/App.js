@@ -92,7 +92,7 @@ function App() {
         learnMoreModalData={learnMoreModalData}
       />
 
-      <Header />
+      <Header cartItems={cartItems} />
       <CardContainer
         beverages={beverages}
         errorMessage={errorMessage}

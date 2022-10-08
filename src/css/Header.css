@@ -16,13 +16,26 @@
   top: 20px;
 }
 
-/* Shopping Cart container */
+/* Shopping Cart container and cart size */
 .shopping-cart {
   flex: 0 1 auto;
   width: 100px;
   margin-left: auto;
   cursor: pointer;
 }
+.cart-size {
+  width: 20px;
+  height: 18px;
+  border-radius: 20px;
+  background-color: white;
+  position: relative;
+  left: 40px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* == */
 
 /* Slogan Container */
 .header-slogan-container {
@@ -45,7 +58,6 @@
 }
 
 /* Media Querys - Mobile, tablet, landscape */
-
 @media screen and (min-width: 1024px) {
   /* Slogan Titles */
   .header-title {
