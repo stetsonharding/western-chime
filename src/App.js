@@ -94,7 +94,7 @@ function App() {
       />
 
       <Header cartItems={cartItems} />
-      <CartQuickView />
+      {/* <CartQuickView /> */}
       <CardContainer
         beverages={beverages}
         errorMessage={errorMessage}
