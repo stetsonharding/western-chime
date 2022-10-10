@@ -1,9 +1,9 @@
 .cart-items {
-  height: 100px;
+  height: 35%;
   width: 97%;
   background-color: white;
   display: flex;
-  align-items: center;
+
   border-radius: 3px;
   margin: 5px;
 }
@@ -11,9 +11,10 @@
 /* image */
 .beverage-image {
   background-color: #7b3018;
-  width: 85px;
+  width: 40%;
   height: 100%;
   display: flex;
+
   justify-content: center;
   align-items: center;
 }
@@ -21,23 +22,21 @@
 /* Cart name and price */
 .beverage-information-container {
   height: 100%;
-  justify-content: space-between;
+  width: 100%;
 }
 #name {
-  justify-self: flex-start;
   font-style: italic;
 }
 #price {
-  justify-self: flex-end;
   font-size: 16px;
 }
 .information {
-  padding-left: 10px;
   font-size: 18px;
   letter-spacing: 1px;
 }
 /* == */
 
+/* Delete item from cart  */
 .delete-beverage {
   width: 70%;
   display: flex;
@@ -51,3 +50,4 @@
   color: #7b3018;
   font-weight: bold;
 }
+/* == */

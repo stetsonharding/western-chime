@@ -28,7 +28,7 @@
   cursor: pointer;
   color: #0a0a0a;
   /* z-index: 1; */
-  height: 500px;
+  height: 620px;
   width: 400px;
   position: absolute;
   top: 90px;
@@ -36,4 +36,12 @@
   border-radius: 2%;
   background-color: #e3bb67;
   text-align: center;
+  border: 2px solid black;
+}
+
+/* Cart Items container - scroll */
+
+.cart-items-quickview-container {
+  overflow: auto;
+  height: 52%;
 }

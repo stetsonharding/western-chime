@@ -9,6 +9,7 @@ import prevButton from "../Assets/prevbutton.png";
 //Components
 import SearchInput from "./SearchInput";
 import Card from "./Card";
+import CartItems from "./CartItems";
 
 function CardContainer({
   beverages,

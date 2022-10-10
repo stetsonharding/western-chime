@@ -24,19 +24,24 @@ export function ShoppingCartBadge({ cartItems }) {
         alt="Shopping Cart"
         onClick={() => setIsCartQuickviewShown(!isCartQuickviewShown)}
       />
-      <CartQuickView isCartQuickviewShown={isCartQuickviewShown} />
+      <CartQuickView
+        cartItems={cartItems}
+        isCartQuickviewShown={isCartQuickviewShown}
+      />
     </div>
   );
 }
 
-export function CartQuickView({ isCartQuickviewShown }) {
+export function CartQuickView({ isCartQuickviewShown, cartItems }) {
   return (
     <>
       {isCartQuickviewShown && (
         <div className="cart-quickview">
           <h2>Your Shoppin' Cart (3)</h2>
-          <div className="quickview-container">
-            <CartItems />
+          <div className="cart-items-quickview-container">
+            {cartItems.map((cartItem) => (
+              <CartItems key={cartItem.id} cartItem={cartItem} />
+            ))}
           </div>
         </div>
       )}

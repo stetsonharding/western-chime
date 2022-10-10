@@ -1,20 +1,19 @@
 import React from "react";
 
 import "../css/CartItems.css";
-import Test from "../Assets/beertest.png";
 
-function CartItems() {
+function CartItems({ cartItem }) {
   return (
     <div className="cart-items">
       <div className="beverage-image">
-        <img src={Test} alt="" width="20px" height="78" />
+        <img src={cartItem.image_url} alt="" width="20px" height="78" />
       </div>
       <div className="beverage-information-container">
-        <p id="name" className="information">
-          Buzz
+        <p id="name" className="informationz">
+          {cartItem.name}
         </p>
         <p id="price" className="information">
-          $9.00
+          ${cartItem.srm}
         </p>
       </div>
       <div className="delete-beverage">

@@ -7,6 +7,7 @@ import "../css/Header.css";
 import { ShoppingCartBadge } from "./ShoppingCartBadge";
 
 function Header({ cartItems }) {
+  console.log(cartItems);
   return (
     <div className="header-container">
       <div className="header-slogan-container">

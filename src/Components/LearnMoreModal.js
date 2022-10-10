@@ -3,7 +3,6 @@ import React from "react";
 import "../css/LearnMoreModal.css";
 
 function LearnMoreModal({ setLearnMoreModalData, learnMoreModalData }) {
-  console.log(learnMoreModalData);
   return (
     learnMoreModalData && (
       <div
@@ -38,7 +37,6 @@ function LearnMoreModal({ setLearnMoreModalData, learnMoreModalData }) {
                 id="add-to-cart"
                 onClick={(e) => {
                   e.stopPropagation();
-                  console.log("hi");
                 }}
               >
                 Add to cart ${learnMoreModalData.srm}
