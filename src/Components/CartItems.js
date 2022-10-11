@@ -22,7 +22,7 @@ function CartItems({ setCartItems, item, index, cartItems }) {
           ${item.srm}
         </p>
       </div>
-      <div className="delete-beverage">
+      <div className="input-container">
         <input
           id="delete-item"
           type="button"
