@@ -106,6 +106,7 @@ function App() {
         setFavoritedBeverages={setFavoritedBeverages}
         setCartItems={setCartItems}
         setLearnMoreModalData={setLearnMoreModalData}
+        cartItems={cartItems}
       />
     </div>
   );

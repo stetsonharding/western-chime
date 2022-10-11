@@ -9,7 +9,7 @@ import prevButton from "../Assets/prevbutton.png";
 //Components
 import SearchInput from "./SearchInput";
 import Card from "./Card";
-import CartItems from "./CartItems";
+// import CartItems from "./CartItems";
 
 function CardContainer({
   beverages,
@@ -22,6 +22,7 @@ function CardContainer({
   setFavoritedBeverages,
   setCartItems,
   setLearnMoreModalData,
+  cartItems,
 }) {
   //Used for enable/disable next page button.
   const DISABLED_LENGTH = 15;
@@ -78,6 +79,7 @@ function CardContainer({
                 setFavoritedBeverages={setFavoritedBeverages}
                 setCartItems={setCartItems}
                 setLearnMoreModalData={setLearnMoreModalData}
+                cartItems={cartItems}
               />
             ))}
           </div>

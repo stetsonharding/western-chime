@@ -8,6 +8,7 @@ import ImageLiked from "../Assets/ImageLiked.png";
 import AddToCart from "../Assets/addtocart.png";
 import revolver from "../Assets/revolver.png";
 import addedToCart from "../Assets/addedToCart.png";
+import { add } from "lodash";
 
 function Card({
   img,
@@ -20,6 +21,7 @@ function Card({
   setFavoritedBeverages,
   setCartItems,
   setLearnMoreModalData,
+  cartItems,
 }) {
   const favoriteImage = (id) => {
     const newArr = beverages.map((beverage) => {
@@ -41,7 +43,7 @@ function Card({
   };
 
   const addItemToCart = (id) => {
-    const newArr = beverages.map((beverage) => {
+    const updatedBeverages = beverages.map((beverage) => {
       if (beverage.id === id) {
         return {
           ...beverage,
@@ -50,12 +52,27 @@ function Card({
       }
       return beverage;
     });
-    //Finding all items with isAddedToCart equal to true and setting them inside state.
-    const itemsAddedToCart = newArr.filter(
-      (item) => item.isAddedToCart === true
-    );
-    setCartItems(itemsAddedToCart);
-    setBeverages(newArr);
+    //Add item to cart
+    setCartItems((prevItems) => [...prevItems, beverage]);
+    setBeverages(updatedBeverages);
+  };
+
+  const removeItemFromCart = (id, index) => {
+    //Change image back to default
+    const updatedBeverages = beverages.map((beverage) => {
+      if (beverage.id === id) {
+        return {
+          ...beverage,
+          isAddedToCart: !beverage.isAddedToCart,
+        };
+      }
+      return beverage;
+    });
+    //Remove item from cart
+    let items = [...cartItems];
+    items.splice(index, 1);
+    setCartItems(items);
+    setBeverages(updatedBeverages);
   };
 
   //If beverage is favorited, display favorited image else display default image.
@@ -90,11 +107,11 @@ function Card({
     if (beverage.isAddedToCart) {
       return (
         <img
-          onClick={() => addItemToCart(beverage.id)}
+          onClick={() => removeItemFromCart(beverage.id)}
           src={addedToCart}
           height="30"
           width="30"
-          alt="Add to Cart Button"
+          alt="Item added to cart "
           className="addToCart-button"
         />
       );
@@ -105,7 +122,7 @@ function Card({
           src={AddToCart}
           height="30"
           width="30"
-          alt="Add to Cart Button"
+          alt="Add to cart"
           className="addToCart-button"
         />
       );
