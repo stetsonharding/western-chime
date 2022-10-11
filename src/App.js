@@ -93,7 +93,7 @@ function App() {
         learnMoreModalData={learnMoreModalData}
       />
 
-      <Header cartItems={cartItems} />
+      <Header cartItems={cartItems} setCartItems={setCartItems} />
       {/* <CartQuickView /> */}
       <CardContainer
         beverages={beverages}

@@ -7,7 +7,7 @@ import "../css/ShoppingCartBadge.css";
 
 import CartItems from "./CartItems";
 
-export function ShoppingCartBadge({ cartItems }) {
+export function ShoppingCartBadge({ cartItems, setCartItems }) {
   const [isCartQuickviewShown, setIsCartQuickviewShown] = useState(false);
 
   return (
@@ -27,20 +27,34 @@ export function ShoppingCartBadge({ cartItems }) {
       <CartQuickView
         cartItems={cartItems}
         isCartQuickviewShown={isCartQuickviewShown}
+        setCartItems={setCartItems}
       />
     </div>
   );
 }
 
-export function CartQuickView({ isCartQuickviewShown, cartItems }) {
+export function CartQuickView({
+  isCartQuickviewShown,
+  cartItems,
+  setCartItems,
+}) {
   return (
     <>
       {isCartQuickviewShown && (
         <div className="cart-quickview">
-          <h2>Your Shoppin' Cart (3)</h2>
+          <h2 id="quickview-title">
+            Your Shoppin' Cart{" "}
+            <span id="quickview-cart-length">({cartItems.length})</span>
+          </h2>
           <div className="cart-items-quickview-container">
-            {cartItems.map((cartItem) => (
-              <CartItems key={cartItem.id} cartItem={cartItem} />
+            {cartItems.map((item, index) => (
+              <CartItems
+                key={item.id}
+                item={item}
+                index={index}
+                setCartItems={setCartItems}
+                cartItems={cartItems}
+              />
             ))}
           </div>
         </div>

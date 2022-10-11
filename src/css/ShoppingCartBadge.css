@@ -38,6 +38,17 @@
   text-align: center;
   border: 2px solid black;
 }
+#quickview-title {
+  font-family: "Viner Hand ITC", Times New Roman, cursive;
+  color: white;
+  color: #943c1f;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+#quickview-cart-length {
+  color: black;
+  font-family: "Viner Hand ITC", Times New Roman, cursive;
+}
 
 /* Cart Items container - scroll */
 
