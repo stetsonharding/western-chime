@@ -1,20 +1,17 @@
 .cart-items {
-  height: 35%;
+  height: 50%;
   width: 97%;
   background-color: white;
   display: flex;
-
   border-radius: 3px;
   margin: 5px;
 }
 
-/* image */
+/* image container */
 .beverage-image {
   background-color: #7b3018;
   width: 40%;
-  height: 100%;
   display: flex;
-
   justify-content: center;
   align-items: center;
 }

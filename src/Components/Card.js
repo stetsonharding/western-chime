@@ -8,7 +8,6 @@ import ImageLiked from "../Assets/ImageLiked.png";
 import AddToCart from "../Assets/addtocart.png";
 import revolver from "../Assets/revolver.png";
 import addedToCart from "../Assets/addedToCart.png";
-import { add } from "lodash";
 
 function Card({
   img,

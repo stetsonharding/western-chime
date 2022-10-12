@@ -38,6 +38,24 @@ export function CartQuickView({
   cartItems,
   setCartItems,
 }) {
+  let TAX_RATE = 0.1;
+  let subTotal = 0;
+
+  //Formatting price for USD.
+  function formatPrice(price) {
+    return price.toLocaleString("en-US", {
+      style: "currency",
+      currency: "USD",
+    });
+  }
+
+  //Calculating subTotal
+  cartItems.forEach((item) => {
+    subTotal += item.srm;
+  });
+
+  let taxes = subTotal * TAX_RATE;
+  let grandTotal = subTotal + taxes;
   return (
     <>
       {isCartQuickviewShown && (
@@ -46,7 +64,7 @@ export function CartQuickView({
             Your Shoppin' Cart{" "}
             <span id="quickview-cart-length">({cartItems.length})</span>
           </h2>
-          <div className="cart-items-quickview-container">
+          <div className="cart-item-quickview-container">
             {cartItems.map((item, index) => (
               <CartItems
                 key={item.id}
@@ -56,6 +74,11 @@ export function CartQuickView({
                 cartItems={cartItems}
               />
             ))}
+          </div>
+          <div className="order-price">
+            <strong>Subtotal: {formatPrice(subTotal)}</strong>
+            <strong>Taxes: {formatPrice(taxes)}</strong>
+            <strong>Grand Total: {formatPrice(grandTotal)}</strong>
           </div>
         </div>
       )}
