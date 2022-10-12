@@ -68,10 +68,10 @@ function Card({
       }
       return beverage;
     });
-    //Remove item from cart
-    let items = [...cartItems];
-    items.splice(index, 1);
+    //Remove item from cart and update state
+    const items = [...cartItems].filter((item) => item.id !== id);
     setCartItems(items);
+    //Update beverages based on if isAddedToCart has changed.
     setBeverages(updatedBeverages);
   };
 
