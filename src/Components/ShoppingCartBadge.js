@@ -75,10 +75,18 @@ export function CartQuickView({
               />
             ))}
           </div>
-          <div className="order-price">
-            <strong>Subtotal: {formatPrice(subTotal)}</strong>
+          <div className="pricing-container">
+            <strong>
+              Subtotal:
+              {formatPrice(subTotal)}
+            </strong>
             <strong>Taxes: {formatPrice(taxes)}</strong>
-            <strong>Grand Total: {formatPrice(grandTotal)}</strong>
+            <strong>
+              <span style={{ color: "#943c1f", fontSize: "28px" }}>
+                Grand Total:
+              </span>{" "}
+              {formatPrice(grandTotal)}
+            </strong>
           </div>
         </div>
       )}

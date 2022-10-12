@@ -64,7 +64,6 @@
 }
 #quickview-title {
   font-family: "Viner Hand ITC", Times New Roman, cursive;
-  color: white;
   color: #943c1f;
   letter-spacing: 1px;
   font-weight: bold;
@@ -80,9 +79,16 @@
   max-height: 270px;
 }
 
-.order-price {
+.pricing-container {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   padding-left: 20px;
+  margin-top: 10px;
+}
+strong {
+  font-size: 26px;
+  margin: 3px;
+  letter-spacing: 0.5px;
+  font-family: "Viner Hand ITC", Times New Roman, cursive;
 }
