@@ -1,13 +1,12 @@
 .quickcart-btns-container {
   display: flex;
-
   width: 100%;
-
   height: 50px;
   justify-content: center;
   align-items: flex-end;
 }
 
+/* default button styles */
 .quickcart-btn {
   margin: 5px;
   width: 30%;
@@ -20,13 +19,28 @@
   border-radius: 5px;
   opacity: 0.8;
 }
-
 .quickcart-btn:hover {
   opacity: 1;
   cursor: pointer;
 }
 
-.close {
+/*zero items in cart - disabled style. */
+.checkout-disabled {
+  margin: 5px;
+  width: 30%;
+  padding: 7px;
+  background-color: #7b3018;
+  color: white;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  border: 1px solid white;
+  border-radius: 5px;
+  opacity: 0.8;
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+/* close button */
+#close {
   background-color: white;
   color: #7b3018;
   border: 1px solid black;

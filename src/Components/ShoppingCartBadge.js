@@ -25,19 +25,21 @@ export function ShoppingCartBadge({ cartItems, setCartItems }) {
         alt="Shopping Cart"
         onClick={() => setIsCartQuickviewShown(!isCartQuickviewShown)}
       />
-      <CartQuickView
-        cartItems={cartItems}
-        isCartQuickviewShown={isCartQuickviewShown}
-        setCartItems={setCartItems}
-      />
+      {isCartQuickviewShown && (
+        <CartQuickView
+          cartItems={cartItems}
+          setCartItems={setCartItems}
+          setIsCartQuickviewShown={setIsCartQuickviewShown}
+        />
+      )}
     </div>
   );
 }
 
 export function CartQuickView({
-  isCartQuickviewShown,
   cartItems,
   setCartItems,
+  setIsCartQuickviewShown,
 }) {
   let TAX_RATE = 0.1;
   let subTotal = 0;
@@ -59,23 +61,24 @@ export function CartQuickView({
   let grandTotal = subTotal + taxes;
   return (
     <>
-      {isCartQuickviewShown && (
-        <div className="cart-quickview">
-          <h2 id="quickview-title">
-            Your Shoppin' Cart{" "}
-            <span id="quickview-cart-length">({cartItems.length})</span>
-          </h2>
-          <div className="cart-item-quickview-container">
-            {cartItems.map((item, index) => (
-              <CartItems
-                key={item.id}
-                item={item}
-                index={index}
-                setCartItems={setCartItems}
-                cartItems={cartItems}
-              />
-            ))}
-          </div>
+      <div className="cart-quickview">
+        <h2 id="quickview-title">
+          Your Shoppin' Cart{" "}
+          <span id="quickview-cart-length">({cartItems.length})</span>
+        </h2>
+        <div className="cart-item-quickview-container">
+          {cartItems.map((item, index) => (
+            <CartItems
+              key={item.id}
+              item={item}
+              index={index}
+              setCartItems={setCartItems}
+              cartItems={cartItems}
+            />
+          ))}
+        </div>
+
+        {cartItems.length > 0 ? (
           <div className="pricing-container">
             <strong>
               Subtotal:
@@ -85,13 +88,27 @@ export function CartQuickView({
             <strong>
               <span style={{ color: "#943c1f", fontSize: "28px" }}>
                 Grand Total:
-              </span>{" "}
+              </span>
               {formatPrice(grandTotal)}
             </strong>
           </div>
-          <QuickCartButton />
-        </div>
-      )}
+        ) : (
+          <p
+            style={{
+              color: "black",
+              fontSize: "18px",
+              fontFamily: "cursive, arial",
+            }}
+          >
+            Your cart is empty! Let's fix that.
+          </p>
+        )}
+
+        <QuickCartButton
+          cartItems={cartItems}
+          setIsCartQuickviewShown={setIsCartQuickviewShown}
+        />
+      </div>
     </>
   );
 }

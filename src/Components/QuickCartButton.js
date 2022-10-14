@@ -2,13 +2,22 @@ import React from "react";
 
 import "../css/QuickCartButton.css";
 
-function QuickCartButton() {
+function QuickCartButton({ setIsCartQuickviewShown, cartItems }) {
   return (
     <div className="quickcart-btns-container">
-      <button className="quickcart-btn" id="checkout">
+      <button
+        className={cartItems.length > 0 ? "quickcart-btn" : "checkout-disabled"}
+        disabled={cartItems.length === 0 ? true : false}
+      >
         Checkout
       </button>
-      <button className="quickcart-btn close">Close</button>
+      <button
+        onClick={() => setIsCartQuickviewShown(false)}
+        className="quickcart-btn"
+        id="close"
+      >
+        Close
+      </button>
     </div>
   );
 }
