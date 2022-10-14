@@ -6,6 +6,7 @@ import ShoppingCart from "../Assets/ShoppingCart.png";
 import "../css/ShoppingCartBadge.css";
 
 import CartItems from "./CartItems";
+import QuickCartButton from "./QuickCartButton";
 
 export function ShoppingCartBadge({ cartItems, setCartItems }) {
   const [isCartQuickviewShown, setIsCartQuickviewShown] = useState(false);
@@ -88,6 +89,7 @@ export function CartQuickView({
               {formatPrice(grandTotal)}
             </strong>
           </div>
+          <QuickCartButton />
         </div>
       )}
     </>
