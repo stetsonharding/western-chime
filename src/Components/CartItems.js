@@ -2,11 +2,37 @@ import React from "react";
 
 import "../css/CartItems.css";
 
-function CartItems({ setCartItems, item, index, cartItems }) {
-  const removeFromCart = (index) => {
+function CartItems({
+  setCartItems,
+  item,
+  index,
+  cartItems,
+  setBeverages,
+  beverages,
+  cartItem,
+}) {
+  const removeFromCart = (index, id) => {
     const allItems = [...cartItems];
     allItems.splice(index, 1);
     setCartItems(allItems);
+
+    updateBeverages(id);
+  };
+
+  //Changes card "add to cart" icon back to "+" if item is removed from shopping cart.
+  const updateBeverages = (id) => {
+    let allBeverages = [...beverages];
+
+    let updatedBeverages = allBeverages.map((items) => {
+      if (items.id === id) {
+        return {
+          ...items,
+          isAddedToCart: false,
+        };
+      }
+      return items;
+    });
+    setBeverages(updatedBeverages);
   };
 
   return (
@@ -27,7 +53,7 @@ function CartItems({ setCartItems, item, index, cartItems }) {
           id="delete-item"
           type="button"
           value="X"
-          onClick={() => removeFromCart(index)}
+          onClick={() => removeFromCart(index, cartItem)}
         />
       </div>
     </div>

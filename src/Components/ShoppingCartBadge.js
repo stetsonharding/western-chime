@@ -8,7 +8,12 @@ import "../css/ShoppingCartBadge.css";
 import CartItems from "./CartItems";
 import QuickCartButton from "./QuickCartButton";
 
-export function ShoppingCartBadge({ cartItems, setCartItems }) {
+export function ShoppingCartBadge({
+  cartItems,
+  setCartItems,
+  setBeverages,
+  beverages,
+}) {
   const [isCartQuickviewShown, setIsCartQuickviewShown] = useState(false);
 
   return (
@@ -30,6 +35,8 @@ export function ShoppingCartBadge({ cartItems, setCartItems }) {
           cartItems={cartItems}
           setCartItems={setCartItems}
           setIsCartQuickviewShown={setIsCartQuickviewShown}
+          setBeverages={setBeverages}
+          beverages={beverages}
         />
       )}
     </div>
@@ -40,6 +47,8 @@ export function CartQuickView({
   cartItems,
   setCartItems,
   setIsCartQuickviewShown,
+  setBeverages,
+  beverages,
 }) {
   let TAX_RATE = 0.1;
   let subTotal = 0;
@@ -74,6 +83,9 @@ export function CartQuickView({
               index={index}
               setCartItems={setCartItems}
               cartItems={cartItems}
+              setBeverages={setBeverages}
+              beverages={beverages}
+              cartItem={item.id}
             />
           ))}
         </div>
