@@ -11,7 +11,8 @@ function ViewFavoritedBeveragesBtns({
         <p onClick={() => setIsFavoritedBeveragesShown(true)}>
           View Favorited Beverages
         </p>
-      ) : isFavoritedBeveragesShown === true ? (
+      ) : isFavoritedBeveragesShown === true &&
+        favoritedBeverages.length > 0 ? (
         <p onClick={() => setIsFavoritedBeveragesShown(false)}>
           Back to the Saloon
         </p>
