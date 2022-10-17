@@ -9,7 +9,7 @@ import prevButton from "../Assets/prevbutton.png";
 //Components
 import SearchInput from "./SearchInput";
 import Card from "./Card";
-// import CartItems from "./CartItems";
+import ViewFavoritedBeveragesBtns from "./ViewFavoritedBeveragesBtns";
 
 function CardContainer({
   beverages,
@@ -55,21 +55,14 @@ function CardContainer({
             <SearchInput onSearchSubmit={(query) => onSearchSubmit(query)} />
           </div>
 
-          {/* View Favorited Beverages */}
-          <div className="beer-filters-container">
-            {favoritedBeverages.length > 0 &&
-            isFavoritedBeveragesShown === false ? (
-              <p onClick={() => setIsFavoritedBeveragesShown(true)}>
-                View Favorited Beverages
-              </p>
-            ) : isFavoritedBeveragesShown === true ? (
-              <p onClick={() => setIsFavoritedBeveragesShown(false)}>
-                Back to the Saloon
-              </p>
-            ) : null}
-          </div>
-
+          {/* View Favorite Beverages - Back to the Saloon buttons. */}
+          <ViewFavoritedBeveragesBtns
+            favoritedBeverages={favoritedBeverages}
+            setIsFavoritedBeveragesShown={setIsFavoritedBeveragesShown}
+            isFavoritedBeveragesShown={isFavoritedBeveragesShown}
+          />
           {/* === */}
+
           {/* API error message */}
           {errorMessage && (
             <div className="error-message-container">
