@@ -109,6 +109,7 @@ function App() {
         onSearchSubmit={onSearchSubmit}
         setBeverages={setBeverages}
         setFavoritedBeverages={setFavoritedBeverages}
+        favoritedBeverages={favoritedBeverages}
         setCartItems={setCartItems}
         setLearnMoreModalData={setLearnMoreModalData}
         cartItems={cartItems}

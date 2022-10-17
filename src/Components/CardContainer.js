@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import "../css/CardContainer.css";
 
@@ -20,12 +20,15 @@ function CardContainer({
   onSearchSubmit,
   setBeverages,
   setFavoritedBeverages,
+  favoritedBeverages,
   setCartItems,
   setLearnMoreModalData,
   cartItems,
 }) {
   //Used for enable/disable next page button.
   const DISABLED_LENGTH = 15;
+  const [isFavoritedBeveragesShown, setIsFavoritedBeveragesShown] =
+    useState(false);
 
   return (
     <div className="card-container">
@@ -51,11 +54,21 @@ function CardContainer({
           <div className="search-input-container">
             <SearchInput onSearchSubmit={(query) => onSearchSubmit(query)} />
           </div>
-          {/* Filter btns */}
+
+          {/* View Favorited Beverages */}
           <div className="beer-filters-container">
-            <p>Filter beers by IBU</p>
-            <p>Filter beers by ABV</p>
+            {favoritedBeverages.length > 0 &&
+            isFavoritedBeveragesShown === false ? (
+              <p onClick={() => setIsFavoritedBeveragesShown(true)}>
+                View Favorited Beverages
+              </p>
+            ) : isFavoritedBeveragesShown === true ? (
+              <p onClick={() => setIsFavoritedBeveragesShown(false)}>
+                Back to the Saloon
+              </p>
+            ) : null}
           </div>
+
           {/* === */}
           {/* API error message */}
           {errorMessage && (
@@ -65,24 +78,46 @@ function CardContainer({
           )}
           {/* ==== */}
           {/* Mapping Cards*/}
-          <div className="all-cards-container">
-            {beverages.map((beverage, index) => (
-              <Card
-                key={beverage.id}
-                img={beverage.image_url}
-                name={beverage.name}
-                price={beverage.srm}
-                beverage={beverage}
-                index={index}
-                beverages={beverages}
-                setBeverages={setBeverages}
-                setFavoritedBeverages={setFavoritedBeverages}
-                setCartItems={setCartItems}
-                setLearnMoreModalData={setLearnMoreModalData}
-                cartItems={cartItems}
-              />
-            ))}
-          </div>
+          {isFavoritedBeveragesShown === true &&
+          favoritedBeverages.length > 0 ? (
+            <div className="all-cards-container">
+              {favoritedBeverages.map((beverage, index) => (
+                <Card
+                  key={beverage.id}
+                  img={beverage.image_url}
+                  name={beverage.name}
+                  price={beverage.srm}
+                  beverage={beverage}
+                  index={index}
+                  beverages={beverages}
+                  setBeverages={setBeverages}
+                  setFavoritedBeverages={setFavoritedBeverages}
+                  setCartItems={setCartItems}
+                  setLearnMoreModalData={setLearnMoreModalData}
+                  cartItems={cartItems}
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="all-cards-container">
+              {beverages.map((beverage, index) => (
+                <Card
+                  key={beverage.id}
+                  img={beverage.image_url}
+                  name={beverage.name}
+                  price={beverage.srm}
+                  beverage={beverage}
+                  index={index}
+                  beverages={beverages}
+                  setBeverages={setBeverages}
+                  setFavoritedBeverages={setFavoritedBeverages}
+                  setCartItems={setCartItems}
+                  setLearnMoreModalData={setLearnMoreModalData}
+                  cartItems={cartItems}
+                />
+              ))}
+            </div>
+          )}
           {/* === */}
         </div>
         <button
