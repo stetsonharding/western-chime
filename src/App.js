@@ -86,11 +86,27 @@ function App() {
     }
   });
 
+  const addItemToCart = (id, itemAddedToCart) => {
+    const updatedBeverages = beverages.map((beverage) => {
+      if (beverage.id === id) {
+        return {
+          ...beverage,
+          isAddedToCart: !beverage.isAddedToCart,
+        };
+      }
+      return beverage;
+    });
+    //Add item to cart
+    setCartItems((prevItems) => [...prevItems, itemAddedToCart]);
+    setBeverages(updatedBeverages);
+  };
+
   return (
     <div className="App">
       <LearnMoreModal
         setLearnMoreModalData={setLearnMoreModalData}
         learnMoreModalData={learnMoreModalData}
+        addItemToCart={addItemToCart}
       />
 
       <Header
@@ -113,6 +129,7 @@ function App() {
         setCartItems={setCartItems}
         setLearnMoreModalData={setLearnMoreModalData}
         cartItems={cartItems}
+        addItemToCart={addItemToCart}
       />
     </div>
   );

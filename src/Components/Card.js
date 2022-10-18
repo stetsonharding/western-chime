@@ -21,6 +21,7 @@ function Card({
   setCartItems,
   setLearnMoreModalData,
   cartItems,
+  addItemToCart,
 }) {
   const favoriteImage = (id) => {
     const newArr = beverages.map((beverage) => {
@@ -41,20 +42,20 @@ function Card({
     setBeverages(newArr);
   };
 
-  const addItemToCart = (id) => {
-    const updatedBeverages = beverages.map((beverage) => {
-      if (beverage.id === id) {
-        return {
-          ...beverage,
-          isAddedToCart: !beverage.isAddedToCart,
-        };
-      }
-      return beverage;
-    });
-    //Add item to cart
-    setCartItems((prevItems) => [...prevItems, beverage]);
-    setBeverages(updatedBeverages);
-  };
+  // const addItemToCart = (id) => {
+  //   const updatedBeverages = beverages.map((beverage) => {
+  //     if (beverage.id === id) {
+  //       return {
+  //         ...beverage,
+  //         isAddedToCart: !beverage.isAddedToCart,
+  //       };
+  //     }
+  //     return beverage;
+  //   });
+  //   //Add item to cart
+  //   setCartItems((prevItems) => [...prevItems, beverage]);
+  //   setBeverages(updatedBeverages);
+  // };
 
   const removeItemFromCart = (id, index) => {
     //Change image back to default
@@ -117,7 +118,7 @@ function Card({
     } else {
       return (
         <img
-          onClick={() => addItemToCart(beverage.id)}
+          onClick={() => addItemToCart(beverage.id, beverage)}
           src={AddToCart}
           height="30"
           width="30"
