@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import "../css/LearnMoreModal.css";
 
@@ -7,6 +7,7 @@ function LearnMoreModal({
   learnMoreModalData,
   addItemToCart,
 }) {
+  const [isAddToCartClicked, setIsAddToCartClicked] = useState(false);
   return (
     learnMoreModalData && (
       <div
@@ -42,9 +43,15 @@ function LearnMoreModal({
                 onClick={(e) => {
                   e.stopPropagation();
                   addItemToCart(learnMoreModalData.id, learnMoreModalData);
+                  setIsAddToCartClicked(true);
+                  setTimeout(() => {
+                    setIsAddToCartClicked(false);
+                  }, 2500);
                 }}
               >
-                Add to cart ${learnMoreModalData.srm}
+                {isAddToCartClicked
+                  ? "Item added to your cart"
+                  : `Add to cart $${learnMoreModalData.srm}`}
               </button>
             </div>
           </div>

@@ -42,21 +42,6 @@ function Card({
     setBeverages(newArr);
   };
 
-  // const addItemToCart = (id) => {
-  //   const updatedBeverages = beverages.map((beverage) => {
-  //     if (beverage.id === id) {
-  //       return {
-  //         ...beverage,
-  //         isAddedToCart: !beverage.isAddedToCart,
-  //       };
-  //     }
-  //     return beverage;
-  //   });
-  //   //Add item to cart
-  //   setCartItems((prevItems) => [...prevItems, beverage]);
-  //   setBeverages(updatedBeverages);
-  // };
-
   const removeItemFromCart = (id, index) => {
     //Change image back to default
     const updatedBeverages = beverages.map((beverage) => {
@@ -130,7 +115,13 @@ function Card({
   };
 
   return (
-    <div className="card">
+    <div
+      className="card"
+      onClick={(e) => {
+        e.stopPropagation();
+        setLearnMoreModalData(beverage);
+      }}
+    >
       <div className="card-interactions">
         {favoriteIcon()}
         {addToCartIcon()}
@@ -170,9 +161,7 @@ function Card({
         <div className="revolver-bullet"></div>
 
         <div className="learn-more">
-          <span onClick={() => setLearnMoreModalData(beverage)}>
-            Learn More
-          </span>
+          <span>Learn More</span>
         </div>
       </div>
     </div>
