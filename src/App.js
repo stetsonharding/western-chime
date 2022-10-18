@@ -86,7 +86,8 @@ function App() {
     }
   });
 
-  const addItemToCart = (id, itemAddedToCart) => {
+  const addItemToCart = (id, itemAddedToCart, e) => {
+    e.stopPropagation();
     const updatedBeverages = beverages.map((beverage) => {
       if (beverage.id === id) {
         return {

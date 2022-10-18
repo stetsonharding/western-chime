@@ -42,7 +42,8 @@ function Card({
     setBeverages(newArr);
   };
 
-  const removeItemFromCart = (id, index) => {
+  const removeItemFromCart = (id, e) => {
+    e.stopPropagation();
     //Change image back to default
     const updatedBeverages = beverages.map((beverage) => {
       if (beverage.id === id) {
@@ -92,7 +93,7 @@ function Card({
     if (beverage.isAddedToCart) {
       return (
         <img
-          onClick={() => removeItemFromCart(beverage.id)}
+          onClick={(e) => removeItemFromCart(beverage.id, e)}
           src={addedToCart}
           height="30"
           width="30"
@@ -103,7 +104,7 @@ function Card({
     } else {
       return (
         <img
-          onClick={() => addItemToCart(beverage.id, beverage)}
+          onClick={(e) => addItemToCart(beverage.id, beverage, e)}
           src={AddToCart}
           height="30"
           width="30"
