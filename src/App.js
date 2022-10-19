@@ -7,7 +7,7 @@ import _ from "lodash";
 import Header from "./Components/Header";
 import CardContainer from "./Components/CardContainer";
 import LearnMoreModal from "./Components/LearnMoreModal";
-import { CartQuickView } from "./Components/ShoppingCartBadge";
+//import { CartQuickView } from "./Components/ShoppingCartBadge";
 
 function App() {
   const [beverages, setBeverages] = useState([]);
@@ -87,7 +87,6 @@ function App() {
   });
 
   const addItemToCart = (id, itemAddedToCart, e) => {
-    e.stopPropagation();
     const updatedBeverages = beverages.map((beverage) => {
       if (beverage.id === id) {
         return {
@@ -100,6 +99,7 @@ function App() {
     //Add item to cart
     setCartItems((prevItems) => [...prevItems, itemAddedToCart]);
     setBeverages(updatedBeverages);
+    e.stopPropagation();
   };
 
   return (

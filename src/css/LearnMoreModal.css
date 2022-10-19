@@ -14,10 +14,10 @@
 .modal-content {
   display: flex;
   background-color: #e6e7cb;
-  border: 2px solid black;
   width: 100%;
   max-width: 750px;
   min-height: 500px;
+  border-radius: 10px;
 
   /* //Centering modal */
   position: fixed;
@@ -48,6 +48,7 @@
   align-items: center;
   margin: 2px;
   background-color: #7b3018;
+  border-radius: 10px;
 }
 /* == */
 
@@ -79,12 +80,15 @@
   justify-content: center;
   align-items: center;
   width: 150px;
+  color: #7b3018;
+  font-weight: 700;
 }
 
 /* Beverage Description */
 .description {
   margin: 10px;
   letter-spacing: 1px;
+  font-weight: 500;
 }
 /* == */
 
@@ -96,15 +100,16 @@
 #add-to-cart {
   padding: 10px;
   border-radius: 5px;
-  background-color: #e3bb67;
-  color: black;
+  background-color: #7b3018;
+  color: white;
   letter-spacing: 1px;
   border: none;
   font-weight: bold;
   outline: 1px solid black;
+  margin-left: 5px;
 }
 #add-to-cart:hover {
-  color: #7b3018;
+  color: #e3bb67;
   cursor: pointer;
 }
 /* == */

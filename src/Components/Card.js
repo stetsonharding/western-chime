@@ -23,7 +23,7 @@ function Card({
   cartItems,
   addItemToCart,
 }) {
-  const favoriteImage = (id) => {
+  const favoriteImage = (id, e) => {
     const newArr = beverages.map((beverage) => {
       if (beverage.id === id) {
         return {
@@ -31,6 +31,7 @@ function Card({
           isFavorited: !beverage.isFavorited,
         };
       }
+      e.stopPropagation();
       return beverage;
     });
 
@@ -66,7 +67,7 @@ function Card({
     if (beverage.isFavorited) {
       return (
         <img
-          onClick={() => favoriteImage(beverage.id)}
+          onClick={(e) => favoriteImage(beverage.id, e)}
           src={ImageLiked}
           height="30"
           width="30"
@@ -77,7 +78,7 @@ function Card({
     } else {
       return (
         <img
-          onClick={() => favoriteImage(beverage.id)}
+          onClick={(e) => favoriteImage(beverage.id, e)}
           src={ImageNotLiked}
           height="30"
           width="30"

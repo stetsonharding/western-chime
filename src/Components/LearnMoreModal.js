@@ -8,26 +8,32 @@ function LearnMoreModal({
   addItemToCart,
 }) {
   const [isAddToCartClicked, setIsAddToCartClicked] = useState(false);
+
+  const ConditionalRenderAddToCart = (e) => {
+    setIsAddToCartClicked(true);
+    addItemToCart(learnMoreModalData.id, learnMoreModalData, e);
+    setTimeout(() => {
+      setIsAddToCartClicked(false);
+    }, 1700);
+  };
+
   return (
     learnMoreModalData && (
-      <div
-        className="modal-background"
-        onClick={(e) => {
-          setLearnMoreModalData(false);
-        }}
-      >
+      <div className="modal-background">
         <div className="modal-content">
           <div className="information-container">
             <h2 className="title">{learnMoreModalData.name}</h2>
 
             <div className="beverage-data-container">
               <div className="data">
-                <div className="beverage-details">Beverage</div>
                 <div className="beverage-details">
-                  ABV: {learnMoreModalData.abv}
+                  <span style={{ color: "black" }}>Beverage</span>
                 </div>
                 <div className="beverage-details">
-                  IBU: {learnMoreModalData.ibu}
+                  <span>ABV: {learnMoreModalData.abv}</span>
+                </div>
+                <div className="beverage-details">
+                  <span>IBU: {learnMoreModalData.ibu}</span>
                 </div>
               </div>
 
@@ -40,18 +46,19 @@ function LearnMoreModal({
             <div className="cart-button-container">
               <button
                 id="add-to-cart"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  addItemToCart(learnMoreModalData.id, learnMoreModalData);
-                  setIsAddToCartClicked(true);
-                  setTimeout(() => {
-                    setIsAddToCartClicked(false);
-                  }, 2500);
-                }}
+                onClick={(e) => ConditionalRenderAddToCart(e)}
               >
                 {isAddToCartClicked
-                  ? "Item added to your cart"
+                  ? "Beverage Added"
                   : `Add to cart $${learnMoreModalData.srm}`}
+              </button>
+              <button
+                id="add-to-cart"
+                onClick={(e) => {
+                  setLearnMoreModalData(false);
+                }}
+              >
+                Close
               </button>
             </div>
           </div>
