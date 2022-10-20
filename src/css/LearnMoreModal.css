@@ -14,7 +14,7 @@
 .modal-content {
   display: flex;
   background-color: #e6e7cb;
-  width: 100%;
+  /* width: 100%; */
   max-width: 750px;
   min-height: 500px;
   border-radius: 10px;
@@ -113,3 +113,68 @@
   cursor: pointer;
 }
 /* == */
+
+/* Media Querys - Mobile, tablet, landscape */
+@media screen and (min-width: 1024px) {
+  /* Slogan Titles */
+}
+
+/* For Mobile Portrait View */
+@media screen and (max-device-width: 620px) and (orientation: portrait) {
+  /* modal container */
+  .modal-content {
+    max-width: 350px;
+    min-height: 300px;
+    justify-content: space-around;
+    align-items: center;
+  }
+  /* === */
+  /* Beverage title */
+  .title {
+    font-size: 32px;
+    left: 0px;
+    padding-left: 10px;
+    width: 80%;
+  }
+  /* === */
+  /* Image Container */
+  .beverage-image-container {
+    min-height: 95px;
+    width: fit-content;
+    position: relative;
+    top: -120px;
+    right: 20px;
+    align-items: flex-start;
+    background-color: inherit;
+  }
+  /* === */
+  /* beverage image */
+  .beverage-image-container img {
+    width: 30px;
+    height: 130px;
+  }
+  /* == */
+
+  /* abv, ibu container */
+  .beverage-data-container {
+    margin-left: 0px;
+    width: 100%;
+  }
+  /* === */
+  /* abv, ibu styles */
+  .beverage-details {
+    width: 100px;
+  }
+  /* === */
+  /* Beverage Description */
+  .description {
+    max-height: 200px;
+    overflow: auto;
+    width: 100%;
+  }
+  /* === */
+}
+
+/* For Mobile Landscape View */
+@media screen and (max-device-width: 640px) {
+}
