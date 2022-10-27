@@ -73,6 +73,26 @@
   font-family: "Viner Hand ITC", Times New Roman, cursive;
 }
 
+/* Media Querys - Mobile, tablet, landscape */
+@media screen and (min-width: 1024px) {
+}
+
+/* For Mobile Portrait View */
+@media screen and (max-device-width: 480px) and (orientation: portrait) {
+  .cart-quickview {
+    height: 420px;
+    width: 93%;
+    position: absolute;
+    top: 60px;
+    right: 10px;
+  }
+}
+
+/* For Mobile Landscape View */
+@media screen and (max-device-width: 640px) {
+}
+/* == */
+
 /* Cart Items container - scroll */
 .cart-item-quickview-container {
   overflow: auto;
