@@ -133,9 +133,6 @@
   margin: 0;
   visibility: hidden;
 }
-/* .learn-more:hover {
-  color: orange;
-} */
 .card:hover .learn-more {
   animation-delay: 2s;
   animation: show-learn-more 0s 0.2s forwards;

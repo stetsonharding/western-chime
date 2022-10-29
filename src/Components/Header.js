@@ -1,6 +1,4 @@
 import React from "react";
-// //images
-// import ShoppingCart from "../Assets/ShoppingCart.png";
 //css
 import "../css/Header.css";
 

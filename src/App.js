@@ -7,7 +7,6 @@ import _ from "lodash";
 import Header from "./Components/Header";
 import CardContainer from "./Components/CardContainer";
 import LearnMoreModal from "./Components/LearnMoreModal";
-//import { CartQuickView } from "./Components/ShoppingCartBadge";
 
 function App() {
   const [beverages, setBeverages] = useState([]);
