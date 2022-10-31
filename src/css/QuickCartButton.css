@@ -8,9 +8,9 @@
 
 /* default button styles */
 .quickcart-btn {
-  margin: 5px;
-  width: 30%;
-  padding: 7px;
+  margin: 3px;
+  width: fit-content;
+  padding: 9px;
   background-color: #7b3018;
   color: white;
   font-weight: bold;

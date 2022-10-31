@@ -7,6 +7,9 @@ import _ from "lodash";
 import Header from "./Components/Header";
 import CardContainer from "./Components/CardContainer";
 import LearnMoreModal from "./Components/LearnMoreModal";
+import CheckoutForm from "./Components/CheckoutForm";
+
+import { Route, Routes } from "react-router-dom";
 
 function App() {
   const [beverages, setBeverages] = useState([]);
@@ -115,22 +118,34 @@ function App() {
         setBeverages={setBeverages}
         beverages={beverages}
       />
-      {/* <CartQuickView /> */}
-      <CardContainer
-        beverages={beverages}
-        errorMessage={errorMessage}
-        NextPage={NextPage}
-        PreviousPage={PreviousPage}
-        currentPage={currentPage}
-        onSearchSubmit={onSearchSubmit}
-        setBeverages={setBeverages}
-        setFavoritedBeverages={setFavoritedBeverages}
-        favoritedBeverages={favoritedBeverages}
-        setCartItems={setCartItems}
-        setLearnMoreModalData={setLearnMoreModalData}
-        cartItems={cartItems}
-        addItemToCart={addItemToCart}
-      />
+
+      <Routes>
+        <Route
+          exact
+          path="/"
+          element={
+            <CardContainer
+              beverages={beverages}
+              errorMessage={errorMessage}
+              NextPage={NextPage}
+              PreviousPage={PreviousPage}
+              currentPage={currentPage}
+              onSearchSubmit={onSearchSubmit}
+              setBeverages={setBeverages}
+              setFavoritedBeverages={setFavoritedBeverages}
+              favoritedBeverages={favoritedBeverages}
+              setCartItems={setCartItems}
+              setLearnMoreModalData={setLearnMoreModalData}
+              cartItems={cartItems}
+              addItemToCart={addItemToCart}
+            />
+          }
+        ></Route>
+      </Routes>
+
+      <Routes>
+        <Route path="/Checkout" element={<CheckoutForm />}></Route>
+      </Routes>
     </div>
   );
 }

@@ -45,7 +45,7 @@ function CartItems({
           {item.name}
         </p>
         <p id="price" className="information">
-          ${item.srm}
+          ${item.srm.toFixed(2)}
         </p>
       </div>
       <div className="input-container">
