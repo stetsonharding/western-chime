@@ -60,7 +60,7 @@
   background-color: #e3bb67;
   text-align: center;
   border: 2px solid black;
-  z-index: -1;
+  /* z-index: -1; */
 }
 #quickview-title {
   font-family: "Viner Hand ITC", Times New Roman, cursive;

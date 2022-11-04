@@ -7,9 +7,9 @@ import _ from "lodash";
 import Header from "./Components/Header";
 import CardContainer from "./Components/CardContainer";
 import LearnMoreModal from "./Components/LearnMoreModal";
-import CheckoutForm from "./Components/CheckoutForm";
 
 import { Route, Routes } from "react-router-dom";
+import CheckoutContainer from "./Components/CheckoutContainer";
 
 function App() {
   const [beverages, setBeverages] = useState([]);
@@ -144,7 +144,15 @@ function App() {
       </Routes>
 
       <Routes>
-        <Route path="/Checkout" element={<CheckoutForm />}></Route>
+        <Route
+          path="/Checkout"
+          element={
+            <CheckoutContainer
+              cartItems={cartItems}
+              setCartItems={setCartItems}
+            />
+          }
+        ></Route>
       </Routes>
     </div>
   );

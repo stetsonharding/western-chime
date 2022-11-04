@@ -37,7 +37,12 @@ export function ShoppingCartBadge({
           setIsCartQuickviewShown={setIsCartQuickviewShown}
           setBeverages={setBeverages}
           beverages={beverages}
-        />
+        >
+          <QuickCartButton
+            cartItems={cartItems}
+            setIsCartQuickviewShown={setIsCartQuickviewShown}
+          />
+        </CartQuickView>
       )}
     </div>
   );
@@ -49,6 +54,7 @@ export function CartQuickView({
   setIsCartQuickviewShown,
   setBeverages,
   beverages,
+  ...props
 }) {
   let TAX_RATE = 0.1;
   let subTotal = 0;
@@ -115,11 +121,11 @@ export function CartQuickView({
             Your cart is empty! Let's fix that.
           </p>
         )}
-
-        <QuickCartButton
+        {props.children}
+        {/* <QuickCartButton
           cartItems={cartItems}
           setIsCartQuickviewShown={setIsCartQuickviewShown}
-        />
+        /> */}
       </div>
     </>
   );
