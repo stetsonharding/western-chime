@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 //images
 import ShoppingCart from "../Assets/ShoppingCart.png";
@@ -54,12 +54,14 @@ export function CartQuickView({
   setIsCartQuickviewShown,
   setBeverages,
   beverages,
+  redeemTotal,
   ...props
 }) {
-  let TAX_RATE = 0.1;
-  let subTotal = 0;
+  const [grandTotal, setGrandTotal] = useState("");
+  const [taxes, setTaxes] = useState("");
+  const [subTotal, setSubTotal] = useState("");
 
-  //Formatting price for USD.
+  //Format taxes, subtotal, and grandtotal
   function formatPrice(price) {
     return price.toLocaleString("en-US", {
       style: "currency",
@@ -67,13 +69,19 @@ export function CartQuickView({
     });
   }
 
-  //Calculating subTotal
-  cartItems.forEach((item) => {
-    subTotal += item.srm;
-  });
+  //Calculating total when cart items have been added or removed.
+  useEffect(() => {
+    let TAX_RATE = 0.1;
+    let subTotal = 0;
 
-  let taxes = subTotal * TAX_RATE;
-  let grandTotal = subTotal + taxes;
+    cartItems.forEach((item) => {
+      setSubTotal((subTotal += item.srm));
+    });
+
+    setTaxes(subTotal * TAX_RATE);
+    setGrandTotal(subTotal + taxes);
+  }, [subTotal, cartItems, taxes]);
+
   return (
     <>
       <div className="cart-quickview">
@@ -98,10 +106,7 @@ export function CartQuickView({
 
         {cartItems.length > 0 ? (
           <div className="pricing-container">
-            <strong>
-              Subtotal:
-              {formatPrice(subTotal)}
-            </strong>
+            <strong>Subtotal: {formatPrice(subTotal)}</strong>
             <strong>Taxes: {formatPrice(taxes)}</strong>
             <strong>
               <span style={{ color: "#943c1f", fontSize: "28px" }}>
@@ -111,21 +116,9 @@ export function CartQuickView({
             </strong>
           </div>
         ) : (
-          <p
-            style={{
-              color: "black",
-              fontSize: "18px",
-              fontFamily: "cursive, arial",
-            }}
-          >
-            Your cart is empty! Let's fix that.
-          </p>
+          <p>Your cart is empty! Let's fix that.</p>
         )}
         {props.children}
-        {/* <QuickCartButton
-          cartItems={cartItems}
-          setIsCartQuickviewShown={setIsCartQuickviewShown}
-        /> */}
       </div>
     </>
   );

@@ -14,7 +14,7 @@ function LearnMoreModal({
     addItemToCart(learnMoreModalData.id, learnMoreModalData, e);
     setTimeout(() => {
       setIsAddToCartClicked(false);
-    }, 1700);
+    }, 1000);
   };
 
   return (
