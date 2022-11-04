@@ -1,6 +1,7 @@
 import React from "react";
 
 import { CartQuickView } from "./ShoppingCartBadge";
+import RedeemOrder from "./RedeemOrder";
 
 function CheckoutContainer({ cartItems, setCartItems }) {
   return (
@@ -12,10 +13,9 @@ function CheckoutContainer({ cartItems, setCartItems }) {
         alignItems: "center",
       }}
     >
-      <CartQuickView
-        cartItems={cartItems}
-        setCartItems={setCartItems}
-      ></CartQuickView>
+      <CartQuickView cartItems={cartItems} setCartItems={setCartItems}>
+        <RedeemOrder />
+      </CartQuickView>
     </div>
   );
 }
