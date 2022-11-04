@@ -1,6 +1,7 @@
 import React from "react";
 
 function RedeemOrder() {
+  const REDEEMMESSAGE = "WESTERN5";
   return (
     <div
       className="redeem-info"
@@ -18,7 +19,7 @@ function RedeemOrder() {
         <div>
           <span>Promo Code: </span>
           <span>
-            <b>WESTERN4</b>
+            <b>{REDEEMMESSAGE}</b>
           </span>
         </div>
         <div>
