@@ -1,6 +1,6 @@
 import React from "react";
 
-import { CartQuickView } from "./ShoppingCartBadge";
+import CartQuickView from "./CartQuickView";
 import RedeemInfo from "./RedeemInfo";
 import RedeemInput from "./RedeemInput";
 

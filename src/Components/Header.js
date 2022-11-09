@@ -2,7 +2,7 @@ import React from "react";
 //css
 import "../css/Header.css";
 
-import { ShoppingCartBadge } from "./ShoppingCartBadge";
+import ShoppingCartBadge from "./ShoppingCartBadge";
 
 function Header({ cartItems, setCartItems, setBeverages, beverages }) {
   return (
