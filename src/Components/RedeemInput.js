@@ -2,8 +2,19 @@ import React, { useState } from "react";
 
 import "../css/RedeemInput.css";
 
-function RedeemInput() {
-  const [redeemCode, setRedeemCode] = useState("");
+function RedeemInput({ setGrandTotal }) {
+  const [userRedeemCode, setUserRedeemCode] = useState("");
+  const [redeemCodeError, setRedeemCodeError] = useState("");
+
+  function UseRedeemCode(usersRedeemCode) {
+    if (usersRedeemCode === "WESTERN5") {
+      setGrandTotal((prevTotal) => prevTotal - 5);
+      setRedeemCodeError("");
+    } else {
+      setRedeemCodeError("Sorry that redeem code does not exist. Try another?");
+    }
+  }
+
   return (
     <div className="redeem-input-container">
       <form>
@@ -11,15 +22,17 @@ function RedeemInput() {
           className="redeem-input"
           type="text"
           placeholder="Redeem Code"
-          value={redeemCode}
-          onChange={(e) => setRedeemCode(e.target.value)}
+          value={userRedeemCode}
+          onChange={(e) => setUserRedeemCode(e.target.value)}
         />
         <input
           className="redeem-input redeem-btn"
           type="button"
           value="Redeem"
+          onClick={() => UseRedeemCode(userRedeemCode)}
         ></input>
       </form>
+      <p>{redeemCodeError !== "" && redeemCodeError}</p>
     </div>
   );
 }

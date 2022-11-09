@@ -163,6 +163,7 @@ function App() {
               setCartItems={setCartItems}
               formatPrice={formatPrice}
               grandTotal={grandTotal}
+              setGrandTotal={setGrandTotal}
             />
           }
         ></Route>

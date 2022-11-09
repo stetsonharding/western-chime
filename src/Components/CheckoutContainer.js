@@ -10,6 +10,7 @@ function CheckoutContainer({
   setCartItems,
   formatPrice,
   grandTotal,
+  setGrandTotal,
 }) {
   return (
     <div
@@ -23,7 +24,7 @@ function CheckoutContainer({
       <CartQuickView cartItems={cartItems} setCartItems={setCartItems}>
         <GrandTotal formatPrice={formatPrice} grandTotal={grandTotal} />
         <RedeemInfo />
-        <RedeemInput />
+        <RedeemInput setGrandTotal={setGrandTotal} />
       </CartQuickView>
     </div>
   );
