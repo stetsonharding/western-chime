@@ -18,6 +18,14 @@ function App() {
   const [favoritedBeverages, setFavoritedBeverages] = useState([]);
   const [cartItems, setCartItems] = useState([]);
   const [learnMoreModalData, setLearnMoreModalData] = useState();
+  const [grandTotal, setGrandTotal] = useState(0);
+
+  function formatPrice(price) {
+    return price.toLocaleString("en-US", {
+      style: "currency",
+      currency: "USD",
+    });
+  }
 
   //If there is no beverage image, set image as "keg-only".
   const AddImage = (data) => {
@@ -117,6 +125,9 @@ function App() {
         setCartItems={setCartItems}
         setBeverages={setBeverages}
         beverages={beverages}
+        grandTotal={grandTotal}
+        setGrandTotal={setGrandTotal}
+        formatPrice={formatPrice}
       />
 
       <Routes>
@@ -150,6 +161,8 @@ function App() {
             <CheckoutContainer
               cartItems={cartItems}
               setCartItems={setCartItems}
+              formatPrice={formatPrice}
+              grandTotal={grandTotal}
             />
           }
         ></Route>

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 
 import CartItems from "./CartItems";
+import GrandTotal from "./GrandTotal";
+import SubtotalAndTaxes from "./SubtotalAndTaxes";
 
 export default function CartQuickView({
   cartItems,
@@ -9,11 +11,12 @@ export default function CartQuickView({
   setBeverages,
   beverages,
   redeemTotal,
+
   ...props
 }) {
-  const [grandTotal, setGrandTotal] = useState("");
-  const [taxes, setTaxes] = useState("");
-  const [subTotal, setSubTotal] = useState("");
+  // const [grandTotal, setGrandTotal] = useState(0);
+  // const [taxes, setTaxes] = useState(0);
+  // const [subTotal, setSubTotal] = useState(0);
 
   //Format taxes, subtotal, and grandtotal
   function formatPrice(price) {
@@ -24,17 +27,17 @@ export default function CartQuickView({
   }
 
   //Calculating total when cart items have been added or removed.
-  useEffect(() => {
-    let TAX_RATE = 0.1;
-    let subTotal = 0;
+  // useEffect(() => {
+  //   let TAX_RATE = 0.1;
+  //   let subTotal = 0;
 
-    cartItems.forEach((item) => {
-      setSubTotal((subTotal += item.srm));
-    });
+  //   cartItems.forEach((item) => {
+  //     setSubTotal((subTotal += item.srm));
+  //   });
 
-    setTaxes(subTotal * TAX_RATE);
-    setGrandTotal(subTotal + taxes);
-  }, [subTotal, cartItems, taxes]);
+  //   setTaxes(subTotal * TAX_RATE);
+  //   setGrandTotal(subTotal + taxes);
+  // }, [subTotal, cartItems, taxes]);
 
   return (
     <>
@@ -60,14 +63,21 @@ export default function CartQuickView({
 
         {cartItems.length > 0 ? (
           <div className="pricing-container">
-            <strong>Subtotal: {formatPrice(subTotal)}</strong>
+            {/* <SubtotalAndTaxes
+              grandTotal={grandTotal}
+              formatPrice={formatPrice}
+              taxes={taxes}
+              subTotal={subTotal}
+            /> */}
+            {/* <strong>Subtotal: {formatPrice(subTotal)}</strong>
             <strong>Taxes: {formatPrice(taxes)}</strong>
-            <strong>
+            <GrandTotal grandTotal={grandTotal} formatPrice={formatPrice} /> */}
+            {/* <strong>
               <span style={{ color: "#943c1f", fontSize: "28px" }}>
                 Grand Total:
               </span>
               {formatPrice(grandTotal)}
-            </strong>
+            </strong> */}
           </div>
         ) : (
           <p>Your cart is empty! Let's fix that.</p>

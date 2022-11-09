@@ -4,7 +4,15 @@ import "../css/Header.css";
 
 import ShoppingCartBadge from "./ShoppingCartBadge";
 
-function Header({ cartItems, setCartItems, setBeverages, beverages }) {
+function Header({
+  cartItems,
+  setCartItems,
+  setBeverages,
+  beverages,
+  grandTotal,
+  setGrandTotal,
+  formatPrice,
+}) {
   return (
     <div className="header-container">
       <div className="header-slogan-container">
@@ -16,6 +24,9 @@ function Header({ cartItems, setCartItems, setBeverages, beverages }) {
         setCartItems={setCartItems}
         setBeverages={setBeverages}
         beverages={beverages}
+        grandTotal={grandTotal}
+        setGrandTotal={setGrandTotal}
+        formatPrice={formatPrice}
       />
     </div>
   );
