@@ -4,14 +4,17 @@ import "../css/RedeemInput.css";
 
 function RedeemInput({ setGrandTotal }) {
   const [userRedeemCode, setUserRedeemCode] = useState("");
-  const [redeemCodeError, setRedeemCodeError] = useState("");
+  const [promoCodeError, setPromoCodeError] = useState("");
+  const [promoUsed, setPromoUsed] = useState(false);
 
+  //Checking if users input is the correct redeem code.
   function UseRedeemCode(usersRedeemCode) {
     if (usersRedeemCode === "WESTERN5") {
       setGrandTotal((prevTotal) => prevTotal - 5);
-      setRedeemCodeError("");
+      setPromoCodeError("Discount added!");
+      setPromoUsed(true);
     } else {
-      setRedeemCodeError("Sorry that redeem code does not exist. Try another?");
+      setPromoCodeError("Incorrect promo code!");
     }
   }
 
@@ -29,10 +32,16 @@ function RedeemInput({ setGrandTotal }) {
           className="redeem-input redeem-btn"
           type="button"
           value="Redeem"
+          disabled={promoUsed ? true : false}
           onClick={() => UseRedeemCode(userRedeemCode)}
         ></input>
       </form>
-      <p>{redeemCodeError !== "" && redeemCodeError}</p>
+      <div className="redeem-code-success">
+        <span style={{ color: "red" }}>
+          {" "}
+          <i>{promoCodeError !== "" && promoCodeError}</i>
+        </span>
+      </div>
     </div>
   );
 }
