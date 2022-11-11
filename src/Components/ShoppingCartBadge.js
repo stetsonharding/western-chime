@@ -19,17 +19,8 @@ export default function ShoppingCartBadge({
   formatPrice,
 }) {
   const [isCartQuickviewShown, setIsCartQuickviewShown] = useState(false);
-
-  // const [grandTotal, setGrandTotal] = useState(0);
   const [taxes, setTaxes] = useState(0);
   const [subTotal, setSubTotal] = useState(0);
-
-  // function formatPrice(price) {
-  //   return price.toLocaleString("en-US", {
-  //     style: "currency",
-  //     currency: "USD",
-  //   });
-  // }
 
   useEffect(() => {
     let TAX_RATE = 0.1;
@@ -64,13 +55,19 @@ export default function ShoppingCartBadge({
           setIsCartQuickviewShown={setIsCartQuickviewShown}
           setBeverages={setBeverages}
           beverages={beverages}
+          title={"Your shoppin' cart "}
         >
-          <SubtotalAndTaxes
-            grandTotal={grandTotal}
-            formatPrice={formatPrice}
-            taxes={taxes}
-            subTotal={subTotal}
-          />
+          {cartItems.length !== 0 && (
+            <SubtotalAndTaxes
+              grandTotal={grandTotal}
+              formatPrice={formatPrice}
+              taxes={taxes}
+              subTotal={subTotal}
+              totalColor="#7b3018"
+              headingColor="#7b3018"
+            />
+          )}
+
           <QuickCartButton
             cartItems={cartItems}
             setIsCartQuickviewShown={setIsCartQuickviewShown}

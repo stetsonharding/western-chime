@@ -8,5 +8,18 @@
   padding: 10px;
 }
 .redeem-btn {
+  background-color: red;
+  border: 1px solid black;
+  color: white;
+  margin-left: 2px;
+  opacity: 0.9;
+}
+.redeem-btn:hover {
   cursor: pointer;
+  opacity: 1;
+}
+
+.redeem-btn:disabled {
+  opacity: 0.7;
+  cursor: no-drop;
 }

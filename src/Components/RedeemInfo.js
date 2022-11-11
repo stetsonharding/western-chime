@@ -14,16 +14,19 @@ function RedeemOrder() {
           alignItems: "center",
           justifyContent: "space-between",
           padding: "0 10px",
+          margin: "10px",
         }}
       >
         <div>
           <span>Promo Code: </span>
           <span>
-            <b>{REDEEMMESSAGE}</b>
+            <b style={{ color: "red" }}>{REDEEMMESSAGE}</b>
           </span>
         </div>
         <div>
-          <p>$-5</p>
+          <p>
+            <b>$-5</b>
+          </p>
         </div>
       </div>
     </div>

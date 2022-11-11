@@ -21,8 +21,19 @@ function CheckoutContainer({
         alignItems: "center",
       }}
     >
-      <CartQuickView cartItems={cartItems} setCartItems={setCartItems}>
-        <GrandTotal formatPrice={formatPrice} grandTotal={grandTotal} />
+      <CartQuickView
+        cartItems={cartItems}
+        setCartItems={setCartItems}
+        title="Cart Overview "
+        color="#e3bb67"
+        headingColor="#7b3018;"
+      >
+        <GrandTotal
+          formatPrice={formatPrice}
+          grandTotal={grandTotal}
+          headingColor="#7b3018;"
+          totalColor="#7b3018"
+        />
         <RedeemInfo />
         <RedeemInput setGrandTotal={setGrandTotal} />
       </CartQuickView>

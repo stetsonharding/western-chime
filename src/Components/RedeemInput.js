@@ -7,7 +7,7 @@ function RedeemInput({ setGrandTotal }) {
   const [promoCodeError, setPromoCodeError] = useState("");
   const [promoUsed, setPromoUsed] = useState(false);
 
-  //Checking if users input is the correct redeem code.
+  //Checking if users input is the correct PROMO code.
   function UseRedeemCode(usersRedeemCode) {
     if (usersRedeemCode === "WESTERN5") {
       setGrandTotal((prevTotal) => prevTotal - 5);
@@ -24,7 +24,7 @@ function RedeemInput({ setGrandTotal }) {
         <input
           className="redeem-input"
           type="text"
-          placeholder="Redeem Code"
+          placeholder="Promo Code"
           value={userRedeemCode}
           onChange={(e) => setUserRedeemCode(e.target.value)}
         />
