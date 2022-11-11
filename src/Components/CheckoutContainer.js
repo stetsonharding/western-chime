@@ -17,7 +17,7 @@ function CheckoutContainer({
       className="card-container"
       style={{
         display: "flex",
-        justifyContent: "center",
+        justifyContent: "space-between",
         alignItems: "center",
       }}
     >
@@ -26,17 +26,19 @@ function CheckoutContainer({
         setCartItems={setCartItems}
         title="Cart Overview "
         color="#e3bb67"
-        headingColor="#7b3018;"
+        headingColor="#7b3018"
       >
         <GrandTotal
           formatPrice={formatPrice}
           grandTotal={grandTotal}
-          headingColor="#7b3018;"
+          headingColor="#7b3018"
           totalColor="#7b3018"
         />
         <RedeemInfo />
         <RedeemInput setGrandTotal={setGrandTotal} />
       </CartQuickView>
+
+      <div></div>
     </div>
   );
 }
