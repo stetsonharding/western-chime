@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import "../css/RedeemInput.css";
 
-function RedeemInput({ setGrandTotal }) {
+function RedeemInput({ setGrandTotal, grandTotal }) {
   const [userRedeemCode, setUserRedeemCode] = useState("");
   const [promoCodeError, setPromoCodeError] = useState("");
   const [promoUsed, setPromoUsed] = useState(false);
@@ -37,7 +37,7 @@ function RedeemInput({ setGrandTotal }) {
         ></input>
       </form>
       <div className="redeem-code-success">
-        <span style={{ color: "red" }}>
+        <span style={{ color: "#7b3018", fontWeight: "bold" }}>
           {" "}
           <i>{promoCodeError !== "" && promoCodeError}</i>
         </span>

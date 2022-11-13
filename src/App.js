@@ -9,7 +9,7 @@ import CardContainer from "./Components/CardContainer";
 import LearnMoreModal from "./Components/LearnMoreModal";
 
 import { Route, Routes } from "react-router-dom";
-import CheckoutContainer from "./Components/CheckoutContainer";
+import CheckoutOverview from "./Components/Checkout/CheckoutOverview";
 
 function App() {
   const [beverages, setBeverages] = useState([]);
@@ -158,7 +158,7 @@ function App() {
         <Route
           path="/Checkout"
           element={
-            <CheckoutContainer
+            <CheckoutOverview
               cartItems={cartItems}
               setCartItems={setCartItems}
               formatPrice={formatPrice}
