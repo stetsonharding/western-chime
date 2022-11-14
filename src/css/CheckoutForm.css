@@ -13,7 +13,7 @@
 }
 
 form select,
-form input {
+.checkout-form input {
   padding: 11px;
   margin: 20px;
   box-shadow: 0 0 5pt 0.5pt #414040;

@@ -20,6 +20,14 @@ function App() {
   const [learnMoreModalData, setLearnMoreModalData] = useState();
   const [grandTotal, setGrandTotal] = useState(0);
 
+  const [userInfo, setUserInfo] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    address: "",
+    addressTwo: "",
+  });
+
   function formatPrice(price) {
     return price.toLocaleString("en-US", {
       style: "currency",
@@ -164,6 +172,8 @@ function App() {
               formatPrice={formatPrice}
               grandTotal={grandTotal}
               setGrandTotal={setGrandTotal}
+              userInfo={userInfo}
+              setUserInfo={setUserInfo}
             />
           }
         ></Route>
