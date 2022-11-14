@@ -26,6 +26,9 @@ function App() {
     email: "",
     address: "",
     addressTwo: "",
+    country: "",
+    state: "",
+    zipcode: "",
   });
 
   function formatPrice(price) {
