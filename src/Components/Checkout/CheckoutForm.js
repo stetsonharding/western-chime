@@ -2,6 +2,8 @@ import React from "react";
 
 import "../../css/CheckoutForm.css";
 
+import { Link } from "react-router-dom";
+
 function CheckoutForm({ userInfo, setUserInfo }) {
   function handleChange(evt) {
     const value = evt.target.value;
@@ -10,8 +12,6 @@ function CheckoutForm({ userInfo, setUserInfo }) {
       [evt.target.name]: value,
     });
   }
-
-  console.log(userInfo);
 
   return (
     <div className="checkout-form-container">
@@ -424,7 +424,9 @@ function CheckoutForm({ userInfo, setUserInfo }) {
         />
       </form>
       <div className="checkout-button-container">
-        <button className="checkout-button">SUBMIT ORDER</button>
+        <Link to="/orderPlaced">
+          <button className="checkout-button">SUBMIT ORDER</button>
+        </Link>
       </div>
     </div>
   );

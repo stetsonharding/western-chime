@@ -7,6 +7,7 @@ import _ from "lodash";
 import Header from "./Components/Header";
 import CardContainer from "./Components/CardContainer";
 import LearnMoreModal from "./Components/LearnMoreModal";
+import OrderPlaced from "./Components/Checkout/OrderPlaced";
 
 import { Route, Routes } from "react-router-dom";
 import CheckoutOverview from "./Components/Checkout/CheckoutOverview";
@@ -163,9 +164,7 @@ function App() {
             />
           }
         ></Route>
-      </Routes>
 
-      <Routes>
         <Route
           path="/Checkout"
           element={
@@ -177,6 +176,17 @@ function App() {
               setGrandTotal={setGrandTotal}
               userInfo={userInfo}
               setUserInfo={setUserInfo}
+            />
+          }
+        ></Route>
+
+        <Route
+          path="/orderPlaced"
+          element={
+            <OrderPlaced
+              userInfo={userInfo}
+              setCartItems={setCartItems}
+              setFavoritedBeverages={setFavoritedBeverages}
             />
           }
         ></Route>
