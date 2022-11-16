@@ -13,7 +13,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 68%;
+  height: 88%;
 }
 
 .order-placed-message {
@@ -30,8 +30,14 @@
   background-color: #7b3018;
   color: white;
   font-size: 16px;
+  border: none;
 }
 .order-btn:hover {
-  border: 1px solid white;
+  border: 2px solid black;
   cursor: pointer;
+}
+
+.order-placed-image img {
+  height: 300px;
+  width: "";
 }

@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 
 import "../../css/OrderPlaced.css";
 
+import OrderPlacedCowboy from "../../Assets/order-placed-cowboy.png";
+
 function OrderPlaced({ userInfo, setFavoritedBeverages, setUserInfo }) {
   function clearAllData() {
     setFavoritedBeverages([]);
@@ -17,7 +19,6 @@ function OrderPlaced({ userInfo, setFavoritedBeverages, setUserInfo }) {
       state: "",
       zipcode: "",
     });
-    //Clear user info
   }
   return (
     <div className="order-placed-container">
@@ -26,7 +27,7 @@ function OrderPlaced({ userInfo, setFavoritedBeverages, setUserInfo }) {
           Thank you for your order,{userInfo.firstName} {userInfo.lastName}!
         </h1>
         <div className="order-placed-image">
-          <img src="" alt="" />
+          <img src={OrderPlacedCowboy} alt="Cowboy on a horse waving" />
         </div>
         <Link to="/" onClick={() => clearAllData()}>
           <button className="order-btn">Start Over</button>
