@@ -4,7 +4,7 @@ import "../../css/CheckoutForm.css";
 
 import { Link } from "react-router-dom";
 
-function CheckoutForm({ userInfo, setUserInfo }) {
+function CheckoutForm({ userInfo, setUserInfo, setCartItems }) {
   function handleChange(evt) {
     const value = evt.target.value;
     setUserInfo({
@@ -424,7 +424,7 @@ function CheckoutForm({ userInfo, setUserInfo }) {
         />
       </form>
       <div className="checkout-button-container">
-        <Link to="/orderPlaced">
+        <Link to="/orderPlaced" onClick={() => setCartItems([])}>
           <button className="checkout-button">SUBMIT ORDER</button>
         </Link>
       </div>

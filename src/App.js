@@ -185,8 +185,8 @@ function App() {
           element={
             <OrderPlaced
               userInfo={userInfo}
-              setCartItems={setCartItems}
               setFavoritedBeverages={setFavoritedBeverages}
+              setUserInfo={setUserInfo}
             />
           }
         ></Route>

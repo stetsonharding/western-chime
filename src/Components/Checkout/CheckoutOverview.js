@@ -48,7 +48,11 @@ function CheckoutOverview({
         )}
       </CartQuickView>
 
-      <CheckoutForm userInfo={userInfo} setUserInfo={setUserInfo} />
+      <CheckoutForm
+        userInfo={userInfo}
+        setUserInfo={setUserInfo}
+        setCartItems={setCartItems}
+      />
     </div>
   );
 }

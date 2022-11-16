@@ -1,0 +1,37 @@
+.order-placed-container {
+  background-image: url(../Assets/card-background.jpg);
+  object-fit: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+  max-width: 1700px;
+  height: 80vh;
+  margin: 0 auto;
+}
+
+.order-placed-message-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 68%;
+}
+
+.order-placed-message {
+  font-size: 40px;
+  font-family: "Courier New", Courier, monospace;
+  letter-spacing: 2px;
+  font-weight: 900;
+  text-align: center;
+}
+
+.order-btn {
+  width: 200px;
+  padding: 8px;
+  background-color: #7b3018;
+  color: white;
+  font-size: 16px;
+}
+.order-btn:hover {
+  border: 1px solid white;
+  cursor: pointer;
+}
