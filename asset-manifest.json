@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/western-chime/static/css/main.d8e2050c.css",
+    "main.js": "/western-chime/static/js/main.c4551c33.js",
+    "static/js/787.bf0cc58b.chunk.js": "/western-chime/static/js/787.bf0cc58b.chunk.js",
+    "static/media/card-background.jpg": "/western-chime/static/media/card-background.1ec41cf1c281fbb7138e.jpg",
+    "static/media/main-background.jpg": "/western-chime/static/media/main-background.746fdd6ac5acc1d1d257.jpg",
+    "static/media/Montague.ttf": "/western-chime/static/media/Montague.f023f6aa64bbaf36f963.ttf",
+    "static/media/order-placed-cowboy.png": "/western-chime/static/media/order-placed-cowboy.430c7abe381a788644f2.png",
+    "static/media/ShoppingCart.png": "/western-chime/static/media/ShoppingCart.0a8c9faaed7b84877b90.png",
+    "static/media/nextbutton.png": "/western-chime/static/media/nextbutton.cf3ab73e4955fa844b4c.png",
+    "static/media/prevbutton.png": "/western-chime/static/media/prevbutton.dd91f22237ccfe95c790.png",
+    "static/media/ImageLiked.png": "/western-chime/static/media/ImageLiked.0f6d99f18519fe3a873d.png",
+    "index.html": "/western-chime/index.html",
+    "main.d8e2050c.css.map": "/western-chime/static/css/main.d8e2050c.css.map",
+    "main.c4551c33.js.map": "/western-chime/static/js/main.c4551c33.js.map",
+    "787.bf0cc58b.chunk.js.map": "/western-chime/static/js/787.bf0cc58b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d8e2050c.css",
+    "static/js/main.c4551c33.js"
+  ]
+}
