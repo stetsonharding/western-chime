@@ -6,6 +6,8 @@ import RedeemInfo from "../RedeemInfo";
 import RedeemInput from "../RedeemInput";
 import CheckoutForm from "./CheckoutForm";
 
+import "../../css/CheckoutOverview.css";
+
 function CheckoutOverview({
   cartItems,
   setCartItems,
@@ -16,14 +18,12 @@ function CheckoutOverview({
   setUserInfo,
 }) {
   return (
-    <div
-      className="card-container"
-      style={{
-        display: "flex",
-        justifyContent: "flex-start",
-        alignItems: "center",
-      }}
-    >
+    <div className="checkout-container">
+      <CheckoutForm
+        userInfo={userInfo}
+        setUserInfo={setUserInfo}
+        setCartItems={setCartItems}
+      />
       <CartQuickView
         cartItems={cartItems}
         setCartItems={setCartItems}
@@ -47,12 +47,6 @@ function CheckoutOverview({
           </>
         )}
       </CartQuickView>
-
-      <CheckoutForm
-        userInfo={userInfo}
-        setUserInfo={setUserInfo}
-        setCartItems={setCartItems}
-      />
     </div>
   );
 }

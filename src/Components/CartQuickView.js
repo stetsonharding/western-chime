@@ -13,7 +13,14 @@ export default function CartQuickView({
 }) {
   return (
     <>
-      <div className="cart-quickview" style={{ backgroundColor: props.color }}>
+      <div
+        className={
+          setIsCartQuickviewShown
+            ? "cart-quickview"
+            : " cart-quickview-checkout"
+        }
+        style={{ backgroundColor: props.color }}
+      >
         <h2 id="quickview-title" style={{ color: props.headingColor }}>
           {props.title}
           <span id="quickview-cart-length">({cartItems.length})</span>

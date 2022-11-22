@@ -62,6 +62,23 @@
   border: 2px solid black;
   /* z-index: -1; */
 }
+
+.cart-quickview-checkout {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  color: #0a0a0a;
+  height: 580px;
+  width: 400px;
+
+  border-radius: 2%;
+  background-color: #e3bb67;
+  text-align: center;
+  border: 2px solid black;
+}
+
 #quickview-title {
   font-family: "Viner Hand ITC", Times New Roman, cursive;
   color: #943c1f;
@@ -80,7 +97,7 @@
 /* For Mobile Portrait View */
 @media screen and (max-device-width: 480px) and (orientation: portrait) {
   .cart-quickview {
-    height: 420px;
+    height: fit-content;
     width: 93%;
     position: absolute;
     top: 60px;
@@ -90,6 +107,22 @@
 
 /* For Mobile Landscape View */
 @media screen and (max-device-width: 640px) {
+  .cart-quickview-checkout {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    color: #0a0a0a;
+    height: 100%;
+    max-height: 580px;
+    width: 360px;
+    margin: 0 auto;
+    border-radius: 2%;
+    background-color: #e3bb67;
+    text-align: center;
+    border: 2px solid black;
+  }
 }
 /* == */
 

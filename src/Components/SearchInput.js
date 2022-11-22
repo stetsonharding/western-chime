@@ -20,7 +20,7 @@ function SearchInput({ onSearchSubmit }) {
   return (
     <>
       <input
-        type="text"
+        type="search"
         className="search-input"
         placeholder="Howdy, What cha lookin' for?"
         onChange={(e) => {

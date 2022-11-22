@@ -49,3 +49,21 @@
   cursor: pointer;
 }
 /* == */
+
+/* Media Querys - Mobile, tablet, landscape */
+@media screen and (min-width: 1024px) {
+}
+
+/* For Mobile Portrait View */
+@media screen and (max-device-width: 480px) and (orientation: portrait) {
+}
+
+/* For Mobile Landscape View */
+@media screen and (max-device-width: 640px) {
+  /* image container */
+  .beverage-image img {
+    width: 35%;
+    height: 75%;
+  }
+}
+/* == */

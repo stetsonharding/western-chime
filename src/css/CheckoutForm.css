@@ -1,7 +1,7 @@
 .checkout-form-container {
-  width: 1000px;
-  height: 600px;
-  margin-left: 80px;
+  width: 60%;
+  height: fit-content;
+  margin-bottom: 10px;
 }
 
 /* Billing address title */
@@ -16,7 +16,7 @@
 /* form inputs */
 form select,
 .checkout-form input {
-  padding: 11px;
+  padding: 16px;
   margin: 20px;
   box-shadow: 0 0 5pt 0.5pt #414040;
 }
@@ -47,16 +47,43 @@ form select,
   padding: 10px;
   background-color: #7b3018;
   color: white;
-  cursor: pointer;
-}
-.checkout-button {
-  width: 400px;
-  padding: 10px;
-  background-color: #7b3018;
-  color: white;
 }
 .checkout-button:hover {
   cursor: pointer;
   border: 2px solid white;
 }
 /* == */
+
+/* Media Querys - Mobile, tablet, landscape */
+@media screen and (min-width: 1024px) {
+}
+
+/* For Mobile Portrait View */
+@media screen and (max-device-width: 480px) and (orientation: portrait) {
+}
+
+/* For Mobile Landscape View */
+@media screen and (max-device-width: 640px) {
+  .checkout-form-container {
+    width: 100%;
+  }
+  /* form inputs */
+  .form-name {
+    width: 80%;
+  }
+  .form-address,
+  .form-email {
+    width: 80%;
+  }
+  .form-country,
+  .form-state,
+  .form-zip {
+    width: 38.7%;
+  }
+  /* == */
+
+  /* Submit order button */
+  .checkout-button {
+    width: 250px;
+  }
+}
