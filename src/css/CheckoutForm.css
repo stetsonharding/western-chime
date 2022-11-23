@@ -55,7 +55,26 @@ form select,
 /* == */
 
 /* Media Querys - Mobile, tablet, landscape */
-@media screen and (min-width: 1024px) {
+@media screen and (max-width: 1024px) and (min-width: 768px) {
+  /* form inputs */
+  .form-name {
+    width: 80%;
+  }
+  .form-address,
+  .form-email {
+    width: 80%;
+  }
+  .form-country,
+  .form-state,
+  .form-zip {
+    width: 38.7%;
+  }
+  /* == */
+
+  /* Submit order button */
+  .checkout-button {
+    width: 250px;
+  }
 }
 
 /* For Mobile Portrait View */
