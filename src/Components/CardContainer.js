@@ -71,7 +71,7 @@ function CardContainer({
             </div>
           )}
           {/* ==== */}
-          {/* Mapping Cards*/}
+          {/* Mapping Favorited Cards*/}
           {isFavoritedBeveragesShown === true &&
           favoritedBeverages.length > 0 ? (
             <div className="all-cards-container">
@@ -93,6 +93,7 @@ function CardContainer({
               ))}
             </div>
           ) : (
+            // Mapping all cards
             <div className="all-cards-container">
               {beverages.map((beverage, index) => (
                 <Card
