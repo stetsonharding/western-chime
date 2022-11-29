@@ -6,12 +6,9 @@
   align-items: center;
   margin: 0 auto;
   border-radius: 4px;
-
   background-color: #7b3018;
-
   height: 135px;
   max-width: 1700px;
-
   position: relative;
   top: 20px;
 }

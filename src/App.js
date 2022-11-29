@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
 
 import _ from "lodash";
@@ -8,9 +9,8 @@ import Header from "./Components/Header";
 import CardContainer from "./Components/CardContainer";
 import LearnMoreModal from "./Components/LearnMoreModal";
 import OrderPlaced from "./Components/Checkout/OrderPlaced";
-
-import { Route, Routes } from "react-router-dom";
 import CheckoutOverview from "./Components/Checkout/CheckoutOverview";
+import Footer from "./Components/Footer";
 
 function App() {
   const [beverages, setBeverages] = useState([]);
@@ -191,6 +191,7 @@ function App() {
           }
         ></Route>
       </Routes>
+      <Footer />
     </div>
   );
 }

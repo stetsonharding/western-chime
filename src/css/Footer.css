@@ -1,0 +1,11 @@
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  background-color: #7b3018;
+  color: yellow;
+  width: 100%;
+  max-width: 1700px;
+  height: 155px;
+  margin: 55px auto;
+}
