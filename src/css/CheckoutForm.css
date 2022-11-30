@@ -37,7 +37,7 @@ form select,
 /* Submit order button */
 .checkout-button-container {
   width: 100%;
-  height: 70px;
+  height: 140px;
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -45,17 +45,31 @@ form select,
 .checkout-button {
   width: 400px;
   padding: 10px;
+  margin: 2px;
   background-color: #7b3018;
   color: white;
+  border-radius: 5px;
+  font-weight: bold;
 }
+.continue-shopping-button {
+  width: 400px;
+  padding: 5px;
+  margin: 2px;
+  background-color: #ffffff;
+  color: black;
+  font-weight: bold;
+  border-radius: 5px;
+}
+.continue-shopping-button:hover,
 .checkout-button:hover {
   cursor: pointer;
-  border: 2px solid white;
+  border: 1px solid white;
+  letter-spacing: 2px;
 }
 /* == */
 
 /* Media Querys - Mobile, tablet, landscape */
-@media screen and (max-width: 1024px) and (min-width: 768px) {
+@media screen and (max-width: 1724px) and (min-width: 768px) {
   /* form inputs */
   .form-name {
     width: 80%;
@@ -70,11 +84,6 @@ form select,
     width: 38.7%;
   }
   /* == */
-
-  /* Submit order button */
-  .checkout-button {
-    width: 250px;
-  }
 }
 
 /* For Mobile Portrait View */
@@ -82,7 +91,7 @@ form select,
 }
 
 /* For Mobile Landscape View */
-@media screen and (max-device-width: 640px) {
+@media screen and (max-device-width: 768px) {
   .checkout-form-container {
     width: 100%;
   }
@@ -102,6 +111,7 @@ form select,
   /* == */
 
   /* Submit order button */
+  .continue-shopping-button,
   .checkout-button {
     width: 250px;
   }
