@@ -427,11 +427,9 @@ function CheckoutForm({ userInfo, setUserInfo, setCartItems }) {
         <Link to="/orderPlaced" onClick={() => setCartItems([])}>
           <button className="checkout-button">SUBMIT ORDER</button>
           <br />
-          <Link to="/">
-            <button className="continue-shopping-button">
-              Shop the Saloon
-            </button>
-          </Link>
+        </Link>
+        <Link to="/">
+          <button className="continue-shopping-button">Shop the Saloon</button>
         </Link>
       </div>
     </div>

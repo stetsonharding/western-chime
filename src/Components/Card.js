@@ -148,7 +148,7 @@ function Card({
 
       <div className="beverage-info-container">
         <p className="beverage-name">{name}</p>
-        <p className="beverage-price">${price}</p>
+        <p className="beverage-price">${price}.00</p>
       </div>
 
       <div className="revolver-container beverage-info">
