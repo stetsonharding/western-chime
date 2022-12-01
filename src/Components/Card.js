@@ -10,11 +10,7 @@ import revolver from "../Assets/revolver.png";
 import addedToCart from "../Assets/addedToCart.png";
 
 function Card({
-  img,
-  name,
-  price,
   beverage,
-  index,
   beverages,
   setBeverages,
   setFavoritedBeverages,
@@ -25,6 +21,7 @@ function Card({
 }) {
   const favoriteImage = (id, e) => {
     const newArr = beverages.map((beverage) => {
+      //Change favorited property if id matches
       if (beverage.id === id) {
         return {
           ...beverage,
@@ -34,18 +31,16 @@ function Card({
       e.stopPropagation();
       return beverage;
     });
-
-    //Filtering all beverages from state that have isFavorited set to true and setting to favorited state.
+    //Filtering all beverages that have isFavorited set to true, set result to state.
     let favorited = newArr.filter((item) => item.isFavorited === true);
     setFavoritedBeverages(favorited);
-
-    //Updating all beverages state when favorited.
+    //Updating all beverages to keep track of favorited/none favorited beverages.
     setBeverages(newArr);
   };
 
   const removeItemFromCart = (id, e) => {
     e.stopPropagation();
-    //Change image back to default
+    //Changing isAddedToCart property.
     const updatedBeverages = beverages.map((beverage) => {
       if (beverage.id === id) {
         return {
@@ -55,7 +50,7 @@ function Card({
       }
       return beverage;
     });
-    //Remove item from cart and update state
+    //Filter cartItems to get only the items that are still in the cart.
     const items = [...cartItems].filter((item) => item.id !== id);
     setCartItems(items);
     //Update beverages based on if isAddedToCart has changed.
@@ -129,9 +124,9 @@ function Card({
         {addToCartIcon()}
       </div>
       <div className="card-image-container">
-        <img src={img} height="120" width="30" alt="Beverage" />
+        <img src={beverage.image_url} height="120" width="30" alt="Beverage" />
         <br />
-        {img === "https://images.punkapi.com/v2/keg.png" && (
+        {beverage.image_url === "https://images.punkapi.com/v2/keg.png" && (
           <p
             style={{
               fontSize: "8px",
@@ -147,21 +142,20 @@ function Card({
       </div>
 
       <div className="beverage-info-container">
-        <p className="beverage-name">{name}</p>
-        <p className="beverage-price">${price}.00</p>
+        <p className="beverage-name">{beverage.name}</p>
+        <p className="beverage-price">${beverage.srm}.00</p>
       </div>
 
       <div className="revolver-container beverage-info">
         <img
           src={revolver}
-          alt="Revolver weapon"
+          alt="Weapon"
           height="35"
           width="40"
           className="revolver-img"
         />
 
         <div className="revolver-bullet"></div>
-
         <div className="learn-more">
           <span>Learn More</span>
         </div>

@@ -75,14 +75,10 @@ function CardContainer({
           {isFavoritedBeveragesShown === true &&
           favoritedBeverages.length > 0 ? (
             <div className="all-cards-container">
-              {favoritedBeverages.map((beverage, index) => (
+              {favoritedBeverages.map((beverage) => (
                 <Card
                   key={beverage.id}
-                  img={beverage.image_url}
-                  name={beverage.name}
-                  price={beverage.srm}
                   beverage={beverage}
-                  index={index}
                   beverages={beverages}
                   setBeverages={setBeverages}
                   setFavoritedBeverages={setFavoritedBeverages}
