@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import "../css/Card.css";
 
@@ -8,6 +8,7 @@ import ImageLiked from "../Assets/ImageLiked.png";
 import AddToCart from "../Assets/addtocart.png";
 import revolver from "../Assets/revolver.png";
 import addedToCart from "../Assets/addedToCart.png";
+import QuantityView from "./QuantityView";
 
 function Card({
   beverage,
@@ -19,6 +20,8 @@ function Card({
   cartItems,
   addItemToCart,
 }) {
+  const [test, setTest] = useState(true);
+
   const favoriteImage = (id, e) => {
     const newArr = beverages.map((beverage) => {
       //Change favorited property if id matches
@@ -29,6 +32,7 @@ function Card({
         };
       }
       e.stopPropagation();
+      setTest(id);
       return beverage;
     });
     //Filtering all beverages that have isFavorited set to true, set result to state.
@@ -112,55 +116,70 @@ function Card({
   };
 
   return (
-    <div
-      className="card"
-      onClick={(e) => {
-        e.stopPropagation();
-        setLearnMoreModalData(beverage);
-      }}
-    >
-      <div className="card-interactions">
-        {favoriteIcon()}
-        {addToCartIcon()}
-      </div>
-      <div className="card-image-container">
-        <img src={beverage.image_url} height="120" width="30" alt="Beverage" />
-        <br />
-        {beverage.image_url === "https://images.punkapi.com/v2/keg.png" && (
-          <p
-            style={{
-              fontSize: "8px",
-              fontStyle: "italic",
-              padding: "0",
-              margin: "0",
-              color: "white",
-            }}
-          >
-            Keg Only
-          </p>
-        )}
-      </div>
-
-      <div className="beverage-info-container">
-        <p className="beverage-name">{beverage.name}</p>
-        <p className="beverage-price">${beverage.srm}.00</p>
-      </div>
-
-      <div className="revolver-container beverage-info">
-        <img
-          src={revolver}
-          alt="Weapon"
-          height="35"
-          width="40"
-          className="revolver-img"
+    <>
+      {beverage.quantityConfirm ? (
+        <QuantityView
+          beverage={beverage}
+          beverages={beverages}
+          setBeverages={setBeverages}
         />
+      ) : (
+        <div
+          className="card"
+          onClick={(e) => {
+            e.stopPropagation();
+            setLearnMoreModalData(beverage);
+          }}
+        >
+          <div className="card-interactions">
+            {favoriteIcon()}
+            {addToCartIcon()}
+          </div>
+          <div className="card-image-container">
+            <img
+              src={beverage.image_url}
+              height="120"
+              width="30"
+              alt="Beverage"
+            />
+            <br />
+            {beverage.image_url === "https://images.punkapi.com/v2/keg.png" && (
+              <p
+                style={{
+                  fontSize: "8px",
+                  fontStyle: "italic",
+                  padding: "0",
+                  margin: "0",
+                  color: "white",
+                }}
+              >
+                Keg Only
+              </p>
+            )}
+          </div>
 
-        <div className="revolver-bullet"></div>
-        <div className="learn-more">
-          <span>Learn More</span>
+          <div className="beverage-info-container">
+            <p className="beverage-name">{beverage.name}</p>
+            <p className="beverage-price">${beverage.srm}.00</p>
+          </div>
+
+          <div className="revolver-container beverage-info">
+            <img
+              src={revolver}
+              alt="Weapon"
+              height="35"
+              width="40"
+              className="revolver-img"
+            />
+
+            <div className="revolver-bullet"></div>
+            <div className="learn-more">
+              <span>Learn More</span>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 }
 

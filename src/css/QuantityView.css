@@ -1,0 +1,35 @@
+.quantity-view {
+  min-height: 305px;
+  width: 220px;
+  border-radius: 10px;
+  background-color: #e28465;
+  margin: 10px;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
+    rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+}
+
+#quantity-back {
+  display: flex;
+  justify-content: space-between;
+}
+
+#quantity-back img {
+  padding: 5px 20px;
+}
+
+#quantity-back span {
+  font-size: 25px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.quantity-product-details #name {
+  font-weight: bold;
+  letter-spacing: 2px;
+  padding-left: 10px;
+}
+
+.quantity-product-details .ibu-abv {
+  font-weight: 400;
+  padding: 0 0 0 10px;
+}

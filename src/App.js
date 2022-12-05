@@ -61,6 +61,7 @@ function App() {
         ...obj,
         isFavorited: false,
         isAddedToCart: false,
+        quantityConfirm: false,
       }));
       setBeverages(finalData);
     } catch (err) {
@@ -114,6 +115,7 @@ function App() {
         return {
           ...beverage,
           isAddedToCart: !beverage.isAddedToCart,
+          quantityConfirm: !beverage.quantityConfirm,
         };
       }
       return beverage;
