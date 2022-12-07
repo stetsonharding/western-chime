@@ -62,6 +62,7 @@ function App() {
         isFavorited: false,
         isAddedToCart: false,
         quantityConfirm: false,
+        qty: 1,
       }));
       setBeverages(finalData);
     } catch (err) {

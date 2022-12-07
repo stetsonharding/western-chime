@@ -1,6 +1,7 @@
 import React from "react";
 
 import "../css/QuantityView.css";
+import QuantityCounter from "./QuantityCounter";
 
 function QuantityView({ beverage, beverages, setBeverages }) {
   function test(id) {
@@ -33,6 +34,16 @@ function QuantityView({ beverage, beverages, setBeverages }) {
 
           <p className="ibu-abv">ABV: {beverage.abv}%</p>
         </div>
+      </div>
+      <div className="quantity-counter">
+        <QuantityCounter
+          beverage={beverage}
+          beverages={beverages}
+          setBeverages={setBeverages}
+        />
+      </div>
+      <div className="quantity-confirm">
+        <button className="confirm-btn">Confirm</button>
       </div>
     </div>
   );
