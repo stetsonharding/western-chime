@@ -1,31 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
 import "../css/QuantityCounter.css";
 
 function QuantityCounter({ beverage, beverages, setBeverages }) {
+  const [quantity, setQuantity] = useState(1);
+
   const incrementQuantity = (id) => {
-    let updatedBeverages = beverages.map((beverage) => {
-      if (id === beverage.id) {
-        return {
-          ...beverage,
-          qty: beverage.qty + 1,
-        };
-      }
-      return beverage;
-    });
-    setBeverages(updatedBeverages);
+    setQuantity((prevState) => prevState + 1);
+    // let updatedBeverages = beverages.map((beverage) => {
+    //   if (id === beverage.id) {
+    //     return {
+    //       ...beverage,
+    //       qty: beverage.qty + 1,
+    //     };
+    //   }
+    //   return beverage;
+    // });
+    // setBeverages(updatedBeverages);
+  };
+
+  const decrementQuantity = () => {
+    setQuantity((prevState) => prevState - 1);
   };
 
   return (
     <div className="quantity-counter">
       <div className="decrement">
-        <button className="quantity-btn">-</button>
+        <button
+          className="quantity-btn"
+          disabled={quantity <= 1 ? true : false}
+          onClick={() => decrementQuantity()}
+        >
+          -
+        </button>
       </div>
       <div>
-        <h3 style={{}}>{beverage.qty}</h3>
+        <h3 style={{}}>{quantity}</h3>
       </div>
       <div className="increment">
         <button
           className="quantity-btn"
+          disabled={quantity === 10 ? true : false}
           onClick={() => incrementQuantity(beverage.id)}
         >
           +
