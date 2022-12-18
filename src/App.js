@@ -32,6 +32,8 @@ function App() {
     zipcode: "",
   });
 
+  console.log(beverages);
+
   function formatPrice(price) {
     return price.toLocaleString("en-US", {
       style: "currency",
