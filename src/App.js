@@ -117,14 +117,13 @@ function App() {
       if (beverage.id === id) {
         return {
           ...beverage,
-          isAddedToCart: !beverage.isAddedToCart,
           quantityConfirm: !beverage.quantityConfirm,
         };
       }
       return beverage;
     });
     //Add item to cart
-    setCartItems((prevItems) => [...prevItems, itemAddedToCart]);
+    // setCartItems((prevItems) => [...prevItems, itemAddedToCart]);
     setBeverages(updatedBeverages);
     e.stopPropagation();
   };

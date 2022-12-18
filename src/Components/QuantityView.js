@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import "../css/QuantityView.css";
 import QuantityCounter from "./QuantityCounter";
 
-function QuantityView({ beverage, beverages, setBeverages }) {
+function QuantityView({ beverage, beverages, setBeverages, setCartItems }) {
   const [quantity, setQuantity] = useState(1);
 
   function leaveQuantityView(id) {
@@ -20,16 +20,19 @@ function QuantityView({ beverage, beverages, setBeverages }) {
     setBeverages(updated);
   }
 
-  const confirmQuantity = (id) => {
+  const confirmQuantity = (id, itemAddedToCart) => {
     let updatedBeverages = beverages.map((beverage) => {
       if (id === beverage.id) {
         return {
           ...beverage,
+          isAddedToCart: !beverage.isAddedToCart,
+          quantityConfirm: !beverage.quantityConfirm,
           qty: quantity,
         };
       }
       return beverage;
     });
+    setCartItems((prevItems) => [...prevItems, itemAddedToCart]);
     setBeverages(updatedBeverages);
   };
 
@@ -62,7 +65,7 @@ function QuantityView({ beverage, beverages, setBeverages }) {
       <div className="quantity-confirm">
         <button
           className="confirm-btn"
-          onClick={() => confirmQuantity(beverage.id)}
+          onClick={() => confirmQuantity(beverage.id, beverage)}
         >
           Confirm ${beverage.srm * quantity}
         </button>

@@ -122,6 +122,7 @@ function Card({
           beverage={beverage}
           beverages={beverages}
           setBeverages={setBeverages}
+          setCartItems={setCartItems}
         />
       ) : (
         <div

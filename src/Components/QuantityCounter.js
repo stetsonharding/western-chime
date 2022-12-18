@@ -30,7 +30,7 @@ function QuantityCounter({
         </button>
       </div>
       <div>
-        <h3 style={{}}>{beverage.qty}</h3>
+        <h3 style={{}}>{quantity <= 1 ? beverage.qty : quantity}</h3>
       </div>
       <div className="increment">
         <button
