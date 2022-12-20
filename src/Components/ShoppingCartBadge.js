@@ -27,7 +27,7 @@ export default function ShoppingCartBadge({
     let subTotal = 0;
 
     cartItems.forEach((item) => {
-      setSubTotal((subTotal += item.srm));
+      setSubTotal((subTotal += item.srm * item.qty));
     });
 
     setTaxes(subTotal * TAX_RATE);

@@ -45,7 +45,7 @@ function CartItems({
           {item.name}
         </p>
         <p id="price" className="information">
-          ${item.srm}.00
+          {item.qty} @ ${item.srm}.00
         </p>
       </div>
       <div className="input-container">

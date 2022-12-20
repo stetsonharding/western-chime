@@ -10,8 +10,22 @@ function QuantityCounter({
 }) {
   // const [quantity, setQuantity] = useState(1);
 
-  const incrementQuantity = () => {
-    setQuantity((prevState) => prevState + 1);
+  const incrementQuantity = (id) => {
+    // setQuantity((prevState) => prevState + 1);
+
+    let updatedBeverages = beverages.map((beverage) => {
+      if (id === beverage.id) {
+        return {
+          ...beverage,
+          isAddedToCart: !beverage.isAddedToCart,
+          quantityConfirm: !beverage.quantityConfirm,
+          qty: beverage.qty++,
+        };
+      }
+      return beverage;
+    });
+
+    setQuantity(beverage.qty);
   };
 
   const decrementQuantity = () => {

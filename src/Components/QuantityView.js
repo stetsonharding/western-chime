@@ -6,6 +6,7 @@ import QuantityCounter from "./QuantityCounter";
 function QuantityView({ beverage, beverages, setBeverages, setCartItems }) {
   const [quantity, setQuantity] = useState(1);
 
+  //Go back to view product home screen from quantity view.
   function leaveQuantityView(id) {
     let updated = beverages.map((beverage) => {
       if (beverage.id === id) {
@@ -27,15 +28,13 @@ function QuantityView({ beverage, beverages, setBeverages, setCartItems }) {
           ...beverage,
           isAddedToCart: !beverage.isAddedToCart,
           quantityConfirm: !beverage.quantityConfirm,
-          qty: quantity,
         };
       }
       return beverage;
     });
-    setCartItems((prevItems) => [...prevItems, itemAddedToCart]);
+    setCartItems((prevItems) => [...prevItems, beverage]);
     setBeverages(updatedBeverages);
   };
-
   return (
     <div className="quantity-view">
       <div className="quantity-information">
