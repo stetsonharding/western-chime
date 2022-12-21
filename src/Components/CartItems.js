@@ -1,5 +1,7 @@
 import React from "react";
 
+import TrashIcon from "../Assets/trash-icon.png";
+
 import "../css/CartItems.css";
 
 function CartItems({
@@ -48,11 +50,13 @@ function CartItems({
           {item.qty} @ ${item.srm}.00
         </p>
       </div>
-      <div className="input-container">
-        <input
+      <div className="deleteItem-container">
+        <img
           id="delete-item"
-          type="button"
-          value="X"
+          height="22"
+          width="22"
+          src={TrashIcon}
+          alt="remove item icon"
           onClick={() => removeFromCart(index, cartItem)}
         />
       </div>
