@@ -28,8 +28,22 @@ function QuantityCounter({
     setQuantity(beverage.qty);
   };
 
-  const decrementQuantity = () => {
-    setQuantity((prevState) => prevState - 1);
+  const decrementQuantity = (id) => {
+    // setQuantity((prevState) => prevState - 1);
+
+    let updatedBeverages = beverages.map((beverage) => {
+      if (id === beverage.id) {
+        return {
+          ...beverage,
+          isAddedToCart: !beverage.isAddedToCart,
+          quantityConfirm: !beverage.quantityConfirm,
+          qty: beverage.qty--,
+        };
+      }
+      return beverage;
+    });
+
+    setQuantity(beverage.qty);
   };
 
   return (
@@ -38,13 +52,13 @@ function QuantityCounter({
         <button
           className="quantity-btn"
           disabled={quantity <= 1 ? true : false}
-          onClick={() => decrementQuantity()}
+          onClick={() => decrementQuantity(beverage.id)}
         >
           -
         </button>
       </div>
       <div>
-        <h3 style={{}}>{quantity}</h3>
+        <h3 style={{}}>{beverage.qty}</h3>
       </div>
       <div className="increment">
         <button
