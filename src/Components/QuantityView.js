@@ -4,7 +4,7 @@ import "../css/QuantityView.css";
 import QuantityCounter from "./QuantityCounter";
 
 function QuantityView({ beverage, beverages, setBeverages, setCartItems }) {
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState(beverage.qty);
 
   //Go back to view product home screen from quantity view.
   function leaveQuantityView(id) {
