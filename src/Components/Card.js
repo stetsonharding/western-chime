@@ -20,8 +20,6 @@ function Card({
   cartItems,
   addItemToCart,
 }) {
-  const [test, setTest] = useState(true);
-
   const favoriteImage = (id, e) => {
     const newArr = beverages.map((beverage) => {
       //Change favorited property if id matches
@@ -32,7 +30,6 @@ function Card({
         };
       }
       e.stopPropagation();
-      setTest(id);
       return beverage;
     });
     //Filtering all beverages that have isFavorited set to true, set result to state.
@@ -50,6 +47,7 @@ function Card({
         return {
           ...beverage,
           isAddedToCart: !beverage.isAddedToCart,
+          qty: 1,
         };
       }
       return beverage;
@@ -123,6 +121,7 @@ function Card({
           beverages={beverages}
           setBeverages={setBeverages}
           setCartItems={setCartItems}
+          cartItems={cartItems}
         />
       ) : (
         <div

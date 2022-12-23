@@ -3,22 +3,42 @@ import React, { useState } from "react";
 import "../css/QuantityView.css";
 import QuantityCounter from "./QuantityCounter";
 
-function QuantityView({ beverage, beverages, setBeverages, setCartItems }) {
+function QuantityView({
+  beverage,
+  beverages,
+  setBeverages,
+  cartItems,
+  setCartItems,
+}) {
   const [quantity, setQuantity] = useState(beverage.qty);
 
   //Go back to view product home screen from quantity view.
-  function leaveQuantityView(id) {
-    let updated = beverages.map((beverage) => {
-      if (beverage.id === id) {
-        return {
-          ...beverage,
-          quantityConfirm: false,
-        };
-      }
-      return beverage;
-    });
+  function leaveQuantityView(id, beverage) {
+    if (!cartItems.includes(beverage)) {
+      let updated = beverages.map((beverage) => {
+        if (beverage.id === id) {
+          return {
+            ...beverage,
+            quantityConfirm: false,
+            qty: 1,
+          };
+        }
+        return beverage;
+      });
+      setBeverages(updated);
+    } else {
+      let updated = beverages.map((beverage) => {
+        if (beverage.id === id) {
+          return {
+            ...beverage,
+            quantityConfirm: false,
+          };
+        }
+        return beverage;
+      });
 
-    setBeverages(updated);
+      setBeverages(updated);
+    }
   }
 
   const confirmQuantity = (id, itemAddedToCart) => {
@@ -39,7 +59,9 @@ function QuantityView({ beverage, beverages, setBeverages, setCartItems }) {
     <div className="quantity-view">
       <div className="quantity-information">
         <div id="quantity-back">
-          <span onClick={() => leaveQuantityView(beverage.id)}>&lt;</span>
+          <span onClick={() => leaveQuantityView(beverage.id, beverage)}>
+            &lt;
+          </span>
           <div>
             <img src={beverage.image_url} alt="" height="80" />
           </div>
