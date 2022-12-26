@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 
 import "../css/Card.css";
 
@@ -133,6 +133,7 @@ function Card({
         >
           <div className="card-interactions">
             {favoriteIcon()}
+
             {addToCartIcon()}
           </div>
           <div className="card-image-container">
@@ -173,9 +174,15 @@ function Card({
             />
 
             <div className="revolver-bullet"></div>
-            <div className="learn-more">
-              <span>Learn More</span>
-            </div>
+            {beverage.isAddedToCart ? (
+              <div className="update-item">
+                <span>Update {beverage.qty}</span>
+              </div>
+            ) : (
+              <div className="learn-more">
+                <span>Learn More</span>
+              </div>
+            )}
           </div>
         </div>
       )}

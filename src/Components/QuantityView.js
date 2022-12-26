@@ -62,7 +62,7 @@ function QuantityView({
         return beverage;
       });
       setBeverages(updatedBeverages);
-    }, 1300);
+    }, 800);
   };
   return (
     <div className="quantity-view">
