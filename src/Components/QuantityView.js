@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import "../css/QuantityView.css";
 import QuantityCounter from "./QuantityCounter";
+import UpdatedNotification from "./UpdatedNotification";
 
 function QuantityView({
   beverage,
@@ -11,6 +12,7 @@ function QuantityView({
   setCartItems,
 }) {
   const [quantity, setQuantity] = useState(beverage.qty);
+  const [cartUpdated, setCartUpdated] = useState(false);
 
   //Go back to view product home screen from quantity view.
   function leaveQuantityView(id, beverage) {
@@ -41,19 +43,26 @@ function QuantityView({
     }
   }
 
-  const confirmQuantity = (id, itemAddedToCart) => {
-    let updatedBeverages = beverages.map((beverage) => {
-      if (id === beverage.id) {
-        return {
-          ...beverage,
-          isAddedToCart: !beverage.isAddedToCart,
-          quantityConfirm: !beverage.quantityConfirm,
-        };
-      }
-      return beverage;
-    });
+  const confirmQuantity = (id) => {
+    //Add item to cart
     setCartItems((prevItems) => [...prevItems, beverage]);
-    setBeverages(updatedBeverages);
+    //Show 'item added to cart' notification/component
+    setCartUpdated(true);
+    //After 2 seconds, leave quantity view by setting quantityConfirm to false and is addedToCart to true to display cart icon.
+    setTimeout(() => {
+      setCartUpdated(false);
+      let updatedBeverages = beverages.map((beverage) => {
+        if (id === beverage.id) {
+          return {
+            ...beverage,
+            isAddedToCart: !beverage.isAddedToCart,
+            quantityConfirm: !beverage.quantityConfirm,
+          };
+        }
+        return beverage;
+      });
+      setBeverages(updatedBeverages);
+    }, 1300);
   };
   return (
     <div className="quantity-view">
@@ -74,6 +83,7 @@ function QuantityView({
           <p className="ibu-abv">ABV: {beverage.abv}%</p>
         </div>
       </div>
+
       <div className="quantity-counter">
         <QuantityCounter
           beverage={beverage}
@@ -83,14 +93,18 @@ function QuantityView({
           setQuantity={setQuantity}
         />
       </div>
-      <div className="quantity-confirm">
-        <button
-          className="confirm-btn"
-          onClick={() => confirmQuantity(beverage.id, beverage)}
-        >
-          Confirm ${beverage.srm * quantity}
-        </button>
-      </div>
+      {cartUpdated !== true ? (
+        <div className="quantity-confirm">
+          <button
+            className="confirm-btn"
+            onClick={() => confirmQuantity(beverage.id)}
+          >
+            Confirm ${beverage.srm * quantity}
+          </button>
+        </div>
+      ) : (
+        <UpdatedNotification notification="Item added to cart" />
+      )}
     </div>
   );
 }
