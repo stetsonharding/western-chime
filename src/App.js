@@ -110,7 +110,8 @@ function App() {
     }
   });
 
-  const addItemToCart = (id, itemAddedToCart, e) => {
+  const viewItemQuantity = (id, e) => {
+    e.stopPropagation();
     const updatedBeverages = beverages.map((beverage) => {
       if (beverage.id === id) {
         return {
@@ -120,10 +121,8 @@ function App() {
       }
       return beverage;
     });
-    //Add item to cart
-    // setCartItems((prevItems) => [...prevItems, itemAddedToCart]);
+
     setBeverages(updatedBeverages);
-    e.stopPropagation();
   };
 
   return (
@@ -131,7 +130,7 @@ function App() {
       <LearnMoreModal
         setLearnMoreModalData={setLearnMoreModalData}
         learnMoreModalData={learnMoreModalData}
-        addItemToCart={addItemToCart}
+        viewItemQuantity={viewItemQuantity}
       />
 
       <Header
@@ -162,7 +161,7 @@ function App() {
               setCartItems={setCartItems}
               setLearnMoreModalData={setLearnMoreModalData}
               cartItems={cartItems}
-              addItemToCart={addItemToCart}
+              viewItemQuantity={viewItemQuantity}
             />
           }
         ></Route>

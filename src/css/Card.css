@@ -94,6 +94,9 @@
   rotate: -10deg;
   transition: 0.8s;
 }
+.revolver-img-hidden {
+  visibility: hidden;
+}
 
 /* calling keyframe showing bullet*/
 .card:hover .revolver-bullet {
@@ -117,27 +120,11 @@
 }
 /* === */
 
-.update-item {
-  height: 45px;
-  width: 50%;
-  font-size: 19px;
-  font-style: italic;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  color: rgb(250, 250, 251);
-  font-weight: bold;
-  font-style: italic;
-  padding: 0px;
-  margin: 0;
-}
-
 /* Learn more button - showing text upon hover*/
 .learn-more {
   height: 45px;
   width: 50%;
   font-size: 19px;
-  font-style: italic;
   display: flex;
   justify-content: center;
   align-items: flex-end;

@@ -22,7 +22,7 @@ function QuantityView({
           return {
             ...beverage,
             quantityConfirm: false,
-            qty: 1,
+            // qty: ,
           };
         }
         return beverage;
@@ -55,7 +55,7 @@ function QuantityView({
         if (id === beverage.id) {
           return {
             ...beverage,
-            isAddedToCart: !beverage.isAddedToCart,
+            isAddedToCart: true,
             quantityConfirm: !beverage.quantityConfirm,
           };
         }

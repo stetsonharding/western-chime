@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import "../css/Card.css";
 
@@ -9,6 +9,7 @@ import AddToCart from "../Assets/addtocart.png";
 import revolver from "../Assets/revolver.png";
 import addedToCart from "../Assets/addedToCart.png";
 import QuantityView from "./QuantityView";
+import UpdateQuantityBtn from "./UpdateQuantityBtn";
 
 function Card({
   beverage,
@@ -18,7 +19,7 @@ function Card({
   setCartItems,
   setLearnMoreModalData,
   cartItems,
-  addItemToCart,
+  viewItemQuantity,
 }) {
   const favoriteImage = (id, e) => {
     const newArr = beverages.map((beverage) => {
@@ -102,7 +103,7 @@ function Card({
     } else {
       return (
         <img
-          onClick={(e) => addItemToCart(beverage.id, beverage, e)}
+          onClick={(e) => viewItemQuantity(beverage.id, e)}
           src={AddToCart}
           height="30"
           width="30"
@@ -170,14 +171,23 @@ function Card({
               alt="Weapon"
               height="35"
               width="40"
-              className="revolver-img"
+              className={
+                beverage.isAddedToCart ? "revolver-img-hidden" : "revolver-img"
+              }
             />
 
-            <div className="revolver-bullet"></div>
+            <div
+              className={
+                beverage.isAddedToCart
+                  ? "revolver-img-hidden"
+                  : "revolver-bullet"
+              }
+            ></div>
             {beverage.isAddedToCart ? (
-              <div className="update-item">
-                <span>Update {beverage.qty}</span>
-              </div>
+              <UpdateQuantityBtn
+                beverage={beverage}
+                viewItemQuantity={viewItemQuantity}
+              />
             ) : (
               <div className="learn-more">
                 <span>Learn More</span>

@@ -5,13 +5,13 @@ import "../css/LearnMoreModal.css";
 function LearnMoreModal({
   setLearnMoreModalData,
   learnMoreModalData,
-  addItemToCart,
+  viewItemQuantity,
 }) {
   const [isAddToCartClicked, setIsAddToCartClicked] = useState(false);
 
   const ConditionalRenderAddToCart = (e) => {
     setIsAddToCartClicked(true);
-    addItemToCart(learnMoreModalData.id, learnMoreModalData, e);
+    viewItemQuantity(learnMoreModalData.id, learnMoreModalData, e);
     setTimeout(() => {
       setIsAddToCartClicked(false);
     }, 1000);
