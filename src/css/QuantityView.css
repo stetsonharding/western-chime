@@ -1,5 +1,5 @@
 .quantity-view {
-  min-height: 305px;
+  min-height: 335px;
   width: 220px;
   border-radius: 10px;
   background-color: #e28465;
@@ -37,7 +37,7 @@
 
 .quantity-confirm {
   width: 100%;
-
+  padding-bottom: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
