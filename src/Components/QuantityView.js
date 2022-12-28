@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import "../css/QuantityView.css";
 import QuantityCounter from "./QuantityCounter";
 import UpdatedNotification from "./UpdatedNotification";
+import UpdateItem from "./UpdateItem";
 
 function QuantityView({
   beverage,
@@ -64,6 +65,7 @@ function QuantityView({
       setBeverages(updatedBeverages);
     }, 900);
   };
+
   return (
     <div className="quantity-view">
       <div className="quantity-information">
@@ -95,12 +97,21 @@ function QuantityView({
       </div>
       {cartUpdated !== true ? (
         <div className="quantity-confirm">
-          <button
-            className="confirm-btn"
-            onClick={() => confirmQuantity(beverage.id)}
-          >
-            Confirm ${beverage.srm * quantity}
-          </button>
+          {beverage.isAddedToCart ? (
+            <UpdateItem
+              beverage={beverage}
+              quantity={quantity}
+              cartItems={cartItems}
+              setCartItems={setCartItems}
+            />
+          ) : (
+            <button
+              className="confirm-btn"
+              onClick={() => confirmQuantity(beverage.id)}
+            >
+              Confirm ${beverage.srm * quantity}
+            </button>
+          )}
         </div>
       ) : (
         <UpdatedNotification notification="Item added to cart" />

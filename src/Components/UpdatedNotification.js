@@ -6,7 +6,7 @@ let notificationContainer = {
   justifyContent: "center",
   alignItems: "center",
   flexDirection: "column",
-  width: "100%;",
+  width: "100%",
   padding: "0",
   margin: "0",
 };
