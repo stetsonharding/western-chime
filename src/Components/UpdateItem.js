@@ -1,22 +1,28 @@
 import React from "react";
 
 function UpdateItem({ beverage, quantity, cartItems, setCartItems }) {
+  //function to update quantity if item exists in users cart already.
   const updateItem = (beverage) => {
-    let usersCart = [...cartItems];
-
-    let updatedCart = usersCart.map((item) => {
-      if (item.id === beverage.id) {
-        return {
-          ...beverage,
-          qty: quantity,
-          quantityConfirm: false,
-        };
-      }
-      return beverage;
+    const usersCart = [...cartItems];
+    const check = usersCart.every((item) => {
+      return item.id !== beverage.id;
     });
+    const cartData = usersCart.filter((el) => {
+      return el.id === beverage.id;
+    });
+    if (check) {
+      setCartItems([...usersCart, ...cartData]);
+    } else {
+      const itemForCountIncrease = usersCart.find(
+        (item) => item.id === beverage.id
+      );
+      itemForCountIncrease.qty = quantity;
 
-    setCartItems(updatedCart);
-    console.log(updatedCart);
+      setCartItems([
+        ...usersCart.filter((item) => item.id !== beverage.id),
+        itemForCountIncrease,
+      ]);
+    }
   };
 
   return (
