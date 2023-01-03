@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "../css/QuantityCounter.css";
 
 function QuantityCounter({
@@ -13,7 +13,7 @@ function QuantityCounter({
   const incrementQuantity = (id) => {
     // setQuantity((prevState) => prevState + 1);
 
-    let updatedBeverages = beverages.map((beverage) => {
+    beverages.map((beverage) => {
       if (id === beverage.id) {
         return {
           ...beverage,
@@ -31,7 +31,7 @@ function QuantityCounter({
   const decrementQuantity = (id) => {
     // setQuantity((prevState) => prevState - 1);
 
-    let updatedBeverages = beverages.map((beverage) => {
+    beverages.map((beverage) => {
       if (id === beverage.id) {
         return {
           ...beverage,

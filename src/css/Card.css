@@ -95,7 +95,8 @@
   transition: 0.8s;
 }
 .revolver-img-hidden {
-  visibility: hidden;
+  display: none;
+  padding-left: 20px;
 }
 
 /* calling keyframe showing bullet*/

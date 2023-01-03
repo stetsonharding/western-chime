@@ -15,7 +15,7 @@ function QuantityView({
   const [quantity, setQuantity] = useState(beverage.qty);
   const [cartUpdated, setCartUpdated] = useState(false);
 
-  //Go back to view product home screen from quantity view.
+  //Go back to view product home screen from quantity view by setting quantityConfirm to false
   function leaveQuantityView(id, beverage) {
     if (!cartItems.includes(beverage)) {
       let updated = beverages.map((beverage) => {
@@ -23,7 +23,6 @@ function QuantityView({
           return {
             ...beverage,
             quantityConfirm: false,
-            // qty: ,
           };
         }
         return beverage;
@@ -49,7 +48,7 @@ function QuantityView({
     setCartItems((prevItems) => [...prevItems, beverage]);
     //Show 'item added to cart' notification/component
     setCartUpdated(true);
-    //After 2 seconds, leave quantity view by setting quantityConfirm to false and is addedToCart to true to display cart icon.
+    //After 900s, leave quantity view by setting quantityConfirm to false and is addedToCart to true to display cart icon.
     setTimeout(() => {
       setCartUpdated(false);
       let updatedBeverages = beverages.map((beverage) => {

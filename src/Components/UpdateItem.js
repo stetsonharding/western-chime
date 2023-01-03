@@ -4,25 +4,13 @@ function UpdateItem({ beverage, quantity, cartItems, setCartItems }) {
   //function to update quantity if item exists in users cart already.
   const updateItem = (beverage) => {
     const usersCart = [...cartItems];
-    const check = usersCart.every((item) => {
-      return item.id !== beverage.id;
-    });
-    const cartData = usersCart.filter((el) => {
-      return el.id === beverage.id;
-    });
-    if (check) {
-      setCartItems([...usersCart, ...cartData]);
-    } else {
-      const itemForCountIncrease = usersCart.find(
-        (item) => item.id === beverage.id
-      );
-      itemForCountIncrease.qty = quantity;
+    beverage.qty = quantity;
+    beverage.quantityConfirm = false;
 
-      setCartItems([
-        ...usersCart.filter((item) => item.id !== beverage.id),
-        itemForCountIncrease,
-      ]);
-    }
+    setCartItems([
+      ...usersCart.filter((item) => item.id !== beverage.id),
+      beverage,
+    ]);
   };
 
   return (
