@@ -3,17 +3,19 @@
   width: 97%;
   background-color: white;
   display: flex;
-  border-radius: 3px;
+  border-radius: 10px;
   margin: 5px;
+  border: 1px solid black;
 }
 
 /* image container */
 .beverage-image {
   background-color: #fff;
-  width: 40%;
+  width: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 10px;
 }
 
 /* Cart name and price */
@@ -35,13 +37,13 @@
 
 /* Delete item from cart  */
 .deleteItem-container {
-  width: 70%;
+  width: 50%;
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
 #delete-item {
-  margin-right: 10px;
+  margin-right: 20px;
   cursor: pointer;
 }
 /* == */
