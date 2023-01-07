@@ -10,7 +10,7 @@
  3. Conditional Rendering.
  4. Component reuse and modifications using props.childen.
  5. Demonstration of passing props from parent to child components.
- - ## lodash library
+ - ## lodash/Memoization
  1. Help limit the number of API calls by saving already searched query results in storage.
   - ## CSS/Flexbox/Grid
  1. Clean reusable styling.
