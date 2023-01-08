@@ -32,6 +32,19 @@ function App() {
     zipcode: "",
   });
 
+  // Add properties (isFavorited, isAddedToCart, quantityConfirm, qty) to all items that are being fetched.
+  function AllDataProperties(data) {
+    let finalData = data.map((obj) => ({
+      ...obj,
+      isFavorited: false,
+      isAddedToCart: false,
+      quantityConfirm: false,
+      qty: 1,
+    }));
+
+    return finalData;
+  }
+
   function formatPrice(price) {
     return price.toLocaleString("en-US", {
       style: "currency",
@@ -56,14 +69,8 @@ function App() {
       const data = await response.json();
 
       AddImage(data);
-      //Adding isFavorited and isAddedToCart property's to each beverage and setting final result to state.
-      let finalData = data.map((obj) => ({
-        ...obj,
-        isFavorited: false,
-        isAddedToCart: false,
-        quantityConfirm: false,
-        qty: 1,
-      }));
+      //Calling AllDataProperties to add properties to data
+      const finalData = AllDataProperties(data);
       setBeverages(finalData);
     } catch (err) {
       setErrorMessage("Oh no! Someones fussin' with our invitory! Try Again!");
@@ -90,14 +97,17 @@ function App() {
         );
         const data = await response.json();
 
-        if (data.length === 0) {
+        //Calling AllDataProperties to add properties to data
+        const finalData = AllDataProperties(data);
+
+        if (finalData.length === 0) {
           setErrorMessage(
             `Shucks! We can't seem to find ${query}. Try Lookin' for another?`
           );
           setBeverages([]);
         } else {
-          AddImage(data);
-          setBeverages(data);
+          AddImage(finalData);
+          setBeverages(finalData);
           setErrorMessage("");
         }
       } catch (err) {

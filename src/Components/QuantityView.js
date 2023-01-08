@@ -15,6 +15,8 @@ function QuantityView({
   const [quantity, setQuantity] = useState(beverage.qty);
   const [cartUpdated, setCartUpdated] = useState(false);
 
+  console.log(beverage.srm);
+
   //Go back to view product home screen from quantity view by setting quantityConfirm to false
   function leaveQuantityView(id, beverage) {
     if (!cartItems.includes(beverage)) {
