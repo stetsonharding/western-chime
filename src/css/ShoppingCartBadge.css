@@ -114,6 +114,7 @@
 .cart-item-quickview-container {
   overflow: auto;
   max-height: 270px;
+  overflow-x: hidden;
 }
 
 .pricing-container {

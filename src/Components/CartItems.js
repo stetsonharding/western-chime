@@ -47,7 +47,7 @@ function CartItems({
           {item.name}
         </p>
         <p id="price" className="information">
-          {item.qty} @ ${item.srm}.00
+          {item.qty} @ ${item.srm}.00 = ${item.qty * item.srm}
         </p>
       </div>
       <div className="deleteItem-container">
