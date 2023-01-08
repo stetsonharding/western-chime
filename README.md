@@ -1,7 +1,7 @@
 # Western Chime
 ---
 # *Overview*
-#### This project is a mock-up e-commerce website that fetches the Punk API. My goal of this project was to incorporate a lot of the functionality found on a general e-commerce website using React.js. These functionalities include getting the data, a modal to learn more about the item selected, searching items, favorite items for later use, adding/removing items to and from the users cart, changing and updating the quantity of items selected, pagination for a user friendly experience and to boost performance load times, updating the users price, taxes, and grand total based off items in the users cart, a checkout page with a checkout form and a place to enter promo codes for a discount.
+#### Western Chime - The mock-up e-commerce website in this project retrieves the Punk API. With this project, I wanted to use React.js to add a lot of the features present on a typical e-commerce website. These features include retrieving the data, displaying a modal with additional information about the item selected, searching for items, saving favorites for later use, adding/removing items from the user's cart, changing and updating the quantity of items selected, using pagination to improve user friendliness and performance load times, updating the user's price, taxes, and grand total based on items in the user's cart, and a checkout page with a form to enter promotional codes.
 ---
 # *Technologies*
 - ## React.js
