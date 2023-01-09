@@ -137,11 +137,16 @@ function App() {
 
   return (
     <div className="App">
-      <LearnMoreModal
-        setLearnMoreModalData={setLearnMoreModalData}
-        learnMoreModalData={learnMoreModalData}
-        viewItemQuantity={viewItemQuantity}
-      />
+      {learnMoreModalData && (
+        <LearnMoreModal
+          setLearnMoreModalData={setLearnMoreModalData}
+          learnMoreModalData={learnMoreModalData}
+          setCartItems={setCartItems}
+          cartItems={cartItems}
+          setBeverages={setBeverages}
+          beverages={beverages}
+        />
+      )}
 
       <Header
         cartItems={cartItems}

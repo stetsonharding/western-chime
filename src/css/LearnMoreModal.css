@@ -98,7 +98,7 @@
   text-align: center;
   margin: 10px;
 }
-#add-to-cart {
+#modal-button {
   padding: 10px;
   border-radius: 5px;
   background-color: #7b3018;
@@ -109,7 +109,7 @@
   outline: 1px solid black;
   margin-left: 5px;
 }
-#add-to-cart:hover {
+#modal-button:hover {
   color: #e3bb67;
   cursor: pointer;
 }
