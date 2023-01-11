@@ -32,10 +32,10 @@ import "../css/SearchInput.css";
 function SearchInput({ onSearchSubmit }) {
   const [searchQuery, setSearchQuery] = useState("");
   
-  //Getting users searchQuery 1 second after typing
+  //Getting users searchQuery 1 second after typing.
   const [debouncedValue] = useDebounce(searchQuery, 1000)
 
-  // If the debounceValue has changed, call the API again
+  // If the debounceValue has changed, fetch the API by calling onSearchSubmit passing the users new search term.
   useEffect(() => {
    onSearchSubmit(searchQuery)
   }, [debouncedValue]);
