@@ -1,21 +1,19 @@
 import React, { useState, useEffect } from "react";
 
+import { useDebounce } from "use-debounce";
+
 import "../css/SearchInput.css";
 
 function SearchInput({ onSearchSubmit }) {
   const [searchQuery, setSearchQuery] = useState("");
-  const [debouncedQuery, setDebouncedQuery] = useState(searchQuery);
 
-  // update 'searchQuery' value after 1 second from the last update of 'debouncedTerm'
-  useEffect(() => {
-    const timer = setTimeout(() => setSearchQuery(debouncedQuery), 1000);
-    return () => clearTimeout(timer);
-  }, [debouncedQuery]);
+  //Getting users searchQuery 1 second after typing.
+  const [debouncedValue] = useDebounce(searchQuery, 1000);
 
-  //Submit a new search
+  // If the debounceValue has changed, fetch the API by calling onSearchSubmit passing the users new search term.
   useEffect(() => {
     onSearchSubmit(searchQuery);
-  }, [searchQuery]);
+  }, [debouncedValue]);
 
   return (
     <>
@@ -24,9 +22,9 @@ function SearchInput({ onSearchSubmit }) {
         className="search-input"
         placeholder="Howdy, What cha lookin' for?"
         onChange={(e) => {
-          setDebouncedQuery(e.target.value);
+          setSearchQuery(e.target.value);
         }}
-        value={debouncedQuery}
+        value={searchQuery}
       />
     </>
   );
