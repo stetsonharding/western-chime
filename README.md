@@ -20,7 +20,7 @@
  ---
  # *New Discoveries*
  - ### limiting the number of API calls
-I had to figure out how to restrict how many API requests are made when a user is looking for products. I learned about the *useDebounce* React hook after doing some investigation and going through the React documentation. We can specify a time when a specific function will be called using this hook. Previously, My API was being called every time a user entered a number or character in the search input before the useDebounce hook was enabled. The useDebounce hook has made it so that my API is now called 1 second after the user has finished tying. If this were done in a business setting, it would improve performance in my application and save money. The code is given below:
+I wanted to figure out how to restrict how many API requests are made when a user is looking for products. I learned about the *useDebounce* React hook after doing some research on how to limit the number of API calls (https://usehooks-ts.com/react-hook/use-debounce). We can specify a time when a specific function will be called using this hook. Previously, My API was being called every time a user entered a number or character in the search input. The useDebounce hook has made it so that my API is now called 1 second after the user has finished tying. This improves performance, and would save a company money making less API calls. The code is given below:
 
 ``` JavaScript
 import React, { useState, useEffect } from "react";
