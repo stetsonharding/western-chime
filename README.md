@@ -20,23 +20,25 @@
  ---
  # *New Discoveries*
  - ### limiting the number of API calls
-I needed to find a way to limit the number of API calls when the user is searching for data. After some research and some reading on the React documentation I discovered the *useDebounce* React hook. This hook allows us to set a time for when a certain function will be called. Before the useDebounce hook was implemented my API was getting called every time the user would enter a number or character in the search input. Now with the useDebounce hook, my API is getting called 1 second after the user is done tying. This increases performance in my application and would save money if this were in a professional setting. Below is the code:
+I had to figure out how to restrict how many API requests are made when a user is looking for products. I learned about the *useDebounce* React hook after doing some investigation and going through the React documentation. We can specify a time when a specific function will be called using this hook. Previously, My API was being called every time a user entered a number or character in the search input before the useDebounce hook was enabled. The useDebounce hook has made it so that my API is now called 1 second after the user has finished tying. If this were done in a business setting, it would improve performance in my application and save money. The code is given below:
 
 ``` JavaScript
+import React, { useState, useEffect } from "react";
+
+import  {useDebounce}  from 'use-debounce';
+
+import "../css/SearchInput.css";
+
 function SearchInput({ onSearchSubmit }) {
   const [searchQuery, setSearchQuery] = useState("");
-  const [debouncedQuery, setDebouncedQuery] = useState(searchQuery);
+  
+  //Getting users searchQuery 1 second after typing.
+  const [debouncedValue] = useDebounce(searchQuery, 1000)
 
-  // update 'searchQuery' value after 1 second from the last update of 'debouncedQuery'
+  // If the debounceValue has changed, fetch the API by calling onSearchSubmit passing the users new search term.
   useEffect(() => {
-    const timer = setTimeout(() => setSearchQuery(debouncedQuery), 1000);
-    return () => clearTimeout(timer);
-  }, [debouncedQuery]);
-
-  //Submit a new search
-  useEffect(() => {
-    onSearchSubmit(searchQuery);
-  }, [searchQuery]);
+   onSearchSubmit(searchQuery)
+  }, [debouncedValue]);
 
   return (
     <>
@@ -45,11 +47,13 @@ function SearchInput({ onSearchSubmit }) {
         className="search-input"
         placeholder="Howdy, What cha lookin' for?"
         onChange={(e) => {
-          setDebouncedQuery(e.target.value);
+          setSearchQuery(e.target.value);
         }}
-        value={debouncedQuery}
+        value={searchQuery}
       />
     </>
   );
 }
+
+export default SearchInput;
 ```
