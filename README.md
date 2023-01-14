@@ -131,6 +131,162 @@ The user will be sent to a quantity view when they click the "+" sign on a produ
  
  [Untitled_ Jan 14, 2023 9_19 AM.webm](https://user-images.githubusercontent.com/19699378/212486623-7fec70db-8f22-4201-bbb5-4d22fb0faaf9.webm)
 
+```JavaScript
+//Function to confirm quantity and add item to cart
+  const confirmQuantity = (id) => {
+    //setting all the previous items in the cart plus the newly added item to state
+    setCartItems((prevItems) => [...prevItems, beverage]);
+    //conditionally rendering 'update' button by setting cartUpdated to true or 'confirm' button if false
+    setCartUpdated(true);
+    //After 900s, leave quantity view by setting quantityConfirm to false and is addedToCart to true to display cart icon instead of the "+" symbol
+    setTimeout(() => {
+      setCartUpdated(false);
+      let updatedBeverages = beverages.map((beverage) => {
+        if (id === beverage.id) {
+          return {
+            ...beverage,
+            isAddedToCart: true,
+            quantityConfirm: !beverage.quantityConfirm,
+          };
+        }
+        return beverage;
+      });
+      //set the updated beverages to state to display to user
+      setBeverages(updatedBeverages);
+    }, 900);
+  };
+```
+```JavaScript
+//quantity view component. 
+//This component is what displays the quantity counter as well as product information and confirm/update buttons
+ return (
+    <div className="quantity-view">
+      <div className="quantity-information">
+        <div id="quantity-back">
+          <span onClick={() => leaveQuantityView(beverage.id, beverage)}>
+            &lt;
+          </span>
+          <div>
+            <img src={beverage.image_url} alt="" height="80" />
+          </div>
+        </div>
+        <div className="quantity-product-details">
+          <p id="name">{beverage.name}</p>
+
+          <p className="ibu-abv">IBU: {beverage.ibu}%</p>
+
+          <p className="ibu-abv">ABV: {beverage.abv}%</p>
+        </div>
+      </div>
+      <div className="quantity-counter">
+        <QuantityCounter
+          beverage={beverage}
+          beverages={beverages}
+          setBeverages={setBeverages}
+          quantity={quantity}
+          setQuantity={setQuantity}
+        />
+      </div>
+      //conditionally rendering the 'update' button if cartUpdated is true or render the confirm button if it is false
+      {cartUpdated !== true ? (
+        <div className="quantity-confirm">
+          {beverage.isAddedToCart ? (
+            <UpdateItem
+              beverage={beverage}
+              quantity={quantity}
+              cartItems={cartItems}
+              setCartItems={setCartItems}
+            />
+          ) : (
+            <button
+              className="confirm-btn"
+              onClick={() => confirmQuantity(beverage.id)}
+            >
+              Confirm ${beverage.srm * quantity}
+            </button>
+          )}
+        </div>
+      ) : (
+        <UpdatedNotification notification="Item added to cart" />
+      )}
+    </div>
+  );
+}
+
+```
+
+
+```JavaScript
+
+//Quantity Counter Component
+//This is the Component that allows the user to increase or decrease items quantity
+function QuantityCounter({ beverage, beverages, quantity, setQuantity }) {
+
+//Increment quantity function
+  const incrementQuantity = (id) => {
+  //Checking to see if a items id is equal to the item getting passed in
+    beverages.map((beverage) => {
+      if (id === beverage.id) {
+       //incrementing items quantity by 1.
+        return {
+          ...beverage,
+          qty: beverage.qty++,
+        };
+      }
+      return beverage;
+    });
+
+    setQuantity(beverage.qty);
+  };
+
+//Decrement quantity function
+  const decrementQuantity = (id) => {
+  //Checking to see if a items id is equal to the item getting passed in
+    beverages.map((beverage) => {
+      if (id === beverage.id) {
+       //decrementing items quantity by 1.
+        return {
+          ...beverage,
+          qty: beverage.qty--,
+        };
+      }
+      return beverage;
+    });
+
+    setQuantity(beverage.qty);
+  };
+
+  return (
+    <div className="quantity-counter">
+      <div className="decrement">
+        <button
+          className="quantity-btn"
+          disabled={quantity <= 1 ? true : false}
+          onClick={() => decrementQuantity(beverage.id)}
+        >
+          -
+        </button>
+      </div>
+      <div>
+        <h3 style={{}}>{beverage.qty}</h3>
+      </div>
+      <div className="increment">
+        <button
+          className="quantity-btn"
+          disabled={quantity === 10 ? true : false}
+          onClick={() => incrementQuantity(beverage.id)}
+        >
+          +
+        </button>
+      </div>
+    </div>
+  );
+}
+
+export default QuantityCounter;
+
+```
+
 
  ---
  # *New Discoveries*
