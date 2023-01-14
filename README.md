@@ -5,18 +5,133 @@
 ---
 # *Technologies*
 - ## React.js
- 1. Functional Components using Hooks (useState, useEffect, useDebounce).
- 2. React Router for site navigation.
- 3. Conditional Rendering.
- 4. Component reuse and modifications using props.childen.
- 5. Demonstration of passing props from parent to child components.
+ 1. Functional Components using Hooks (useState, useEffect, useDebounce, useRef).
+ 2. React Router v6 for site navigation across pages
+ 3. Component Conditional Rendering
+ 4. Component reuse and modifications using props.childen
+ 5. Demonstration of passing props from parent to child components
  - ## lodash/Memoization
- 1. Help limit the number of API calls by saving already searched query results in storage.
-  - ## CSS/Flexbox/Grid
- 1. Clean reusable styling.
- 2. Fully responsive to all screen sizes.
+ 1. Help limit the number of API calls by saving already searched query results in storage
+ - ## CSS/Flexbox/Grid
+ 1. Clean reusable styling
+ 2. Fully responsive to all screen sizes
  - ## Punk API
- 1. Fetch data as well as handle all edge cases and errors.
+ 1. Fetch data to get all products
+ 2. Fetch data to search for spacific products
+ 3. Handle all edge cases and errors
+ ---
+ # *Functionalities*
+ 
+ - ### Find out more details about a certain product
+Any of the product cards can be clicked to enable a modal dialog to appear. This modal will provide further details about a particular product, such as a description, ABV and IBU percentages, price, and an opportunity to add the item to the user's shopping cart.
+
+
+  <img width="530" height="275" src="https://user-images.githubusercontent.com/19699378/212483945-52367b58-1c0b-4c0e-8548-4946795f4fab.png">
+
+
+```JavaScript
+function LearnMoreModal({
+  setLearnMoreModalData,
+  learnMoreModalData,
+  setCartItems,
+  cartItems,
+  setBeverages,
+  beverages,
+}) {
+
+  //Add item to cart function
+  const AddItemToCart = (id) => {
+  //Adding item to users shopping cart.
+    setCartItems((prevItems) => [...prevItems, learnMoreModalData]);
+  //Checking to see if a beverage id is equal to the id passed into the function.
+  /*if true, change the value of the isAddedToCart property so that the product card now displays a shopping cart icon 
+ rather than a plus sign. */
+    let updatedBeverages = beverages.map((beverage) => {
+      if (id === beverage.id) {
+        return {
+          ...beverage,
+          isAddedToCart: true,
+        };
+      }
+      return beverage;
+    });
+    setBeverages(updatedBeverages);
+  };
+
+  //Function to check if item is already in cart
+  //Used for conditional rendering "add to cart' button and disabling 'add to cart' button
+  const ItemAlreadyAddedToCart = () => {
+    return cartItems.find((item) => item.name === learnMoreModalData.name);
+  };
+
+  //Check if item is in cart upon rendering.
+  useEffect(() => {
+    ItemAlreadyAddedToCart();
+  });
+
+  return (
+    <div className="modal-background">
+      <div className="modal-content">
+        <div className="information-container">
+          <h2 className="title">{learnMoreModalData.name}</h2>
+          <div className="beverage-data-container">
+            <div className="data">
+              <div className="beverage-details">
+                <span>Beverage</span>
+              </div>
+              <div className="beverage-details">
+                <span>ABV: {learnMoreModalData.abv}</span>
+              </div>
+              <div className="beverage-details">
+                <span>IBU: {learnMoreModalData.ibu}</span>
+              </div>
+            </div>
+            <div className="description-container">
+              <div className="description">
+                <p>{learnMoreModalData.description}</p>
+              </div>
+            </div>
+          </div>
+          <div className="cart-button-container">
+            <button
+              id="modal-button"
+              onClick={() => AddItemToCart(learnMoreModalData.id)}
+              disabled={ItemAlreadyAddedToCart() !== undefined ? true : false}
+            >
+              {ItemAlreadyAddedToCart() !== undefined
+                ? "Item in Cart"
+                : `Add to cart $${learnMoreModalData.srm}`}
+            </button>
+            <button
+              id="modal-button"
+              onClick={() => {
+                setLearnMoreModalData(false);
+              }}
+            >
+              Close
+            </button>
+          </div>
+        </div>
+        <div className="beverage-image-container">
+          <img
+            src={learnMoreModalData.image_url}
+            alt="Beverage"
+            width="100px"
+            height="400px"
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+export default LearnMoreModal;
+```
+ - ### Selecting quantity, adding product to cart, updating quantity
+The user will be sent to a quantity view when they click the "+" sign on a product card. The user chooses how many units of this item they want from the quantity display. When the confirm button is pressed, the item is added to the user's shopping cart and the "+" symbol is replaced with a "shopping cart icon." This notifies the user that their item has been added to their shopping cart. A user can change the number of units of a item by clicking the 'update' button and selecting a new quantity.
+ 
+ [Untitled_ Jan 14, 2023 9_19 AM.webm](https://user-images.githubusercontent.com/19699378/212486623-7fec70db-8f22-4201-bbb5-4d22fb0faaf9.webm)
+
+
  ---
  # *New Discoveries*
  - ### limiting the number of API calls
@@ -102,5 +217,6 @@ I implemented *lodash's _Memoize* method to better restrict the API requests. Wi
     }
   });
   ```
+  
 
 
