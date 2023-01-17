@@ -291,7 +291,112 @@ function QuantityCounter({ beverage, beverages, quantity, setQuantity }) {
 export default QuantityCounter;
 
 ```
+### Getting orders grand total and remove items from cart
+<img src="https://user-images.githubusercontent.com/19699378/212942140-4dfb4598-1057-4a31-8528-53cc2f9cd310.png" alt="alt text" width="320" height="420">
 
+#### Cart Component
+```JavaScript
+
+import React from "react";
+
+import CartItems from "./CartItems";
+
+export default function CartQuickView({
+  cartItems,
+  setCartItems,
+  setIsCartQuickviewShown,
+  setBeverages,
+  beverages,
+  redeemTotal,
+  ...props
+}) {
+  return (
+    <>
+      <div
+        className={
+          setIsCartQuickviewShown
+            ? "cart-quickview"
+            : " cart-quickview-checkout"
+        }
+        style={{ backgroundColor: props.color }}
+      >
+        <h2 id="quickview-title" style={{ color: props.headingColor }}>
+          {props.title}
+          <span id="quickview-cart-length">({cartItems.length})</span>
+        </h2>
+        <div className="cart-item-quickview-container">
+          {cartItems.map((item, index) => (
+            <CartItems
+              key={item.id}
+              item={item}
+              index={index}
+              setCartItems={setCartItems}
+              cartItems={cartItems}
+              setBeverages={setBeverages}
+              beverages={beverages}
+              cartItem={item.id}
+            />
+          ))}
+        </div>
+
+        {cartItems.length <= 0 && <p>Your cart is empty! Let's fix that.</p>}
+
+        {props.children}
+      </div>
+    </>
+  );
+}
+
+```
+#### Cart Items Component
+```JavaScript
+
+import React from "react";
+
+import TrashIcon from "../Assets/trash-icon.png";
+
+import "../css/CartItems.css";
+
+function CartItems({
+  setCartItems,
+  item,
+  index,
+  cartItems,
+  setBeverages,
+  beverages,
+  cartItem,
+}) {
+  return (
+    <div className="cart-items">
+      <div className="beverage-image">
+        <img src={item.image_url} alt="" width="20px" height="78" />
+      </div>
+      <div className="beverage-information-container">
+        <p id="name" className="informationz">
+          {item.name}
+        </p>
+        <p id="price" className="information">
+          {item.qty} @ ${item.srm}.00 = ${item.qty * item.srm}
+        </p>
+      </div>
+      <div className="deleteItem-container">
+        <img
+          id="delete-item"
+          height="22"
+          width="22"
+          src={TrashIcon}
+          alt="remove item icon"
+          onClick={() => removeFromCart(index, cartItem)}
+        />
+      </div>
+    </div>
+  );
+}
+
+export default CartItems;
+
+
+```
 
  ---
  # *New Discoveries*
