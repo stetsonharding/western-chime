@@ -156,6 +156,9 @@ The user will be sent to a quantity view when they click the "+" sign on a produ
     }, 900);
   };
 ```
+#### Component that display the quantity view
+<img src="https://user-images.githubusercontent.com/19699378/212939760-9f406e8a-216d-4929-b4c7-b07881f8f9a4.png" alt="alt text" width="200" height="300">
+
 ```JavaScript
 //quantity view component. 
 //This component is what displays the quantity counter as well as product information and confirm/update buttons
@@ -215,6 +218,8 @@ The user will be sent to a quantity view when they click the "+" sign on a produ
 
 ```
 
+#### Component to increase/decrese product quantity
+<img src="https://user-images.githubusercontent.com/19699378/212940356-1a99dd17-f016-4bdd-9c46-7071b4eb0f04.png" alt="alt text" width="350" height="80">
 
 ```JavaScript
 
