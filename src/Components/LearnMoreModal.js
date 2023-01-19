@@ -10,11 +10,11 @@ function LearnMoreModal({
   setBeverages,
   beverages,
 }) {
-  //Adding item to cart when viewing modal.
-  //Updates idAddedToCart to display shopping cart icon instead of plus sign.
+  //Adding item to cart function.
   const AddItemToCart = (id) => {
     setCartItems((prevItems) => [...prevItems, learnMoreModalData]);
-
+    /*if true, change the value of the isAddedToCart property so that the product card now displays a shopping cart icon 
+ rather than a plus sign. */
     let updatedBeverages = beverages.map((beverage) => {
       if (id === beverage.id) {
         return {
@@ -27,12 +27,13 @@ function LearnMoreModal({
     setBeverages(updatedBeverages);
   };
 
-  //Function to check if item is already in cart. Using this for conditional rendering 'add to cart' button text.
+  //Function to check if item is already in cart
+  //Used for conditional rendering "add to cart' button and disabling 'add to cart' button
   const ItemAlreadyAddedToCart = () => {
     return cartItems.find((item) => item.name === learnMoreModalData.name);
   };
 
-  //Calling "ItemAlreadyAddedToCart" upon rendering
+  //Check if item is in cart upon rendering.
   useEffect(() => {
     ItemAlreadyAddedToCart();
   });

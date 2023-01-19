@@ -1,24 +1,14 @@
 import React from "react";
 import "../css/QuantityCounter.css";
 
-function QuantityCounter({
-  beverage,
-  beverages,
-  // setBeverages,
-  quantity,
-  setQuantity,
-}) {
-  // const [quantity, setQuantity] = useState(1);
-
+function QuantityCounter({ beverage, beverages, quantity, setQuantity }) {
   const incrementQuantity = (id) => {
-    // setQuantity((prevState) => prevState + 1);
-
     beverages.map((beverage) => {
       if (id === beverage.id) {
         return {
           ...beverage,
-          isAddedToCart: !beverage.isAddedToCart,
-          quantityConfirm: !beverage.quantityConfirm,
+          // isAddedToCart: !beverage.isAddedToCart,
+          // quantityConfirm: !beverage.quantityConfirm,
           qty: beverage.qty++,
         };
       }
@@ -29,14 +19,12 @@ function QuantityCounter({
   };
 
   const decrementQuantity = (id) => {
-    // setQuantity((prevState) => prevState - 1);
-
     beverages.map((beverage) => {
       if (id === beverage.id) {
         return {
           ...beverage,
-          isAddedToCart: !beverage.isAddedToCart,
-          quantityConfirm: !beverage.quantityConfirm,
+          // isAddedToCart: !beverage.isAddedToCart,
+          // quantityConfirm: !beverage.quantityConfirm,
           qty: beverage.qty--,
         };
       }

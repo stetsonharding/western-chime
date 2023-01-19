@@ -88,33 +88,41 @@ function App() {
     setCurrentPage(currentPage + 1);
   };
 
-  //Searching for beverages based on users search query.
+  //use the user's search term to find beverages.
   const onSearchSubmit = _.memoize(async (query) => {
     if (query !== "") {
+      //handling edge cases and problems while fetching API
       try {
         const response = await fetch(
           `https://api.punkapi.com/v2/beers?beer_name=${query}`
         );
         const data = await response.json();
 
-        //Calling AllDataProperties to add properties to data
-        const finalData = AllDataProperties(data);
-
-        if (finalData.length === 0) {
+        //No results found for specified search query. Display error message.
+        if (data.length === 0) {
           setErrorMessage(
             `Shucks! We can't seem to find ${query}. Try Lookin' for another?`
           );
           setBeverages([]);
+
+          //API retrieval was successful.
         } else {
+          //adding attributes (quantity, addedToCart) to data by calling AllDataProperties function.
+          const finalData = AllDataProperties(data);
+          //In case the product doesn't have a image in the results, add an image to product by calling AddImage.
           AddImage(finalData);
+          //storing API results into state
           setBeverages(finalData);
+          //setting an empty string as the error message
           setErrorMessage("");
         }
+        //Error fetching API
       } catch (err) {
         setErrorMessage(`There seems to be an error!`);
         setBeverages([]);
       }
     } else {
+      //Retrieves beverage API to display beverages once more if the user removes the search query from the input.
       GetApiBeverages();
       setErrorMessage("");
     }

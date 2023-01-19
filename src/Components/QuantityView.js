@@ -43,10 +43,11 @@ function QuantityView({
     }
   }
 
+  //Add item to cart button
   const confirmQuantity = (id) => {
     //Add item to cart
     setCartItems((prevItems) => [...prevItems, beverage]);
-    //Show 'item added to cart' notification/component
+    //conditionally rendering 'update' button by setting cartUpdated to true.
     setCartUpdated(true);
     //After 900s, leave quantity view by setting quantityConfirm to false and is addedToCart to true to display cart icon.
     setTimeout(() => {
