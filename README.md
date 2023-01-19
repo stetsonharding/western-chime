@@ -5,22 +5,404 @@
 ---
 # *Technologies*
 - ## React.js
- 1. Functional Components using Hooks (useState, useEffect, useDebounce).
- 2. React Router for site navigation.
- 3. Conditional Rendering.
- 4. Component reuse and modifications using props.childen.
- 5. Demonstration of passing props from parent to child components.
+ 1. Functional Components using Hooks (useState, useEffect, useDebounce, useRef).
+ 2. React Router v6 for site navigation across pages
+ 3. Component Conditional Rendering
+ 4. Component reuse and modifications using props.childen
+ 5. Demonstration of passing props from parent to child components
  - ## lodash/Memoization
- 1. Help limit the number of API calls by saving already searched query results in storage.
-  - ## CSS/Flexbox/Grid
- 1. Clean reusable styling.
- 2. Fully responsive to all screen sizes.
+ 1. Help limit the number of API calls by saving already searched query results in storage
+ - ## CSS/Flexbox/Grid
+ 1. Clean reusable styling
+ 2. Fully responsive to all screen sizes
  - ## Punk API
- 1. Fetch data as well as handle all edge cases and errors.
+ 1. Fetch data to get all products
+ 2. Fetch data to search for spacific products
+ 3. Handle all edge cases and errors
+ ---
+ # *Functionalities*
+ 
+ - ### Find out more details about a certain product
+Any of the product cards can be clicked to enable a modal dialog to appear. This modal will provide further details about a particular product, such as a description, ABV and IBU percentages, price, and an opportunity to add the item to the user's shopping cart.
+
+
+  <img width="530" height="275" src="https://user-images.githubusercontent.com/19699378/212483945-52367b58-1c0b-4c0e-8548-4946795f4fab.png">
+
+
+```JavaScript
+function LearnMoreModal({
+  setLearnMoreModalData,
+  learnMoreModalData,
+  setCartItems,
+  cartItems,
+  setBeverages,
+  beverages,
+}) {
+
+  //Add item to cart function
+  const AddItemToCart = (id) => {
+  //Adding item to users shopping cart.
+    setCartItems((prevItems) => [...prevItems, learnMoreModalData]);
+  //Checking to see if a beverage id is equal to the id passed into the function.
+  /*if true, change the value of the isAddedToCart property so that the product card now displays a shopping cart icon 
+ rather than a plus sign. */
+    let updatedBeverages = beverages.map((beverage) => {
+      if (id === beverage.id) {
+        return {
+          ...beverage,
+          isAddedToCart: true,
+        };
+      }
+      return beverage;
+    });
+    setBeverages(updatedBeverages);
+  };
+
+  //Function to check if item is already in cart
+  //Used for conditional rendering "add to cart' button and disabling 'add to cart' button
+  const ItemAlreadyAddedToCart = () => {
+    return cartItems.find((item) => item.name === learnMoreModalData.name);
+  };
+
+  //Check if item is in cart upon rendering.
+  useEffect(() => {
+    ItemAlreadyAddedToCart();
+  });
+
+  return (
+    <div className="modal-background">
+      <div className="modal-content">
+        <div className="information-container">
+          <h2 className="title">{learnMoreModalData.name}</h2>
+          <div className="beverage-data-container">
+            <div className="data">
+              <div className="beverage-details">
+                <span>Beverage</span>
+              </div>
+              <div className="beverage-details">
+                <span>ABV: {learnMoreModalData.abv}</span>
+              </div>
+              <div className="beverage-details">
+                <span>IBU: {learnMoreModalData.ibu}</span>
+              </div>
+            </div>
+            <div className="description-container">
+              <div className="description">
+                <p>{learnMoreModalData.description}</p>
+              </div>
+            </div>
+          </div>
+          <div className="cart-button-container">
+            <button
+              id="modal-button"
+              onClick={() => AddItemToCart(learnMoreModalData.id)}
+              disabled={ItemAlreadyAddedToCart() !== undefined ? true : false}
+            >
+              {ItemAlreadyAddedToCart() !== undefined
+                ? "Item in Cart"
+                : `Add to cart $${learnMoreModalData.srm}`}
+            </button>
+            <button
+              id="modal-button"
+              onClick={() => {
+                setLearnMoreModalData(false);
+              }}
+            >
+              Close
+            </button>
+          </div>
+        </div>
+        <div className="beverage-image-container">
+          <img
+            src={learnMoreModalData.image_url}
+            alt="Beverage"
+            width="100px"
+            height="400px"
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+export default LearnMoreModal;
+```
+ - ### Selecting quantity, adding product to cart, updating quantity
+The user will be sent to a quantity view when they click the "+" sign on a product card. The user chooses how many units of this item they want from the quantity display. When the confirm button is pressed, the item is added to the user's shopping cart and the "+" symbol is replaced with a "shopping cart icon." This notifies the user that their item has been added to their shopping cart. A user can change the number of units of a item by clicking the 'update' button and selecting a new quantity.
+ 
+ [Untitled_ Jan 14, 2023 9_19 AM.webm](https://user-images.githubusercontent.com/19699378/212486623-7fec70db-8f22-4201-bbb5-4d22fb0faaf9.webm)
+
+```JavaScript
+//Function to confirm quantity and add item to cart
+  const confirmQuantity = (id) => {
+    //setting all the previous items in the cart plus the newly added item to state
+    setCartItems((prevItems) => [...prevItems, beverage]);
+    //conditionally rendering 'update' button by setting cartUpdated to true or 'confirm' button if false
+    setCartUpdated(true);
+    //After 900s, leave quantity view by setting quantityConfirm to false and is addedToCart to true to display cart icon instead of the "+" symbol
+    setTimeout(() => {
+      setCartUpdated(false);
+      let updatedBeverages = beverages.map((beverage) => {
+        if (id === beverage.id) {
+          return {
+            ...beverage,
+            isAddedToCart: true,
+            quantityConfirm: !beverage.quantityConfirm,
+          };
+        }
+        return beverage;
+      });
+      //set the updated beverages to state to display to user
+      setBeverages(updatedBeverages);
+    }, 900);
+  };
+```
+#### Component that display the quantity view
+<img src="https://user-images.githubusercontent.com/19699378/212939760-9f406e8a-216d-4929-b4c7-b07881f8f9a4.png" alt="alt text" width="200" height="300">
+
+```JavaScript
+//quantity view component. 
+//This component is what displays the quantity counter as well as product information and confirm/update buttons
+ return (
+    <div className="quantity-view">
+      <div className="quantity-information">
+        <div id="quantity-back">
+          <span onClick={() => leaveQuantityView(beverage.id, beverage)}>
+            &lt;
+          </span>
+          <div>
+            <img src={beverage.image_url} alt="" height="80" />
+          </div>
+        </div>
+        <div className="quantity-product-details">
+          <p id="name">{beverage.name}</p>
+
+          <p className="ibu-abv">IBU: {beverage.ibu}%</p>
+
+          <p className="ibu-abv">ABV: {beverage.abv}%</p>
+        </div>
+      </div>
+      <div className="quantity-counter">
+        <QuantityCounter
+          beverage={beverage}
+          beverages={beverages}
+          setBeverages={setBeverages}
+          quantity={quantity}
+          setQuantity={setQuantity}
+        />
+      </div>
+      //conditionally rendering the 'update' button if cartUpdated is true or render the confirm button if it is false
+      {cartUpdated !== true ? (
+        <div className="quantity-confirm">
+          {beverage.isAddedToCart ? (
+            <UpdateItem
+              beverage={beverage}
+              quantity={quantity}
+              cartItems={cartItems}
+              setCartItems={setCartItems}
+            />
+          ) : (
+            <button
+              className="confirm-btn"
+              onClick={() => confirmQuantity(beverage.id)}
+            >
+              Confirm ${beverage.srm * quantity}
+            </button>
+          )}
+        </div>
+      ) : (
+        <UpdatedNotification notification="Item added to cart" />
+      )}
+    </div>
+  );
+}
+
+```
+
+#### Component to increase/decrese product quantity
+<img src="https://user-images.githubusercontent.com/19699378/212940356-1a99dd17-f016-4bdd-9c46-7071b4eb0f04.png" alt="alt text" width="350" height="80">
+
+```JavaScript
+
+//Quantity Counter Component
+//This is the Component that allows the user to increase or decrease items quantity
+function QuantityCounter({ beverage, beverages, quantity, setQuantity }) {
+
+//Increment quantity function
+  const incrementQuantity = (id) => {
+  //Checking to see if a items id is equal to the item getting passed in
+    beverages.map((beverage) => {
+      if (id === beverage.id) {
+       //incrementing items quantity by 1.
+        return {
+          ...beverage,
+          qty: beverage.qty++,
+        };
+      }
+      return beverage;
+    });
+
+    setQuantity(beverage.qty);
+  };
+
+//Decrement quantity function
+  const decrementQuantity = (id) => {
+  //Checking to see if a items id is equal to the item getting passed in
+    beverages.map((beverage) => {
+      if (id === beverage.id) {
+       //decrementing items quantity by 1.
+        return {
+          ...beverage,
+          qty: beverage.qty--,
+        };
+      }
+      return beverage;
+    });
+
+    setQuantity(beverage.qty);
+  };
+
+  return (
+    <div className="quantity-counter">
+      <div className="decrement">
+        <button
+          className="quantity-btn"
+          disabled={quantity <= 1 ? true : false}
+          onClick={() => decrementQuantity(beverage.id)}
+        >
+          -
+        </button>
+      </div>
+      <div>
+        <h3 style={{}}>{beverage.qty}</h3>
+      </div>
+      <div className="increment">
+        <button
+          className="quantity-btn"
+          disabled={quantity === 10 ? true : false}
+          onClick={() => incrementQuantity(beverage.id)}
+        >
+          +
+        </button>
+      </div>
+    </div>
+  );
+}
+
+export default QuantityCounter;
+
+```
+### Getting orders grand total and remove items from cart
+<img src="https://user-images.githubusercontent.com/19699378/212942140-4dfb4598-1057-4a31-8528-53cc2f9cd310.png" alt="alt text" width="320" height="420">
+
+#### Cart Component
+```JavaScript
+
+import React from "react";
+
+import CartItems from "./CartItems";
+
+export default function CartQuickView({
+  cartItems,
+  setCartItems,
+  setIsCartQuickviewShown,
+  setBeverages,
+  beverages,
+  redeemTotal,
+  ...props
+}) {
+  return (
+    <>
+      <div
+        className={
+          setIsCartQuickviewShown
+            ? "cart-quickview"
+            : " cart-quickview-checkout"
+        }
+        style={{ backgroundColor: props.color }}
+      >
+        <h2 id="quickview-title" style={{ color: props.headingColor }}>
+          {props.title}
+          <span id="quickview-cart-length">({cartItems.length})</span>
+        </h2>
+        <div className="cart-item-quickview-container">
+          {cartItems.map((item, index) => (
+            <CartItems
+              key={item.id}
+              item={item}
+              index={index}
+              setCartItems={setCartItems}
+              cartItems={cartItems}
+              setBeverages={setBeverages}
+              beverages={beverages}
+              cartItem={item.id}
+            />
+          ))}
+        </div>
+
+        {cartItems.length <= 0 && <p>Your cart is empty! Let's fix that.</p>}
+
+        {props.children}
+      </div>
+    </>
+  );
+}
+
+```
+#### Cart Items Component
+```JavaScript
+
+import React from "react";
+
+import TrashIcon from "../Assets/trash-icon.png";
+
+import "../css/CartItems.css";
+
+function CartItems({
+  setCartItems,
+  item,
+  index,
+  cartItems,
+  setBeverages,
+  beverages,
+  cartItem,
+}) {
+  return (
+    <div className="cart-items">
+      <div className="beverage-image">
+        <img src={item.image_url} alt="" width="20px" height="78" />
+      </div>
+      <div className="beverage-information-container">
+        <p id="name" className="informationz">
+          {item.name}
+        </p>
+        <p id="price" className="information">
+          {item.qty} @ ${item.srm}.00 = ${item.qty * item.srm}
+        </p>
+      </div>
+      <div className="deleteItem-container">
+        <img
+          id="delete-item"
+          height="22"
+          width="22"
+          src={TrashIcon}
+          alt="remove item icon"
+          onClick={() => removeFromCart(index, cartItem)}
+        />
+      </div>
+    </div>
+  );
+}
+
+export default CartItems;
+
+
+```
+
  ---
  # *New Discoveries*
  - ### limiting the number of API calls
-I had to figure out how to restrict how many API requests are made when a user is looking for products. I learned about the *useDebounce* React hook after doing some investigation and going through the React documentation. We can specify a time when a specific function will be called using this hook. Previously, My API was being called every time a user entered a number or character in the search input before the useDebounce hook was enabled. The useDebounce hook has made it so that my API is now called 1 second after the user has finished tying. If this were done in a business setting, it would improve performance in my application and save money. The code is given below:
+ #### useDebounce
+I wanted to figure out how to restrict how many API requests are made when a user is looking for products. I learned about the *useDebounce* React hook after doing some research on how to limit the number of API calls (https://usehooks-ts.com/react-hook/use-debounce). We can specify a time when a specific function will be called using this hook. Previously, My API was being called every time a user entered a number or character in the search input. The useDebounce hook has made it so that my API is now called 1 second after the user has finished tying. This improves performance, and would save a company money making less API calls. The code is given below:
 
 ``` JavaScript
 import React, { useState, useEffect } from "react";
@@ -57,3 +439,50 @@ function SearchInput({ onSearchSubmit }) {
 
 export default SearchInput;
 ```
+#### Lodash_Memoize
+I implemented *lodash's _Memoize* method to better restrict the API requests. With Memoize, you may effectively cache a function's output for the same parameters. Let's imagine someone searched for the product "Buzz," and the results were cached. Now, if a user searches for Buzz once again, the cache will be used rather than the API to get the result. Below is my function to search for a users product that uses Memoize.
+
+```JavaScript
+ //use the user's search term to find beverages.
+  const onSearchSubmit = _.memoize(async (query) => {
+    if (query !== "") {
+      //handling edge cases and problems while fetching API
+      try {
+        const response = await fetch(
+          `https://api.punkapi.com/v2/beers?beer_name=${query}`
+        );
+        const data = await response.json();
+
+        //No results found for specified search query. Display error message.
+        if (data.length === 0) {
+          setErrorMessage(
+            `Shucks! We can't seem to find ${query}. Try Lookin' for another?`
+          );
+          setBeverages([]);
+
+          //API retrieval was successful.
+        } else {
+          //adding attributes (quantity, addedToCart) to data by calling AllDataProperties function.
+          const finalData = AllDataProperties(data);
+          //In case the product doesn't have a image in the results, add an image to product by calling AddImage.
+          AddImage(finalData);
+          //storing API results into state
+          setBeverages(finalData);
+          //setting an empty string as the error message
+          setErrorMessage("");
+        }
+        //Error fetching API
+      } catch (err) {
+        setErrorMessage(`There seems to be an error!`);
+        setBeverages([]);
+      }
+    } else {
+      //Retrieves beverage API to display beverages once more if the user removes the search query from the input.
+      GetApiBeverages();
+      setErrorMessage("");
+    }
+  });
+  ```
+  
+
+
