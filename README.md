@@ -397,7 +397,33 @@ export default CartItems;
 
 
 ```
+#### Functionality to calculate the overall cost of everything (subTotal, taxes, and grand total) in a user's cart.
+```JavaScript
+  const OrderCostCalculations = () => {
+    let TAX_RATE = 0.1;
+    let subTotalCalculation = 0;
+    //loop through all items in cart, multiply price * qty and add that total to the current subtotalCalculation.
+    cartItems.forEach((item) => {
+      subTotalCalculation += item.srm * item.qty;
+    });
+    //Updating subTotal state
+    setSubTotal(subTotalCalculation);
 
+    //subtotal * taxe_rate to get the total ammount in taxes
+    //update taxes state
+    setTaxes(subTotal * TAX_RATE);
+
+    //Updating grandTotal by adding subtotal and taxes together.
+    setGrandTotal(subTotal + taxes);
+  };
+  
+//Every time a cart item is added, removed, or changed, the OrderCostCalculations function has to be called in order to update the users grand total.
+//Using React's useEffect hook is perfect for this situation.
+ 
+   useEffect(() => {
+    OrderCostCalculations();
+  }, [subTotal, cartItems, taxes]);
+```
  ---
  # *New Discoveries*
  - ### limiting the number of API calls
