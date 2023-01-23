@@ -424,6 +424,20 @@ export default CartItems;
     OrderCostCalculations();
   }, [subTotal, cartItems, taxes]);
 ```
+### Function to remove an item from the users cart
+```JavaScript
+  const removeFromCart = (item) => {
+    //Making a copy of cartItems array to not directly manipulate state.
+    const cart = [...cartItems];
+ 
+    //Getting all items from cart array accept the item that is passed in.
+    const updatedItems = cart.filter((prevItem) => prevItem.id !== item.id);
+   
+    //Updating state for cart items
+    setCartItems(updatedItems);
+    
+  };
+```
  ---
  # *New Discoveries*
  - ### limiting the number of API calls
