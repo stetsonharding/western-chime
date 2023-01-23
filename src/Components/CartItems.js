@@ -7,22 +7,29 @@ import "../css/CartItems.css";
 function CartItems({
   setCartItems,
   item,
-  index,
+  // index,
   cartItems,
   setBeverages,
   beverages,
-  cartItem,
+  setEditItemModal,
+  // cartItem,
 }) {
-  const removeFromCart = (index, id) => {
-    const allItems = [...cartItems];
-    allItems.splice(index, 1);
-    setCartItems(allItems);
+  const removeFromCart = (item) => {
+    //Making a copy of cartItems array to not directly manipulate state.
+    const cart = [...cartItems];
 
-    updateBeverages(id);
+    //Getting all items from cart array accept the item that is passed in.
+    const updatedItems = cart.filter((prevItem) => prevItem.id !== item.id);
+
+    //Updating state for cart items
+    setCartItems(updatedItems);
+
+    //Calling this function to change "add to cart icon" back to "+" symbol.
+    updateBeveragesCard(item.id);
   };
 
   //Changes card "add to cart" icon back to "+" if item is removed from shopping cart.
-  const updateBeverages = (id) => {
+  const updateBeveragesCard = (id) => {
     let allBeverages = [...beverages];
 
     let updatedBeverages = allBeverages.map((items) => {
@@ -57,8 +64,11 @@ function CartItems({
           width="22"
           src={TrashIcon}
           alt="remove item icon"
-          onClick={() => removeFromCart(index, cartItem)}
+          onClick={() => removeFromCart(item)}
         />
+        <div className="edit-cart-item">
+          <span onClick={() => setEditItemModal(true)}>Edit</span>
+        </div>
       </div>
     </div>
   );

@@ -8,6 +8,7 @@ import _ from "lodash";
 import Header from "./Components/Header";
 import CardContainer from "./Components/CardContainer";
 import LearnMoreModal from "./Components/LearnMoreModal";
+import EditItemModal from "./Components/EditItemModal";
 import OrderPlaced from "./Components/Checkout/OrderPlaced";
 import CheckoutOverview from "./Components/Checkout/CheckoutOverview";
 import Footer from "./Components/Footer";
@@ -20,6 +21,7 @@ function App() {
   const [cartItems, setCartItems] = useState([]);
   const [learnMoreModalData, setLearnMoreModalData] = useState();
   const [grandTotal, setGrandTotal] = useState(0);
+  const [editItemModal, setEditItemModal] = useState(false);
 
   const [userInfo, setUserInfo] = useState({
     firstName: "",
@@ -155,7 +157,7 @@ function App() {
           beverages={beverages}
         />
       )}
-
+      {editItemModal && <EditItemModal />}
       <Header
         cartItems={cartItems}
         setCartItems={setCartItems}
@@ -164,6 +166,7 @@ function App() {
         grandTotal={grandTotal}
         setGrandTotal={setGrandTotal}
         formatPrice={formatPrice}
+        setEditItemModal={setEditItemModal}
       />
 
       <Routes>

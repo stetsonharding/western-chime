@@ -17,21 +17,32 @@ export default function ShoppingCartBadge({
   grandTotal,
   setGrandTotal,
   formatPrice,
+  setEditItemModal,
 }) {
   const [isCartQuickviewShown, setIsCartQuickviewShown] = useState(false);
   const [taxes, setTaxes] = useState(0);
   const [subTotal, setSubTotal] = useState(0);
 
-  useEffect(() => {
+  const OrderCostCalculations = () => {
     let TAX_RATE = 0.1;
-    let subTotal = 0;
-
+    let subTotalCalculation = 0;
+    //loop through all items in cart, multiply price * qty and add that total to the current subtotal.
     cartItems.forEach((item) => {
-      setSubTotal((subTotal += item.srm * item.qty));
+      subTotalCalculation += item.srm * item.qty;
     });
+    //Update subTotal state
+    setSubTotal(subTotalCalculation);
 
+    //subtotal * taxe_rate to get the total ammount in taxes
+    //update taxes state
     setTaxes(subTotal * TAX_RATE);
+
+    //Updating grandTotal by adding subtotal and taxes together.
     setGrandTotal(subTotal + taxes);
+  };
+
+  useEffect(() => {
+    OrderCostCalculations();
   }, [subTotal, cartItems, taxes]);
 
   return (
@@ -56,6 +67,7 @@ export default function ShoppingCartBadge({
           setBeverages={setBeverages}
           beverages={beverages}
           title={"Your shoppin' cart "}
+          setEditItemModal={setEditItemModal}
         >
           {cartItems.length !== 0 && (
             <SubtotalAndTaxes

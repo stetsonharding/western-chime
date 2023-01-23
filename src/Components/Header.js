@@ -12,6 +12,7 @@ function Header({
   grandTotal,
   setGrandTotal,
   formatPrice,
+  setEditItemModal,
 }) {
   return (
     <div className="header-container">
@@ -27,6 +28,7 @@ function Header({
         grandTotal={grandTotal}
         setGrandTotal={setGrandTotal}
         formatPrice={formatPrice}
+        setEditItemModal={setEditItemModal}
       />
     </div>
   );
