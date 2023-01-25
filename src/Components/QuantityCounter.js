@@ -7,8 +7,6 @@ function QuantityCounter({ beverage, beverages, quantity, setQuantity }) {
       if (id === beverage.id) {
         return {
           ...beverage,
-          // isAddedToCart: !beverage.isAddedToCart,
-          // quantityConfirm: !beverage.quantityConfirm,
           qty: beverage.qty++,
         };
       }
@@ -23,8 +21,6 @@ function QuantityCounter({ beverage, beverages, quantity, setQuantity }) {
       if (id === beverage.id) {
         return {
           ...beverage,
-          // isAddedToCart: !beverage.isAddedToCart,
-          // quantityConfirm: !beverage.quantityConfirm,
           qty: beverage.qty--,
         };
       }

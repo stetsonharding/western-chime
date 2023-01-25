@@ -7,23 +7,18 @@ import "../css/CartItems.css";
 function CartItems({
   setCartItems,
   item,
-  // index,
   cartItems,
   setBeverages,
   beverages,
-  setEditItemModal,
-  // cartItem,
+  setEditedCartItem,
 }) {
   const removeFromCart = (item) => {
     //Making a copy of cartItems array to not directly manipulate state.
     const cart = [...cartItems];
-
     //Getting all items from cart array accept the item that is passed in.
     const updatedItems = cart.filter((prevItem) => prevItem.id !== item.id);
-
     //Updating state for cart items
     setCartItems(updatedItems);
-
     //Calling this function to change "add to cart icon" back to "+" symbol.
     updateBeveragesCard(item.id);
   };
@@ -43,6 +38,11 @@ function CartItems({
     });
     setBeverages(updatedBeverages);
   };
+
+  function getEditedItem(item) {
+    setEditedCartItem(item);
+    console.log(item);
+  }
 
   return (
     <div className="cart-items">
@@ -67,7 +67,7 @@ function CartItems({
           onClick={() => removeFromCart(item)}
         />
         <div className="edit-cart-item">
-          <span onClick={() => setEditItemModal(true)}>Edit</span>
+          <span onClick={() => getEditedItem(item)}>Edit</span>
         </div>
       </div>
     </div>

@@ -21,7 +21,7 @@ function App() {
   const [cartItems, setCartItems] = useState([]);
   const [learnMoreModalData, setLearnMoreModalData] = useState();
   const [grandTotal, setGrandTotal] = useState(0);
-  const [editItemModal, setEditItemModal] = useState(false);
+  const [editedCartItem, setEditedCartItem] = useState({});
 
   const [userInfo, setUserInfo] = useState({
     firstName: "",
@@ -157,7 +157,12 @@ function App() {
           beverages={beverages}
         />
       )}
-      {editItemModal && <EditItemModal />}
+      {editedCartItem.image_url && (
+        <EditItemModal
+          setEditedCartItem={setEditedCartItem}
+          editedCartItem={editedCartItem}
+        />
+      )}
       <Header
         cartItems={cartItems}
         setCartItems={setCartItems}
@@ -166,7 +171,7 @@ function App() {
         grandTotal={grandTotal}
         setGrandTotal={setGrandTotal}
         formatPrice={formatPrice}
-        setEditItemModal={setEditItemModal}
+        setEditedCartItem={setEditedCartItem}
       />
 
       <Routes>

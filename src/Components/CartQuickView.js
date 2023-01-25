@@ -9,7 +9,7 @@ export default function CartQuickView({
   setBeverages,
   beverages,
   redeemTotal,
-  setEditItemModal,
+  setEditedCartItem,
   ...props
 }) {
   return (
@@ -35,7 +35,7 @@ export default function CartQuickView({
               cartItems={cartItems}
               setBeverages={setBeverages}
               beverages={beverages}
-              setEditItemModal={setEditItemModal}
+              setEditedCartItem={setEditedCartItem}
             />
           ))}
         </div>

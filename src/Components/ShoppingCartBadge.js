@@ -17,7 +17,7 @@ export default function ShoppingCartBadge({
   grandTotal,
   setGrandTotal,
   formatPrice,
-  setEditItemModal,
+  setEditedCartItem,
 }) {
   const [isCartQuickviewShown, setIsCartQuickviewShown] = useState(false);
   const [taxes, setTaxes] = useState(0);
@@ -67,7 +67,7 @@ export default function ShoppingCartBadge({
           setBeverages={setBeverages}
           beverages={beverages}
           title={"Your shoppin' cart "}
-          setEditItemModal={setEditItemModal}
+          setEditedCartItem={setEditedCartItem}
         >
           {cartItems.length !== 0 && (
             <SubtotalAndTaxes
