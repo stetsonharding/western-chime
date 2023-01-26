@@ -1,26 +1,51 @@
-.modal-size {
-  width: 35%;
-  height: 35%;
-}
-.editModal-header {
+.modal-background {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.4);
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.edit-item-modal {
+  background-color: #e6e7cb;
+  width: calc(30% - 64px);
+  height: 40%;
+  border-radius: 10px;
+
+  /* //Centering modal */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  /* == */
+}
+
+.edit-cart-item-header {
   width: 100%;
 }
-.close-button {
-  height: 30px;
-  width: 30px;
-  background-color: transparent;
-  border: none;
-  font-size: 1.4em;
-}
 
-.close-button:hover {
-  cursor: pointer;
+/* Beverage Title */
+.edit-item-title {
+  font-size: 32px;
+  letter-spacing: 1px;
+  font-family: "Viner Hand ITC", Times New Roman, cursive;
+  text-align: center;
+  color: #e3bb67;
+  padding: 0;
+  margin: 0 auto;
+  /* min-height: 20px; */
 }
+/* === */
 
-.modal-title {
-  margin: 0;
-  padding: 5px;
+/* Image Container */
+.edit-item-information {
+  margin-top: 20px;
+  text-align: center;
 }
+/* == */
