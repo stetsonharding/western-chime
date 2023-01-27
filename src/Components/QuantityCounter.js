@@ -1,7 +1,13 @@
 import React from "react";
 import "../css/QuantityCounter.css";
 
-function QuantityCounter({ beverage, beverages, quantity, setQuantity }) {
+function QuantityCounter({
+  beverage,
+  beverages,
+  quantity,
+  setQuantity,
+  setBeverages,
+}) {
   const incrementQuantity = (id) => {
     beverages.map((beverage) => {
       if (id === beverage.id) {
@@ -47,7 +53,7 @@ function QuantityCounter({ beverage, beverages, quantity, setQuantity }) {
       <div className="increment">
         <button
           className="quantity-btn"
-          disabled={quantity === 10 ? true : false}
+          disabled={beverage.qty === 10 ? true : false}
           onClick={() => incrementQuantity(beverage.id)}
         >
           +

@@ -41,7 +41,6 @@ function CartItems({
 
   function getEditedItem(item) {
     setEditedCartItem(item);
-    console.log(item);
   }
 
   return (

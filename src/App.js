@@ -161,6 +161,7 @@ function App() {
         <EditItemModal
           setEditedCartItem={setEditedCartItem}
           editedCartItem={editedCartItem}
+          beverages={beverages}
         />
       )}
       <Header

@@ -1,38 +1,35 @@
 import React from "react";
+import QuantityCounter from "../Components/QuantityCounter";
 
 import "../css/EditCartItemModal.css";
-function EditItemModal({ setEditedCartItem, editedCartItem }) {
+function EditItemModal({ setEditedCartItem, editedCartItem, beverages }) {
   return (
     <div className="modal-background">
-      <div className="edit-item-modal">
-        <div className="">
-          <div
-            className="edit-cart-item-header"
-            style={{ display: "flex", justifyContent: "space-between" }}
+      <div className="edit-cartItem-modal">
+        <div className="edit-cartItem-header">
+          <button
+            onClick={() => setEditedCartItem({})}
+            type="button"
+            aria-label="edit"
+            className="edit-cartItem-closeBtn"
           >
-            <button
-              onClick={() => setEditedCartItem({})}
-              type="button"
-              aria-label="edit"
-            >
-              X
-            </button>
-            {/* <h3>Update Cart</h3> */}
-          </div>
-          <h2 className="edit-item-title">{editedCartItem.name}</h2>
-
-          <div className="edit-item-information">
-            <img
-              src={editedCartItem.image_url}
-              alt="Beverage"
-              width="40px"
-              height="150px"
-            />
-            <h5>
-              {editedCartItem.qty} @ ${editedCartItem.srm.toFixed(2)}
-            </h5>
-          </div>
+            X
+          </button>
         </div>
+        <h2 className="edit-cartItem-title">{editedCartItem.name}</h2>
+        <div className="edit-cartItem-information">
+          <img
+            src={editedCartItem.image_url}
+            alt="Beverage"
+            width="50px"
+            height="220px"
+          />
+          <h3>
+            {editedCartItem.qty} @ ${editedCartItem.srm.toFixed(2)}
+          </h3>
+        </div>
+        {/* QuantityCOunter here*/}
+        <QuantityCounter beverage={editedCartItem} beverages={beverages} />
       </div>
     </div>
   );
