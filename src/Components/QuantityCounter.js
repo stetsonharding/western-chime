@@ -4,9 +4,11 @@ import "../css/QuantityCounter.css";
 function QuantityCounter({
   beverage,
   beverages,
-  quantity,
-  setQuantity,
+
   setBeverages,
+  setQuantity,
+  quantity,
+  setEditedCartItem,
 }) {
   const incrementQuantity = (id) => {
     beverages.map((beverage) => {

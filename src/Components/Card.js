@@ -20,6 +20,8 @@ function Card({
   setLearnMoreModalData,
   cartItems,
   viewItemQuantity,
+  setQuantity,
+  quantity,
 }) {
   const favoriteImage = (id, e) => {
     const newArr = beverages.map((beverage) => {
@@ -123,6 +125,8 @@ function Card({
           setBeverages={setBeverages}
           setCartItems={setCartItems}
           cartItems={cartItems}
+          setQuantity={setQuantity}
+          quantity={quantity}
         />
       ) : (
         <div

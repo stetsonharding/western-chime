@@ -23,6 +23,8 @@ function App() {
   const [grandTotal, setGrandTotal] = useState(0);
   const [editedCartItem, setEditedCartItem] = useState({});
 
+  const [quantity, setQuantity] = useState();
+
   const [userInfo, setUserInfo] = useState({
     firstName: "",
     lastName: "",
@@ -162,6 +164,8 @@ function App() {
           setEditedCartItem={setEditedCartItem}
           editedCartItem={editedCartItem}
           beverages={beverages}
+          setQuantity={setQuantity}
+          quantity={quantity}
         />
       )}
       <Header
@@ -194,6 +198,8 @@ function App() {
               setLearnMoreModalData={setLearnMoreModalData}
               cartItems={cartItems}
               viewItemQuantity={viewItemQuantity}
+              setQuantity={setQuantity}
+              quantity={quantity}
             />
           }
         ></Route>

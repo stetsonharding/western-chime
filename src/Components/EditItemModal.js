@@ -2,7 +2,13 @@ import React from "react";
 import QuantityCounter from "../Components/QuantityCounter";
 
 import "../css/EditCartItemModal.css";
-function EditItemModal({ setEditedCartItem, editedCartItem, beverages }) {
+function EditItemModal({
+  setEditedCartItem,
+  editedCartItem,
+  beverages,
+  setQuantity,
+  quantity,
+}) {
   return (
     <div className="modal-background">
       <div className="edit-cartItem-modal">
@@ -29,7 +35,6 @@ function EditItemModal({ setEditedCartItem, editedCartItem, beverages }) {
           </h3>
         </div>
         {/* QuantityCOunter here*/}
-        <QuantityCounter beverage={editedCartItem} beverages={beverages} />
       </div>
     </div>
   );

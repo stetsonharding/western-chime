@@ -25,6 +25,8 @@ function CardContainer({
   setLearnMoreModalData,
   cartItems,
   viewItemQuantity,
+  setQuantity,
+  quantity,
 }) {
   //Used for enable/disable next page button.
   const DISABLED_LENGTH = 15;
@@ -106,6 +108,8 @@ function CardContainer({
                   setLearnMoreModalData={setLearnMoreModalData}
                   cartItems={cartItems}
                   viewItemQuantity={viewItemQuantity}
+                  setQuantity={setQuantity}
+                  quantity={quantity}
                 />
               ))}
             </div>

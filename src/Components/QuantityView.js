@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import "../css/QuantityView.css";
 import QuantityCounter from "./QuantityCounter";
@@ -11,9 +11,16 @@ function QuantityView({
   setBeverages,
   cartItems,
   setCartItems,
+  setQuantity,
+  quantity,
 }) {
-  const [quantity, setQuantity] = useState(beverage.qty);
+  //Showing update button if cartUpdated is true
   const [cartUpdated, setCartUpdated] = useState(false);
+
+  //Setting the quantity to the beverage quantity
+  useEffect(() => {
+    setQuantity(beverage.qty);
+  }, []);
 
   //Go back to view product home screen from quantity view by setting quantityConfirm to false
   function leaveQuantityView(id, beverage) {
