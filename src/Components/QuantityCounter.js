@@ -1,43 +1,13 @@
 import React from "react";
 import "../css/QuantityCounter.css";
 
-//FIX QUANTITY COUNTER.
-
-function QuantityCounter({
-  beverage,
-  beverages,
-
-  setBeverages,
-  setQuantity,
-  quantity,
-  setEditedCartItem,
-}) {
-  const incrementQuantity = (id) => {
-    beverages.map((beverage) => {
-      if (id === beverage.id) {
-        return {
-          ...beverage,
-          qty: beverage.qty++,
-        };
-      }
-      return beverage;
-    });
-
-    setQuantity(beverage.qty);
+function QuantityCounter({ beverage, setQuantity, quantity }) {
+  const incrementQuantity = () => {
+    setQuantity((prevState) => prevState + 1);
   };
 
-  const decrementQuantity = (id) => {
-    beverages.map((beverage) => {
-      if (id === beverage.id) {
-        return {
-          ...beverage,
-          qty: beverage.qty--,
-        };
-      }
-      return beverage;
-    });
-
-    setQuantity(beverage.qty);
+  const decrementQuantity = () => {
+    setQuantity((prevState) => prevState - 1);
   };
 
   return (
@@ -46,19 +16,19 @@ function QuantityCounter({
         <button
           className="quantity-btn"
           disabled={quantity <= 1 ? true : false}
-          onClick={() => decrementQuantity(beverage.id)}
+          onClick={() => decrementQuantity()}
         >
           -
         </button>
       </div>
       <div>
-        <h3 style={{}}>{beverage.qty}</h3>
+        <h3 style={{}}>{quantity}</h3>
       </div>
       <div className="increment">
         <button
           className="quantity-btn"
           disabled={beverage.qty === 10 ? true : false}
-          onClick={() => incrementQuantity(beverage.id)}
+          onClick={() => incrementQuantity()}
         >
           +
         </button>

@@ -1,5 +1,3 @@
-import { render } from "@testing-library/react";
-import { set } from "lodash";
 import React, { useState, useEffect } from "react";
 
 import "../css/QuantityView.css";
@@ -25,23 +23,21 @@ function QuantityView({
   }, [beverage.qty, setQuantity]);
 
   //Go back to view product home screen from quantity view by setting quantityConfirm to false
-  function leaveQuantityView(id, beverage) {
-    if (!cartItems.includes(beverage)) {
-      let updated = beverages.map((beverage) => {
-        if (beverage.id === id) {
-          return {
-            ...beverage,
-            quantityConfirm: false,
-          };
-        }
-        return beverage;
-      });
-      setBeverages(updated);
-    }
+  function leaveQuantityView(id) {
+    let updated = beverages.map((beverage) => {
+      if (beverage.id === id) {
+        return {
+          ...beverage,
+          quantityConfirm: false,
+        };
+      }
+      return beverage;
+    });
+    setBeverages(updated);
   }
 
   //Add item to cart button
-  const confirmQuantity = async (beverage, id) => {
+  const addToCart = (beverage, id) => {
     //Set current beverage quantity and add to cart
     beverage.qty = quantity;
     setCartItems((prevItems) => [...prevItems, beverage]);
@@ -70,9 +66,7 @@ function QuantityView({
     <div className="quantity-view">
       <div className="quantity-information">
         <div id="quantity-back">
-          <span onClick={() => leaveQuantityView(beverage.id, beverage)}>
-            &lt;
-          </span>
+          <span onClick={() => leaveQuantityView(beverage.id)}>&lt;</span>
           <div>
             <img src={beverage.image_url} alt="" height="80" />
           </div>
@@ -107,9 +101,9 @@ function QuantityView({
           ) : (
             <button
               className="confirm-btn"
-              onClick={() => confirmQuantity(beverage, beverage.id)}
+              onClick={() => addToCart(beverage, beverage.id)}
             >
-              Confirm ${beverage.srm * beverage.qty}
+              Confirm ${beverage.srm * quantity}
             </button>
           )}
         </div>
