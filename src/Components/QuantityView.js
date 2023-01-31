@@ -1,3 +1,5 @@
+import { render } from "@testing-library/react";
+import { set } from "lodash";
 import React, { useState, useEffect } from "react";
 
 import "../css/QuantityView.css";
@@ -20,7 +22,7 @@ function QuantityView({
   //Setting the quantity to the beverage quantity
   useEffect(() => {
     setQuantity(beverage.qty);
-  }, []);
+  }, [beverage.qty, setQuantity]);
 
   //Go back to view product home screen from quantity view by setting quantityConfirm to false
   function leaveQuantityView(id, beverage) {
@@ -35,27 +37,18 @@ function QuantityView({
         return beverage;
       });
       setBeverages(updated);
-    } else {
-      let updated = beverages.map((beverage) => {
-        if (beverage.id === id) {
-          return {
-            ...beverage,
-            quantityConfirm: false,
-          };
-        }
-        return beverage;
-      });
-
-      setBeverages(updated);
     }
   }
 
   //Add item to cart button
-  const confirmQuantity = (id) => {
-    //Add item to cart
+  const confirmQuantity = async (beverage, id) => {
+    //Set current beverage quantity and add to cart
+    beverage.qty = quantity;
     setCartItems((prevItems) => [...prevItems, beverage]);
+
     //conditionally rendering 'update' button by setting cartUpdated to true.
     setCartUpdated(true);
+
     //After 900s, leave quantity view by setting quantityConfirm to false and is addedToCart to true to display cart icon.
     setTimeout(() => {
       setCartUpdated(false);
@@ -114,9 +107,9 @@ function QuantityView({
           ) : (
             <button
               className="confirm-btn"
-              onClick={() => confirmQuantity(beverage.id)}
+              onClick={() => confirmQuantity(beverage, beverage.id)}
             >
-              Confirm ${beverage.srm * quantity}
+              Confirm ${beverage.srm * beverage.qty}
             </button>
           )}
         </div>

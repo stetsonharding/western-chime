@@ -1,6 +1,8 @@
 import React from "react";
 import "../css/QuantityCounter.css";
 
+//FIX QUANTITY COUNTER.
+
 function QuantityCounter({
   beverage,
   beverages,
