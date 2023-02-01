@@ -8,6 +8,7 @@ function EditItemModal({
   beverages,
   setQuantity,
   quantity,
+  setBeverages,
 }) {
   return (
     <div className="modal-background">
@@ -35,6 +36,7 @@ function EditItemModal({
           </h3>
         </div>
         {/* QuantityCOunter here*/}
+        <QuantityCounter quantity={quantity} setQuantity={setQuantity} />
       </div>
     </div>
   );

@@ -27,7 +27,7 @@ function QuantityCounter({ beverage, setQuantity, quantity }) {
       <div className="increment">
         <button
           className="quantity-btn"
-          disabled={beverage.qty === 10 ? true : false}
+          disabled={quantity === 10 ? true : false}
           onClick={() => incrementQuantity()}
         >
           +

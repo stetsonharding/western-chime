@@ -166,6 +166,7 @@ function App() {
           beverages={beverages}
           setQuantity={setQuantity}
           quantity={quantity}
+          setBeverages={setBeverages}
         />
       )}
       <Header
