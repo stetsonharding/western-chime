@@ -167,6 +167,8 @@ function App() {
           setQuantity={setQuantity}
           quantity={quantity}
           setBeverages={setBeverages}
+          cartItems={cartItems}
+          setCartItems={setCartItems}
         />
       )}
       <Header

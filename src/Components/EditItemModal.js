@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import QuantityCounter from "../Components/QuantityCounter";
 
 import "../css/EditCartItemModal.css";
+
 function EditItemModal({
   setEditedCartItem,
   editedCartItem,
@@ -9,7 +10,39 @@ function EditItemModal({
   setQuantity,
   quantity,
   setBeverages,
+  cartItems,
+  setCartItems,
 }) {
+  useEffect(() => {
+    setQuantity(editedCartItem.qty);
+  }, [editedCartItem, setQuantity]);
+
+  //update the quantity of a cart item when 'edit' button is clicked.
+  const updateItem = (editedItem) => {
+    const usersCart = [...cartItems];
+    editedItem.qty = quantity;
+    editedItem.quantityConfirm = false;
+
+    setCartItems([
+      ...usersCart.filter((item) => item.id !== editedItem.id),
+      editedItem,
+    ]);
+
+    //updated beverages based on cart items.
+    //if a cart item is changed to quantity of 4, beverages need to show that
+    // *Need to find a better solution*
+    let updated = beverages.map((item) => {
+      if (item.id === editedItem.id) {
+        return {
+          ...item,
+          qty: quantity,
+        };
+      }
+      return item;
+    });
+    setBeverages(updated);
+  };
+
   return (
     <div className="modal-background">
       <div className="edit-cartItem-modal">
@@ -37,6 +70,7 @@ function EditItemModal({
         </div>
         {/* QuantityCOunter here*/}
         <QuantityCounter quantity={quantity} setQuantity={setQuantity} />
+        <button onClick={() => updateItem(editedCartItem)}>Confirm</button>
       </div>
     </div>
   );
