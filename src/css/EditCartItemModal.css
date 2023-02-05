@@ -34,6 +34,19 @@
 }
 /* == */
 
+/* confirm edit button */
+.confirm-edit-btn {
+  width: 55%;
+  margin: 0 auto;
+  margin-top: 20px;
+  padding: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  color: #7b3018;
+
+  letter-spacing: 0.5px;
+}
+
 /* Close Button */
 .edit-cartItem-closeBtn {
   margin: 8px;

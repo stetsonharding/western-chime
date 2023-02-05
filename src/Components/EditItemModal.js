@@ -41,6 +41,9 @@ function EditItemModal({
       return item;
     });
     setBeverages(updated);
+    setTimeout(() => {
+      setEditedCartItem({});
+    }, 400);
   };
 
   return (
@@ -70,7 +73,12 @@ function EditItemModal({
         </div>
         {/* QuantityCOunter here*/}
         <QuantityCounter quantity={quantity} setQuantity={setQuantity} />
-        <button onClick={() => updateItem(editedCartItem)}>Confirm</button>
+        <button
+          className="confirm-edit-btn"
+          onClick={() => updateItem(editedCartItem)}
+        >
+          Confirm
+        </button>
       </div>
     </div>
   );
