@@ -225,40 +225,13 @@ The user will be sent to a quantity view when they click the "+" sign on a produ
 
 //Quantity Counter Component
 //This is the Component that allows the user to increase or decrease items quantity
-function QuantityCounter({ beverage, beverages, quantity, setQuantity }) {
-
-//Increment quantity function
-  const incrementQuantity = (id) => {
-  //Checking to see if a items id is equal to the item getting passed in
-    beverages.map((beverage) => {
-      if (id === beverage.id) {
-       //incrementing items quantity by 1.
-        return {
-          ...beverage,
-          qty: beverage.qty++,
-        };
-      }
-      return beverage;
-    });
-
-    setQuantity(beverage.qty);
+function QuantityCounter({ beverage, setQuantity, quantity }) {
+  const incrementQuantity = () => {
+    setQuantity((prevState) => prevState + 1);
   };
 
-//Decrement quantity function
-  const decrementQuantity = (id) => {
-  //Checking to see if a items id is equal to the item getting passed in
-    beverages.map((beverage) => {
-      if (id === beverage.id) {
-       //decrementing items quantity by 1.
-        return {
-          ...beverage,
-          qty: beverage.qty--,
-        };
-      }
-      return beverage;
-    });
-
-    setQuantity(beverage.qty);
+  const decrementQuantity = () => {
+    setQuantity((prevState) => prevState - 1);
   };
 
   return (
@@ -267,19 +240,19 @@ function QuantityCounter({ beverage, beverages, quantity, setQuantity }) {
         <button
           className="quantity-btn"
           disabled={quantity <= 1 ? true : false}
-          onClick={() => decrementQuantity(beverage.id)}
+          onClick={() => decrementQuantity()}
         >
           -
         </button>
       </div>
       <div>
-        <h3 style={{}}>{beverage.qty}</h3>
+        <h3 style={{}}>{quantity}</h3>
       </div>
       <div className="increment">
         <button
           className="quantity-btn"
           disabled={quantity === 10 ? true : false}
-          onClick={() => incrementQuantity(beverage.id)}
+          onClick={() => incrementQuantity()}
         >
           +
         </button>
