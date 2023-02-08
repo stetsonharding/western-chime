@@ -44,7 +44,7 @@ function LearnMoreModal({
   //Adding item to users shopping cart.
     setCartItems((prevItems) => [...prevItems, learnMoreModalData]);
   //Checking to see if a beverage id is equal to the id passed into the function.
-  /*if true, change the value of the isAddedToCart property so that the product card now displays a shopping cart icon 
+  /*if true, change the value of the isAddedToCart property so that the product card now displays a shopping cart icon.
  rather than a plus sign. */
     let updatedBeverages = beverages.map((beverage) => {
       if (id === beverage.id) {
