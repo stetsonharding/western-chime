@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import "../css/Card.css";
+
+import { GetBeveragesContext } from "../Contexts/GetBeveragesContext";
 
 //images
 import ImageNotLiked from "../Assets/imageNotLiked.png";
@@ -13,8 +15,8 @@ import UpdateQuantityBtn from "./UpdateQuantityBtn";
 
 function Card({
   beverage,
-  beverages,
-  setBeverages,
+  //beverages,
+  // setBeverages,
   setFavoritedBeverages,
   setCartItems,
   setLearnMoreModalData,
@@ -23,6 +25,8 @@ function Card({
   setQuantity,
   quantity,
 }) {
+  const { beverages, setBeverages } = useContext(GetBeveragesContext);
+
   const favoriteImage = (id, e) => {
     const newArr = beverages.map((beverage) => {
       //Change favorited property if id matches
@@ -121,8 +125,8 @@ function Card({
       {beverage.quantityConfirm ? (
         <QuantityView
           beverage={beverage}
-          beverages={beverages}
-          setBeverages={setBeverages}
+          //beverages={beverages}
+          //setBeverages={setBeverages}
           setCartItems={setCartItems}
           cartItems={cartItems}
           setQuantity={setQuantity}

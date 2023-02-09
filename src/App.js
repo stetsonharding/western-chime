@@ -1,8 +1,12 @@
-import { useState, useEffect } from "react";
+import { useContext, useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 
 import _ from "lodash";
+
+//contexts
+//import { GetBeveragesContextProvider } from "./Contexts/GetBeveragesContext";
+import { GetBeveragesContext } from "./Contexts/GetBeveragesContext";
 
 //Components
 import Header from "./Components/Header";
@@ -14,9 +18,9 @@ import CheckoutOverview from "./Components/Checkout/CheckoutOverview";
 import Footer from "./Components/Footer";
 
 function App() {
-  const [beverages, setBeverages] = useState([]);
-  const [errorMessage, setErrorMessage] = useState("");
-  const [currentPage, setCurrentPage] = useState(1);
+  // const [beverages, setBeverages] = useState([]);
+  // const [errorMessage, setErrorMessage] = useState("");
+  // const [currentPage, setCurrentPage] = useState(1);
   const [favoritedBeverages, setFavoritedBeverages] = useState([]);
   const [cartItems, setCartItems] = useState([]);
   const [learnMoreModalData, setLearnMoreModalData] = useState();
@@ -36,18 +40,30 @@ function App() {
     zipcode: "",
   });
 
-  // Add properties (isFavorited, isAddedToCart, quantityConfirm, qty) to all items that are being fetched.
-  function AllDataProperties(data) {
-    let finalData = data.map((obj) => ({
-      ...obj,
-      isFavorited: false,
-      isAddedToCart: false,
-      quantityConfirm: false,
-      qty: 1,
-    }));
+  const {
+    beverages,
+    setBeverages,
+    GetApiBeverages,
+    errorMessage,
+    AddImage,
+    setErrorMessage,
+    AllDataProperties,
+    // currentPage,
+    // setCurrentPage,
+  } = useContext(GetBeveragesContext);
 
-    return finalData;
-  }
+  // Add properties (isFavorited, isAddedToCart, quantityConfirm, qty) to all items that are being fetched.
+  // function AllDataProperties(data) {
+  //   let finalData = data.map((obj) => ({
+  //     ...obj,
+  //     isFavorited: false,
+  //     isAddedToCart: false,
+  //     quantityConfirm: false,
+  //     qty: 1,
+  //   }));
+
+  //   return finalData;
+  // }
 
   function formatPrice(price) {
     return price.toLocaleString("en-US", {
@@ -57,40 +73,40 @@ function App() {
   }
 
   //If there is no beverage image, set image as "keg-only".
-  const AddImage = (data) => {
-    data.filter((item) =>
-      item.image_url === null
-        ? (item.image_url = "https://images.punkapi.com/v2/keg.png")
-        : null
-    );
-  };
+  // const AddImage = (data) => {
+  //   data.filter((item) =>
+  //     item.image_url === null
+  //       ? (item.image_url = "https://images.punkapi.com/v2/keg.png")
+  //       : null
+  //   );
+  // };
 
-  const GetApiBeverages = async () => {
-    let URL = `https://api.punkapi.com/v2/beers?page=${currentPage}&per_page=15`;
+  // const GetApiBeverages = async () => {
+  //   let URL = `https://api.punkapi.com/v2/beers?page=${currentPage}&per_page=15`;
 
-    try {
-      const response = await fetch(URL);
-      const data = await response.json();
+  //   try {
+  //     const response = await fetch(URL);
+  //     const data = await response.json();
 
-      AddImage(data);
-      //Calling AllDataProperties to add properties to data
-      const finalData = AllDataProperties(data);
-      setBeverages(finalData);
-    } catch (err) {
-      setErrorMessage("Oh no! Someones fussin' with our invitory! Try Again!");
-    }
-  };
-  useEffect(() => {
-    GetApiBeverages();
-  }, [currentPage]);
+  //     AddImage(data);
+  //     //Calling AllDataProperties to add properties to data
+  //     const finalData = AllDataProperties(data);
+  //     setBeverages(finalData);
+  //   } catch (err) {
+  //     setErrorMessage("Oh no! Someones fussin' with our invitory! Try Again!");
+  //   }
+  // };
+  // useEffect(() => {
+  //   GetApiBeverages();
+  // }, [currentPage]);
 
-  // Pagination for next and prev pages
-  const PreviousPage = () => {
-    setCurrentPage(currentPage - 1);
-  };
-  const NextPage = () => {
-    setCurrentPage(currentPage + 1);
-  };
+  // // Pagination for next and prev pages
+  // const PreviousPage = () => {
+  //   setCurrentPage(currentPage - 1);
+  // };
+  // const NextPage = () => {
+  //   setCurrentPage(currentPage + 1);
+  // };
 
   //use the user's search term to find beverages.
   const onSearchSubmit = _.memoize(async (query) => {
@@ -155,18 +171,18 @@ function App() {
           learnMoreModalData={learnMoreModalData}
           setCartItems={setCartItems}
           cartItems={cartItems}
-          setBeverages={setBeverages}
-          beverages={beverages}
+          //setBeverages={setBeverages}
+          //beverages={beverages}
         />
       )}
       {editedCartItem.image_url && (
         <EditItemModal
           setEditedCartItem={setEditedCartItem}
           editedCartItem={editedCartItem}
-          beverages={beverages}
+          // beverages={beverages}
           setQuantity={setQuantity}
           quantity={quantity}
-          setBeverages={setBeverages}
+          //setBeverages={setBeverages}
           cartItems={cartItems}
           setCartItems={setCartItems}
         />
@@ -174,8 +190,8 @@ function App() {
       <Header
         cartItems={cartItems}
         setCartItems={setCartItems}
-        setBeverages={setBeverages}
-        beverages={beverages}
+        //setBeverages={setBeverages}
+        //beverages={beverages}
         grandTotal={grandTotal}
         setGrandTotal={setGrandTotal}
         formatPrice={formatPrice}
@@ -188,13 +204,13 @@ function App() {
           path="/"
           element={
             <CardContainer
-              beverages={beverages}
+              // beverages={beverages}
               errorMessage={errorMessage}
-              NextPage={NextPage}
-              PreviousPage={PreviousPage}
-              currentPage={currentPage}
+              // NextPage={NextPage}
+              // PreviousPage={PreviousPage}
+              // currentPage={currentPage}
               onSearchSubmit={onSearchSubmit}
-              setBeverages={setBeverages}
+              // setBeverages={setBeverages}
               setFavoritedBeverages={setFavoritedBeverages}
               favoritedBeverages={favoritedBeverages}
               setCartItems={setCartItems}

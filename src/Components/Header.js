@@ -7,8 +7,8 @@ import ShoppingCartBadge from "./ShoppingCartBadge";
 function Header({
   cartItems,
   setCartItems,
-  setBeverages,
-  beverages,
+  //setBeverages,
+  //beverages,
   grandTotal,
   setGrandTotal,
   formatPrice,
@@ -23,8 +23,8 @@ function Header({
       <ShoppingCartBadge
         cartItems={cartItems}
         setCartItems={setCartItems}
-        setBeverages={setBeverages}
-        beverages={beverages}
+        //setBeverages={setBeverages}
+        // beverages={beverages}
         grandTotal={grandTotal}
         setGrandTotal={setGrandTotal}
         formatPrice={formatPrice}

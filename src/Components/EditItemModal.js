@@ -1,18 +1,22 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import QuantityCounter from "../Components/QuantityCounter";
 
 import "../css/EditCartItemModal.css";
 
+import { GetBeveragesContext } from "../Contexts/GetBeveragesContext";
+
 function EditItemModal({
   setEditedCartItem,
   editedCartItem,
-  beverages,
+  //beverages,
   setQuantity,
   quantity,
-  setBeverages,
+  //setBeverages,
   cartItems,
   setCartItems,
 }) {
+  const { beverages, setBeverages } = useContext(GetBeveragesContext);
+
   useEffect(() => {
     setQuantity(editedCartItem.qty);
   }, [editedCartItem, setQuantity]);

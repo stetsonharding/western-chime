@@ -12,8 +12,8 @@ import SubtotalAndTaxes from "./SubtotalAndTaxes";
 export default function ShoppingCartBadge({
   cartItems,
   setCartItems,
-  setBeverages,
-  beverages,
+  // setBeverages,
+  // beverages,
   grandTotal,
   setGrandTotal,
   formatPrice,
@@ -64,8 +64,8 @@ export default function ShoppingCartBadge({
           cartItems={cartItems}
           setCartItems={setCartItems}
           setIsCartQuickviewShown={setIsCartQuickviewShown}
-          setBeverages={setBeverages}
-          beverages={beverages}
+          //setBeverages={setBeverages}
+          //beverages={beverages}
           title={"Your shoppin' cart "}
           setEditedCartItem={setEditedCartItem}
         >

@@ -16,7 +16,7 @@ function SearchInput({ onSearchSubmit }) {
   }, [debouncedValue]);
 
   return (
-    <>
+    <div className="search-input-container">
       <input
         type="search"
         className="search-input"
@@ -26,7 +26,7 @@ function SearchInput({ onSearchSubmit }) {
         }}
         value={searchQuery}
       />
-    </>
+    </div>
   );
 }
 

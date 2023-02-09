@@ -1,7 +1,7 @@
 import React from "react";
 import "../css/QuantityCounter.css";
 
-function QuantityCounter({ beverage, setQuantity, quantity }) {
+function QuantityCounter({ setQuantity, quantity }) {
   const incrementQuantity = () => {
     setQuantity((prevState) => prevState + 1);
   };

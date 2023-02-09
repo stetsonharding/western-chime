@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import "../css/CardContainer.css";
+
+import { GetBeveragesContext } from "../Contexts/GetBeveragesContext";
 
 //Page images
 import nextButton from "../Assets/nextbutton.png";
@@ -12,13 +14,13 @@ import Card from "./Card";
 import ViewFavoritedBeveragesBtns from "./ViewFavoritedBeveragesBtns";
 
 function CardContainer({
-  beverages,
-  errorMessage,
-  NextPage,
-  PreviousPage,
-  currentPage,
+  //beverages,
+  // errorMessage,
+  // NextPage,
+  // PreviousPage,
+  // currentPage,
   onSearchSubmit,
-  setBeverages,
+  // setBeverages,
   setFavoritedBeverages,
   favoritedBeverages,
   setCartItems,
@@ -28,6 +30,17 @@ function CardContainer({
   setQuantity,
   quantity,
 }) {
+  // const [currentPage, setCurrentPage] = useState(1);
+  const { beverages, errorMessage, currentPage, setCurrentPage } =
+    useContext(GetBeveragesContext);
+
+  // Pagination for next and prev pages
+  const PreviousPage = () => {
+    setCurrentPage(currentPage - 1);
+  };
+  const NextPage = () => {
+    setCurrentPage(currentPage + 1);
+  };
   //Used for enable/disable next page button.
   const DISABLED_LENGTH = 15;
   const [isFavoritedBeveragesShown, setIsFavoritedBeveragesShown] =
@@ -54,9 +67,7 @@ function CardContainer({
         {/* Container for search input, beer cards, and filter */}
         <div className="search-api-container">
           {/* Search Input component */}
-          <div className="search-input-container">
-            <SearchInput onSearchSubmit={(query) => onSearchSubmit(query)} />
-          </div>
+          <SearchInput onSearchSubmit={(query) => onSearchSubmit(query)} />
 
           {/* View Favorite Beverages - Back to the Saloon buttons. */}
           <ViewFavoritedBeveragesBtns
@@ -81,8 +92,8 @@ function CardContainer({
                 <Card
                   key={beverage.id}
                   beverage={beverage}
-                  beverages={beverages}
-                  setBeverages={setBeverages}
+                  // beverages={beverages}
+                  // setBeverages={setBeverages}
                   setFavoritedBeverages={setFavoritedBeverages}
                   setCartItems={setCartItems}
                   setLearnMoreModalData={setLearnMoreModalData}
@@ -96,13 +107,10 @@ function CardContainer({
               {beverages.map((beverage, index) => (
                 <Card
                   key={beverage.id}
-                  img={beverage.image_url}
-                  name={beverage.name}
-                  price={beverage.srm}
                   beverage={beverage}
                   index={index}
-                  beverages={beverages}
-                  setBeverages={setBeverages}
+                  //beverages={beverages}
+                  //setBeverages={setBeverages}
                   setFavoritedBeverages={setFavoritedBeverages}
                   setCartItems={setCartItems}
                   setLearnMoreModalData={setLearnMoreModalData}

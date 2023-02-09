@@ -1,19 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 import "../css/QuantityView.css";
 import QuantityCounter from "./QuantityCounter";
 import UpdatedNotification from "./UpdatedNotification";
 import UpdateItem from "./UpdateItem";
 
+import { GetBeveragesContext } from "../Contexts/GetBeveragesContext";
+
 function QuantityView({
   beverage,
-  beverages,
-  setBeverages,
+  //beverages,
+  //setBeverages,
   cartItems,
   setCartItems,
   setQuantity,
   quantity,
 }) {
+  const { beverages, setBeverages } = useContext(GetBeveragesContext);
+
   //Showing update button if cartUpdated is true
   const [cartUpdated, setCartUpdated] = useState(false);
 
@@ -82,9 +86,9 @@ function QuantityView({
 
       <div className="quantity-counter">
         <QuantityCounter
-          beverage={beverage}
-          beverages={beverages}
-          setBeverages={setBeverages}
+          //beverage={beverage}
+          //beverages={beverages}
+          //setBeverages={setBeverages}
           quantity={quantity}
           setQuantity={setQuantity}
         />

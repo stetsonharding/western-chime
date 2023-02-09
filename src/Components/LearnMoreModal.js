@@ -1,15 +1,19 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 
 import "../css/LearnMoreModal.css";
+
+import { GetBeveragesContext } from "../Contexts/GetBeveragesContext";
 
 function LearnMoreModal({
   setLearnMoreModalData,
   learnMoreModalData,
   setCartItems,
   cartItems,
-  setBeverages,
-  beverages,
+  // setBeverages,
+  //beverages,
 }) {
+  const { beverages, setBeverages } = useContext(GetBeveragesContext);
+
   //Adding item to cart function.
   const AddItemToCart = (id) => {
     setCartItems((prevItems) => [...prevItems, learnMoreModalData]);
@@ -36,7 +40,7 @@ function LearnMoreModal({
   //Check if item is in cart upon rendering.
   useEffect(() => {
     ItemAlreadyAddedToCart();
-  });
+  }, []);
 
   return (
     <div className="modal-background">
