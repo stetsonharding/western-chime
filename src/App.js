@@ -2,7 +2,7 @@ import { useContext, useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 
-import _ from "lodash";
+//import _ from "lodash";
 
 //contexts
 //import { GetBeveragesContextProvider } from "./Contexts/GetBeveragesContext";
@@ -26,9 +26,7 @@ function App() {
   const [learnMoreModalData, setLearnMoreModalData] = useState();
   const [grandTotal, setGrandTotal] = useState(0);
   const [editedCartItem, setEditedCartItem] = useState({});
-
   const [quantity, setQuantity] = useState();
-
   const [userInfo, setUserInfo] = useState({
     firstName: "",
     lastName: "",
@@ -43,11 +41,11 @@ function App() {
   const {
     beverages,
     setBeverages,
-    GetApiBeverages,
+    //GetApiBeverages,
     errorMessage,
-    AddImage,
-    setErrorMessage,
-    AllDataProperties,
+    //AddImage,
+    //setErrorMessage,
+    // AllDataProperties,
     // currentPage,
     // setCurrentPage,
   } = useContext(GetBeveragesContext);
@@ -108,45 +106,45 @@ function App() {
   //   setCurrentPage(currentPage + 1);
   // };
 
-  //use the user's search term to find beverages.
-  const onSearchSubmit = _.memoize(async (query) => {
-    if (query !== "") {
-      //handling edge cases and problems while fetching API
-      try {
-        const response = await fetch(
-          `https://api.punkapi.com/v2/beers?beer_name=${query}`
-        );
-        const data = await response.json();
+  // //use the user's search term to find beverages.
+  // const onSearchSubmit = _.memoize(async (query) => {
+  //   if (query !== "") {
+  //     //handling edge cases and problems while fetching API
+  //     try {
+  //       const response = await fetch(
+  //         `https://api.punkapi.com/v2/beers?beer_name=${query}`
+  //       );
+  //       const data = await response.json();
 
-        //No results found for specified search query. Display error message.
-        if (data.length === 0) {
-          setErrorMessage(
-            `Shucks! We can't seem to find ${query}. Try Lookin' for another?`
-          );
-          setBeverages([]);
+  //       //No results found for specified search query. Display error message.
+  //       if (data.length === 0) {
+  //         setErrorMessage(
+  //           `Shucks! We can't seem to find ${query}. Try Lookin' for another?`
+  //         );
+  //         setBeverages([]);
 
-          //API retrieval was successful.
-        } else {
-          //adding attributes (quantity, addedToCart) to data by calling AllDataProperties function.
-          const finalData = AllDataProperties(data);
-          //In case the product doesn't have a image in the results, add an image to product by calling AddImage.
-          AddImage(finalData);
-          //storing API results into state
-          setBeverages(finalData);
-          //setting an empty string as the error message
-          setErrorMessage("");
-        }
-        //Error fetching API
-      } catch (err) {
-        setErrorMessage(`There seems to be an error!`);
-        setBeverages([]);
-      }
-    } else {
-      //Retrieves beverage API to display beverages once more if the user removes the search query from the input.
-      GetApiBeverages();
-      setErrorMessage("");
-    }
-  });
+  //         //API retrieval was successful.
+  //       } else {
+  //         //adding attributes (quantity, addedToCart) to data by calling AllDataProperties function.
+  //         const finalData = AllDataProperties(data);
+  //         //In case the product doesn't have a image in the results, add an image to product by calling AddImage.
+  //         AddImage(finalData);
+  //         //storing API results into state
+  //         setBeverages(finalData);
+  //         //setting an empty string as the error message
+  //         setErrorMessage("");
+  //       }
+  //       //Error fetching API
+  //     } catch (err) {
+  //       setErrorMessage(`There seems to be an error!`);
+  //       setBeverages([]);
+  //     }
+  //   } else {
+  //     //Retrieves beverage API to display beverages once more if the user removes the search query from the input.
+  //     GetApiBeverages();
+  //     setErrorMessage("");
+  //   }
+  // });
 
   const viewItemQuantity = (id, e) => {
     e.stopPropagation();
@@ -209,7 +207,7 @@ function App() {
               // NextPage={NextPage}
               // PreviousPage={PreviousPage}
               // currentPage={currentPage}
-              onSearchSubmit={onSearchSubmit}
+              //onSearchSubmit={onSearchSubmit}
               // setBeverages={setBeverages}
               setFavoritedBeverages={setFavoritedBeverages}
               favoritedBeverages={favoritedBeverages}

@@ -19,7 +19,7 @@ function CardContainer({
   // NextPage,
   // PreviousPage,
   // currentPage,
-  onSearchSubmit,
+  //onSearchSubmit,
   // setBeverages,
   setFavoritedBeverages,
   favoritedBeverages,
@@ -67,7 +67,8 @@ function CardContainer({
         {/* Container for search input, beer cards, and filter */}
         <div className="search-api-container">
           {/* Search Input component */}
-          <SearchInput onSearchSubmit={(query) => onSearchSubmit(query)} />
+          <SearchInput />
+          {/* <SearchInput onSearchSubmit={(query) => onSearchSubmit(query)} /> */}
 
           {/* View Favorite Beverages - Back to the Saloon buttons. */}
           <ViewFavoritedBeveragesBtns
