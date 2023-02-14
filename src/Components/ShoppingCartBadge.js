@@ -4,6 +4,7 @@ import React, { useState, useEffect, useContext } from "react";
 import ShoppingCart from "../Assets/ShoppingCart.png";
 //css
 import "../css/ShoppingCartBadge.css";
+//Context
 import { CartItemsContext } from "../Contexts/CartItemsContext";
 
 import CartQuickView from "./CartQuickView";
@@ -17,14 +18,14 @@ export default function ShoppingCartBadge({
   // beverages,
   grandTotal,
   setGrandTotal,
-  formatPrice,
+
   setEditedCartItem,
 }) {
   const [isCartQuickviewShown, setIsCartQuickviewShown] = useState(false);
   const [taxes, setTaxes] = useState(0);
   const [subTotal, setSubTotal] = useState(0);
 
-  const { cartItems, setCartItems } = useContext(CartItemsContext);
+  const { cartItems } = useContext(CartItemsContext);
 
   const OrderCostCalculations = () => {
     let TAX_RATE = 0.1;
@@ -71,11 +72,14 @@ export default function ShoppingCartBadge({
           //beverages={beverages}
           title={"Your shoppin' cart "}
           setEditedCartItem={setEditedCartItem}
+          grandTotal={grandTotal}
+          setGrandTotal={setGrandTotal}
+          //formatPrice={formatPrice}
         >
           {cartItems.length !== 0 && (
             <SubtotalAndTaxes
               grandTotal={grandTotal}
-              formatPrice={formatPrice}
+              //formatPrice={formatPrice}
               taxes={taxes}
               subTotal={subTotal}
               totalColor="#7b3018"

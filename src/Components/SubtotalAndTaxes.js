@@ -2,13 +2,20 @@ import React from "react";
 import GrandTotal from "./GrandTotal";
 
 function SubtotalAndTaxes({
-  formatPrice,
+  //formatPrice,
   taxes,
   grandTotal,
   subTotal,
   totalColor,
   headingColor,
 }) {
+  function formatPrice(price) {
+    return price.toLocaleString("en-US", {
+      style: "currency",
+      currency: "USD",
+    });
+  }
+
   return (
     <div className="pricing-container">
       <strong>Subtotal: {formatPrice(subTotal)}</strong>

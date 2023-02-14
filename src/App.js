@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 
@@ -6,7 +6,7 @@ import "./App.css";
 
 //contexts
 //import { GetBeveragesContextProvider } from "./Contexts/GetBeveragesContext";
-import { GetBeveragesContext } from "./Contexts/GetBeveragesContext";
+//import { GetBeveragesContext } from "./Contexts/GetBeveragesContext";
 import { CartItemsContextProvider } from "./Contexts/CartItemsContext";
 
 //Components
@@ -24,8 +24,8 @@ function App() {
   // const [currentPage, setCurrentPage] = useState(1);
   // const [favoritedBeverages, setFavoritedBeverages] = useState([]);
   //const [cartItems, setCartItems] = useState([]);
+  // const [grandTotal, setGrandTotal] = useState(0);
   const [learnMoreModalData, setLearnMoreModalData] = useState();
-  const [grandTotal, setGrandTotal] = useState(0);
   const [editedCartItem, setEditedCartItem] = useState({});
   const [quantity, setQuantity] = useState();
   const [userInfo, setUserInfo] = useState({
@@ -39,17 +39,17 @@ function App() {
     zipcode: "",
   });
 
-  const {
-    beverages,
-    setBeverages,
-    //GetApiBeverages,
-    errorMessage,
-    //AddImage,
-    //setErrorMessage,
-    // AllDataProperties,
-    // currentPage,
-    // setCurrentPage,
-  } = useContext(GetBeveragesContext);
+  //const {
+  // beverages,
+  // setBeverages,
+  //GetApiBeverages,
+  // errorMessage,
+  //AddImage,
+  //setErrorMessage,
+  // AllDataProperties,
+  // currentPage,
+  // setCurrentPage,
+  //} = useContext(GetBeveragesContext);
 
   // Add properties (isFavorited, isAddedToCart, quantityConfirm, qty) to all items that are being fetched.
   // function AllDataProperties(data) {
@@ -64,12 +64,12 @@ function App() {
   //   return finalData;
   // }
 
-  function formatPrice(price) {
-    return price.toLocaleString("en-US", {
-      style: "currency",
-      currency: "USD",
-    });
-  }
+  // function formatPrice(price) {
+  //   return price.toLocaleString("en-US", {
+  //     style: "currency",
+  //     currency: "USD",
+  //   });
+  // }
 
   //If there is no beverage image, set image as "keg-only".
   // const AddImage = (data) => {
@@ -147,20 +147,20 @@ function App() {
   //   }
   // });
 
-  const viewItemQuantity = (id, e) => {
-    e.stopPropagation();
-    const updatedBeverages = beverages.map((beverage) => {
-      if (beverage.id === id) {
-        return {
-          ...beverage,
-          quantityConfirm: !beverage.quantityConfirm,
-        };
-      }
-      return beverage;
-    });
+  // const viewItemQuantity = (id, e) => {
+  //   e.stopPropagation();
+  //   const updatedBeverages = beverages.map((beverage) => {
+  //     if (beverage.id === id) {
+  //       return {
+  //         ...beverage,
+  //         quantityConfirm: !beverage.quantityConfirm,
+  //       };
+  //     }
+  //     return beverage;
+  //   });
 
-    setBeverages(updatedBeverages);
-  };
+  //   setBeverages(updatedBeverages);
+  // };
 
   return (
     <CartItemsContextProvider>
@@ -192,9 +192,9 @@ function App() {
           //setCartItems={setCartItems}
           //setBeverages={setBeverages}
           //beverages={beverages}
-          grandTotal={grandTotal}
-          setGrandTotal={setGrandTotal}
-          formatPrice={formatPrice}
+          //grandTotal={grandTotal}
+          // setGrandTotal={setGrandTotal}
+          //formatPrice={formatPrice}
           setEditedCartItem={setEditedCartItem}
         />
 
@@ -205,7 +205,7 @@ function App() {
             element={
               <CardContainer
                 // beverages={beverages}
-                errorMessage={errorMessage}
+                //errorMessage={errorMessage}
                 // NextPage={NextPage}
                 // PreviousPage={PreviousPage}
                 // currentPage={currentPage}
@@ -216,7 +216,7 @@ function App() {
                 //setCartItems={setCartItems}
                 setLearnMoreModalData={setLearnMoreModalData}
                 // cartItems={cartItems}
-                viewItemQuantity={viewItemQuantity}
+                //viewItemQuantity={viewItemQuantity}
                 setQuantity={setQuantity}
                 quantity={quantity}
               />
@@ -229,9 +229,9 @@ function App() {
               <CheckoutOverview
                 //cartItems={cartItems}
                 //setCartItems={setCartItems}
-                formatPrice={formatPrice}
-                grandTotal={grandTotal}
-                setGrandTotal={setGrandTotal}
+                //formatPrice={formatPrice}
+                //grandTotal={grandTotal}
+                //setGrandTotal={setGrandTotal}
                 userInfo={userInfo}
                 setUserInfo={setUserInfo}
               />

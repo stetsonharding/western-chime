@@ -26,7 +26,7 @@ function CardContainer({
   // setCartItems,
   setLearnMoreModalData,
   //cartItems,
-  viewItemQuantity,
+  //viewItemQuantity,
   setQuantity,
   quantity,
 }) {
@@ -117,7 +117,7 @@ function CardContainer({
                   //setCartItems={setCartItems}
                   setLearnMoreModalData={setLearnMoreModalData}
                   //cartItems={cartItems}
-                  viewItemQuantity={viewItemQuantity}
+                  //viewItemQuantity={viewItemQuantity}
                   setQuantity={setQuantity}
                   quantity={quantity}
                 />

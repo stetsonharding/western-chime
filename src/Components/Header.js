@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 //css
 import "../css/Header.css";
 
@@ -9,11 +9,13 @@ function Header({
   // setCartItems,
   //setBeverages,
   //beverages,
-  grandTotal,
-  setGrandTotal,
-  formatPrice,
+  // grandTotal,
+  //setGrandTotal,
+  //formatPrice,
   setEditedCartItem,
 }) {
+  const [grandTotal, setGrandTotal] = useState(0);
+
   return (
     <div className="header-container">
       <div className="header-slogan-container">
@@ -27,7 +29,7 @@ function Header({
         // beverages={beverages}
         grandTotal={grandTotal}
         setGrandTotal={setGrandTotal}
-        formatPrice={formatPrice}
+        //formatPrice={formatPrice}
         setEditedCartItem={setEditedCartItem}
       />
     </div>

@@ -12,9 +12,10 @@ export default function CartQuickView({
   //beverages,
   redeemTotal,
   setEditedCartItem,
+
   ...props
 }) {
-  const { cartItems, setCartItems } = useContext(CartItemsContext);
+  const { cartItems } = useContext(CartItemsContext);
 
   return (
     <>

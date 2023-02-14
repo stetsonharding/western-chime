@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import QuantityCounter from "../Components/QuantityCounter";
 
 import "../css/EditCartItemModal.css";

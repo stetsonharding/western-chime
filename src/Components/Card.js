@@ -22,12 +22,27 @@ function Card({
   //setCartItems,
   setLearnMoreModalData,
   //cartItems,
-  viewItemQuantity,
+  //viewItemQuantity,
   setQuantity,
   quantity,
 }) {
   const { beverages, setBeverages } = useContext(GetBeveragesContext);
   const { cartItems, setCartItems } = useContext(CartItemsContext);
+
+  const viewItemQuantity = (id, e) => {
+    e.stopPropagation();
+    const updatedBeverages = beverages.map((beverage) => {
+      if (beverage.id === id) {
+        return {
+          ...beverage,
+          quantityConfirm: !beverage.quantityConfirm,
+        };
+      }
+      return beverage;
+    });
+
+    setBeverages(updatedBeverages);
+  };
 
   const favoriteImage = (id, e) => {
     const newArr = beverages.map((beverage) => {
