@@ -2,18 +2,19 @@ import React, { useContext } from "react";
 
 import TrashIcon from "../Assets/trash-icon.png";
 import { GetBeveragesContext } from "../Contexts/GetBeveragesContext";
-
+import { CartItemsContext } from "../Contexts/CartItemsContext";
 import "../css/CartItems.css";
 
 function CartItems({
-  setCartItems,
+  // setCartItems,
   item,
-  cartItems,
+  // cartItems,
   //setBeverages,
   //beverages,
   setEditedCartItem,
 }) {
   const { beverages, setBeverages } = useContext(GetBeveragesContext);
+  const { cartItems, setCartItems } = useContext(CartItemsContext);
 
   const removeFromCart = (item) => {
     //Making a copy of cartItems array to not directly manipulate state.

@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 
-function UpdateItem({ beverage, quantity, cartItems, setCartItems }) {
+import { CartItemsContext } from "../Contexts/CartItemsContext";
+
+function UpdateItem({ beverage, quantity }) {
+  const { cartItems, setCartItems } = useContext(CartItemsContext);
+
   //function to update quantity if item exists in users cart already.
   const updateItem = (beverage) => {
     const usersCart = [...cartItems];

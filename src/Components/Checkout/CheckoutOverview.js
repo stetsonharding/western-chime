@@ -9,8 +9,8 @@ import CheckoutForm from "./CheckoutForm";
 import "../../css/CheckoutOverview.css";
 
 function CheckoutOverview({
-  cartItems,
-  setCartItems,
+  //cartItems,
+  //setCartItems,
   formatPrice,
   grandTotal,
   setGrandTotal,
@@ -22,11 +22,11 @@ function CheckoutOverview({
       <CheckoutForm
         userInfo={userInfo}
         setUserInfo={setUserInfo}
-        setCartItems={setCartItems}
+        //setCartItems={setCartItems}
       />
       <CartQuickView
-        cartItems={cartItems}
-        setCartItems={setCartItems}
+        //cartItems={cartItems}
+        //setCartItems={setCartItems}
         title="Cart Overview "
         color="#7b3018"
         headingColor="white"

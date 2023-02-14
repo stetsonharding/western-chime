@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 
@@ -7,6 +7,7 @@ import "./App.css";
 //contexts
 //import { GetBeveragesContextProvider } from "./Contexts/GetBeveragesContext";
 import { GetBeveragesContext } from "./Contexts/GetBeveragesContext";
+import { CartItemsContextProvider } from "./Contexts/CartItemsContext";
 
 //Components
 import Header from "./Components/Header";
@@ -21,8 +22,8 @@ function App() {
   // const [beverages, setBeverages] = useState([]);
   // const [errorMessage, setErrorMessage] = useState("");
   // const [currentPage, setCurrentPage] = useState(1);
-  const [favoritedBeverages, setFavoritedBeverages] = useState([]);
-  const [cartItems, setCartItems] = useState([]);
+  // const [favoritedBeverages, setFavoritedBeverages] = useState([]);
+  //const [cartItems, setCartItems] = useState([]);
   const [learnMoreModalData, setLearnMoreModalData] = useState();
   const [grandTotal, setGrandTotal] = useState(0);
   const [editedCartItem, setEditedCartItem] = useState({});
@@ -162,93 +163,95 @@ function App() {
   };
 
   return (
-    <div className="App">
-      {learnMoreModalData && (
-        <LearnMoreModal
-          setLearnMoreModalData={setLearnMoreModalData}
-          learnMoreModalData={learnMoreModalData}
-          setCartItems={setCartItems}
-          cartItems={cartItems}
+    <CartItemsContextProvider>
+      <div className="App">
+        {learnMoreModalData && (
+          <LearnMoreModal
+            setLearnMoreModalData={setLearnMoreModalData}
+            learnMoreModalData={learnMoreModalData}
+            // setCartItems={setCartItems}
+            //cartItems={cartItems}
+            //setBeverages={setBeverages}
+            //beverages={beverages}
+          />
+        )}
+        {editedCartItem.image_url && (
+          <EditItemModal
+            setEditedCartItem={setEditedCartItem}
+            editedCartItem={editedCartItem}
+            // beverages={beverages}
+            setQuantity={setQuantity}
+            quantity={quantity}
+            //setBeverages={setBeverages}
+            //cartItems={cartItems}
+            //setCartItems={setCartItems}
+          />
+        )}
+        <Header
+          //cartItems={cartItems}
+          //setCartItems={setCartItems}
           //setBeverages={setBeverages}
           //beverages={beverages}
-        />
-      )}
-      {editedCartItem.image_url && (
-        <EditItemModal
+          grandTotal={grandTotal}
+          setGrandTotal={setGrandTotal}
+          formatPrice={formatPrice}
           setEditedCartItem={setEditedCartItem}
-          editedCartItem={editedCartItem}
-          // beverages={beverages}
-          setQuantity={setQuantity}
-          quantity={quantity}
-          //setBeverages={setBeverages}
-          cartItems={cartItems}
-          setCartItems={setCartItems}
         />
-      )}
-      <Header
-        cartItems={cartItems}
-        setCartItems={setCartItems}
-        //setBeverages={setBeverages}
-        //beverages={beverages}
-        grandTotal={grandTotal}
-        setGrandTotal={setGrandTotal}
-        formatPrice={formatPrice}
-        setEditedCartItem={setEditedCartItem}
-      />
 
-      <Routes>
-        <Route
-          exact
-          path="/"
-          element={
-            <CardContainer
-              // beverages={beverages}
-              errorMessage={errorMessage}
-              // NextPage={NextPage}
-              // PreviousPage={PreviousPage}
-              // currentPage={currentPage}
-              //onSearchSubmit={onSearchSubmit}
-              // setBeverages={setBeverages}
-              setFavoritedBeverages={setFavoritedBeverages}
-              favoritedBeverages={favoritedBeverages}
-              setCartItems={setCartItems}
-              setLearnMoreModalData={setLearnMoreModalData}
-              cartItems={cartItems}
-              viewItemQuantity={viewItemQuantity}
-              setQuantity={setQuantity}
-              quantity={quantity}
-            />
-          }
-        ></Route>
+        <Routes>
+          <Route
+            exact
+            path="/"
+            element={
+              <CardContainer
+                // beverages={beverages}
+                errorMessage={errorMessage}
+                // NextPage={NextPage}
+                // PreviousPage={PreviousPage}
+                // currentPage={currentPage}
+                //onSearchSubmit={onSearchSubmit}
+                // setBeverages={setBeverages}
+                // setFavoritedBeverages={setFavoritedBeverages}
+                // favoritedBeverages={favoritedBeverages}
+                //setCartItems={setCartItems}
+                setLearnMoreModalData={setLearnMoreModalData}
+                // cartItems={cartItems}
+                viewItemQuantity={viewItemQuantity}
+                setQuantity={setQuantity}
+                quantity={quantity}
+              />
+            }
+          ></Route>
 
-        <Route
-          path="/Checkout"
-          element={
-            <CheckoutOverview
-              cartItems={cartItems}
-              setCartItems={setCartItems}
-              formatPrice={formatPrice}
-              grandTotal={grandTotal}
-              setGrandTotal={setGrandTotal}
-              userInfo={userInfo}
-              setUserInfo={setUserInfo}
-            />
-          }
-        ></Route>
+          <Route
+            path="/Checkout"
+            element={
+              <CheckoutOverview
+                //cartItems={cartItems}
+                //setCartItems={setCartItems}
+                formatPrice={formatPrice}
+                grandTotal={grandTotal}
+                setGrandTotal={setGrandTotal}
+                userInfo={userInfo}
+                setUserInfo={setUserInfo}
+              />
+            }
+          ></Route>
 
-        <Route
-          path="/orderPlaced"
-          element={
-            <OrderPlaced
-              userInfo={userInfo}
-              setFavoritedBeverages={setFavoritedBeverages}
-              setUserInfo={setUserInfo}
-            />
-          }
-        ></Route>
-      </Routes>
-      <Footer />
-    </div>
+          <Route
+            path="/orderPlaced"
+            element={
+              <OrderPlaced
+                userInfo={userInfo}
+                //setFavoritedBeverages={setFavoritedBeverages}
+                setUserInfo={setUserInfo}
+              />
+            }
+          ></Route>
+        </Routes>
+        <Footer />
+      </div>
+    </CartItemsContextProvider>
   );
 }
 

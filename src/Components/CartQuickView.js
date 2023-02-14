@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import CartItems from "./CartItems";
 
+import { CartItemsContext } from "../Contexts/CartItemsContext";
+
 export default function CartQuickView({
-  cartItems,
-  setCartItems,
+  //cartItems,
+  //setCartItems,
   setIsCartQuickviewShown,
   //setBeverages,
   //beverages,
@@ -12,6 +14,8 @@ export default function CartQuickView({
   setEditedCartItem,
   ...props
 }) {
+  const { cartItems, setCartItems } = useContext(CartItemsContext);
+
   return (
     <>
       <div
@@ -31,8 +35,8 @@ export default function CartQuickView({
             <CartItems
               key={item.id}
               item={item}
-              setCartItems={setCartItems}
-              cartItems={cartItems}
+              //setCartItems={setCartItems}
+              //cartItems={cartItems}
               //setBeverages={setBeverages}
               //beverages={beverages}
               setEditedCartItem={setEditedCartItem}

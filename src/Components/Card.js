@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 import "../css/Card.css";
 
 import { GetBeveragesContext } from "../Contexts/GetBeveragesContext";
+import { CartItemsContext } from "../Contexts/CartItemsContext";
 
 //images
 import ImageNotLiked from "../Assets/imageNotLiked.png";
@@ -18,14 +19,15 @@ function Card({
   //beverages,
   // setBeverages,
   setFavoritedBeverages,
-  setCartItems,
+  //setCartItems,
   setLearnMoreModalData,
-  cartItems,
+  //cartItems,
   viewItemQuantity,
   setQuantity,
   quantity,
 }) {
   const { beverages, setBeverages } = useContext(GetBeveragesContext);
+  const { cartItems, setCartItems } = useContext(CartItemsContext);
 
   const favoriteImage = (id, e) => {
     const newArr = beverages.map((beverage) => {

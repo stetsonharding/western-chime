@@ -6,9 +6,9 @@ import "../../css/OrderPlaced.css";
 
 import OrderPlacedCowboy from "../../Assets/order-placed-cowboy.png";
 
-function OrderPlaced({ userInfo, setFavoritedBeverages, setUserInfo }) {
+function OrderPlaced({ userInfo, setUserInfo }) {
   function clearAllData() {
-    setFavoritedBeverages([]);
+    // setFavoritedBeverages([]);
     setUserInfo({
       firstName: "",
       lastName: "",

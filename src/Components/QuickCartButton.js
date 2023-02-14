@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
+
+import { CartItemsContext } from "../Contexts/CartItemsContext";
 
 import "../css/QuickCartButton.css";
 import { Link } from "react-router-dom";
 
-function QuickCartButton({ setIsCartQuickviewShown, cartItems }) {
+function QuickCartButton({ setIsCartQuickviewShown }) {
+  const { cartItems } = useContext(CartItemsContext);
+
   return (
     <div className="quickcart-btns-container">
       {cartItems.length >= 1 && (

@@ -5,8 +5,8 @@ import "../css/Header.css";
 import ShoppingCartBadge from "./ShoppingCartBadge";
 
 function Header({
-  cartItems,
-  setCartItems,
+  //cartItems,
+  // setCartItems,
   //setBeverages,
   //beverages,
   grandTotal,
@@ -21,8 +21,8 @@ function Header({
         <h3 className="header-subtitle slogan">The Saloon for cowboys.</h3>
       </div>
       <ShoppingCartBadge
-        cartItems={cartItems}
-        setCartItems={setCartItems}
+        //cartItems={cartItems}
+        // setCartItems={setCartItems}
         //setBeverages={setBeverages}
         // beverages={beverages}
         grandTotal={grandTotal}

@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import "../../css/CheckoutForm.css";
 
+import { CartItemsContext } from "../../Contexts/CartItemsContext";
+
 import { Link } from "react-router-dom";
 
-function CheckoutForm({ userInfo, setUserInfo, setCartItems }) {
+function CheckoutForm({ userInfo, setUserInfo }) {
+  const { setCartItems } = useContext(CartItemsContext);
+
   function handleChange(evt) {
     const value = evt.target.value;
     setUserInfo({

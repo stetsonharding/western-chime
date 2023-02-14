@@ -1,17 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 //images
 import ShoppingCart from "../Assets/ShoppingCart.png";
 //css
 import "../css/ShoppingCartBadge.css";
+import { CartItemsContext } from "../Contexts/CartItemsContext";
 
 import CartQuickView from "./CartQuickView";
 import QuickCartButton from "./QuickCartButton";
 import SubtotalAndTaxes from "./SubtotalAndTaxes";
 
 export default function ShoppingCartBadge({
-  cartItems,
-  setCartItems,
+  //cartItems,
+  //setCartItems,
   // setBeverages,
   // beverages,
   grandTotal,
@@ -22,6 +23,8 @@ export default function ShoppingCartBadge({
   const [isCartQuickviewShown, setIsCartQuickviewShown] = useState(false);
   const [taxes, setTaxes] = useState(0);
   const [subTotal, setSubTotal] = useState(0);
+
+  const { cartItems, setCartItems } = useContext(CartItemsContext);
 
   const OrderCostCalculations = () => {
     let TAX_RATE = 0.1;
@@ -61,8 +64,8 @@ export default function ShoppingCartBadge({
       />
       {isCartQuickviewShown && (
         <CartQuickView
-          cartItems={cartItems}
-          setCartItems={setCartItems}
+          //cartItems={cartItems}
+          //setCartItems={setCartItems}
           setIsCartQuickviewShown={setIsCartQuickviewShown}
           //setBeverages={setBeverages}
           //beverages={beverages}
@@ -81,7 +84,7 @@ export default function ShoppingCartBadge({
           )}
 
           <QuickCartButton
-            cartItems={cartItems}
+            //cartItems={cartItems}
             setIsCartQuickviewShown={setIsCartQuickviewShown}
           />
         </CartQuickView>

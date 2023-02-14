@@ -63,7 +63,7 @@ function QuantityView({
         return beverage;
       });
       setBeverages(updatedBeverages);
-    }, 900);
+    }, 400);
   };
 
   return (

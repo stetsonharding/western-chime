@@ -21,11 +21,11 @@ function CardContainer({
   // currentPage,
   //onSearchSubmit,
   // setBeverages,
-  setFavoritedBeverages,
-  favoritedBeverages,
-  setCartItems,
+  //setFavoritedBeverages,
+  //favoritedBeverages,
+  // setCartItems,
   setLearnMoreModalData,
-  cartItems,
+  //cartItems,
   viewItemQuantity,
   setQuantity,
   quantity,
@@ -33,6 +33,7 @@ function CardContainer({
   // const [currentPage, setCurrentPage] = useState(1);
   const { beverages, errorMessage, currentPage, setCurrentPage } =
     useContext(GetBeveragesContext);
+  const [favoritedBeverages, setFavoritedBeverages] = useState([]);
 
   // Pagination for next and prev pages
   const PreviousPage = () => {
@@ -96,9 +97,9 @@ function CardContainer({
                   // beverages={beverages}
                   // setBeverages={setBeverages}
                   setFavoritedBeverages={setFavoritedBeverages}
-                  setCartItems={setCartItems}
+                  //setCartItems={setCartItems}
                   setLearnMoreModalData={setLearnMoreModalData}
-                  cartItems={cartItems}
+                  //cartItems={cartItems}
                 />
               ))}
             </div>
@@ -113,9 +114,9 @@ function CardContainer({
                   //beverages={beverages}
                   //setBeverages={setBeverages}
                   setFavoritedBeverages={setFavoritedBeverages}
-                  setCartItems={setCartItems}
+                  //setCartItems={setCartItems}
                   setLearnMoreModalData={setLearnMoreModalData}
-                  cartItems={cartItems}
+                  //cartItems={cartItems}
                   viewItemQuantity={viewItemQuantity}
                   setQuantity={setQuantity}
                   quantity={quantity}

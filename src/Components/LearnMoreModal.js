@@ -2,23 +2,26 @@ import React, { useEffect, useContext } from "react";
 
 import "../css/LearnMoreModal.css";
 
+import { CartItemsContext } from "../Contexts/CartItemsContext";
+
 import { GetBeveragesContext } from "../Contexts/GetBeveragesContext";
 
 function LearnMoreModal({
   setLearnMoreModalData,
   learnMoreModalData,
-  setCartItems,
-  cartItems,
+  // setCartItems,
+  // cartItems,
   // setBeverages,
   //beverages,
 }) {
   const { beverages, setBeverages } = useContext(GetBeveragesContext);
+  const { setCartItems, cartItems } = useContext(CartItemsContext);
 
   //Adding item to cart function.
   const AddItemToCart = (id) => {
     setCartItems((prevItems) => [...prevItems, learnMoreModalData]);
     /*if true, change the value of the isAddedToCart property so that the product card now displays a shopping cart icon 
- rather than a plus sign. */
+ rather than a + sign. */
     let updatedBeverages = beverages.map((beverage) => {
       if (id === beverage.id) {
         return {
@@ -29,6 +32,11 @@ function LearnMoreModal({
       return beverage;
     });
     setBeverages(updatedBeverages);
+
+    //Close out of learn more modal
+    setTimeout(() => {
+      setLearnMoreModalData();
+    }, 400);
   };
 
   //Function to check if item is already in cart

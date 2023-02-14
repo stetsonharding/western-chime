@@ -4,6 +4,7 @@ import QuantityCounter from "../Components/QuantityCounter";
 import "../css/EditCartItemModal.css";
 
 import { GetBeveragesContext } from "../Contexts/GetBeveragesContext";
+import { CartItemsContext } from "../Contexts/CartItemsContext";
 
 function EditItemModal({
   setEditedCartItem,
@@ -12,10 +13,11 @@ function EditItemModal({
   setQuantity,
   quantity,
   //setBeverages,
-  cartItems,
-  setCartItems,
+  //cartItems,
+  //setCartItems,
 }) {
   const { beverages, setBeverages } = useContext(GetBeveragesContext);
+  const { cartItems, setCartItems } = useContext(CartItemsContext);
 
   useEffect(() => {
     setQuantity(editedCartItem.qty);
