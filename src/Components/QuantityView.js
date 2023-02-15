@@ -6,17 +6,19 @@ import UpdatedNotification from "./UpdatedNotification";
 import UpdateItem from "./UpdateItem";
 
 import { GetBeveragesContext } from "../Contexts/GetBeveragesContext";
+import { CartItemsContext } from "../Contexts/CartItemsContext";
 
 function QuantityView({
   beverage,
   //beverages,
   //setBeverages,
-  cartItems,
-  setCartItems,
+  //cartItems,
+  //setCartItems,
   setQuantity,
   quantity,
 }) {
   const { beverages, setBeverages } = useContext(GetBeveragesContext);
+  const { setCartItems } = useContext(CartItemsContext);
 
   //Showing update button if cartUpdated is true
   const [cartUpdated, setCartUpdated] = useState(false);
@@ -99,8 +101,8 @@ function QuantityView({
             <UpdateItem
               beverage={beverage}
               quantity={quantity}
-              cartItems={cartItems}
-              setCartItems={setCartItems}
+              //cartItems={cartItems}
+              //setCartItems={setCartItems}
             />
           ) : (
             <button

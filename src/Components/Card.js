@@ -144,8 +144,8 @@ function Card({
           beverage={beverage}
           //beverages={beverages}
           //setBeverages={setBeverages}
-          setCartItems={setCartItems}
-          cartItems={cartItems}
+          //setCartItems={setCartItems}
+          //cartItems={cartItems}
           setQuantity={setQuantity}
           quantity={quantity}
         />
