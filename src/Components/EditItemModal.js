@@ -9,12 +9,8 @@ import { CartItemsContext } from "../Contexts/CartItemsContext";
 function EditItemModal({
   setEditedCartItem,
   editedCartItem,
-  //beverages,
   setQuantity,
   quantity,
-  //setBeverages,
-  //cartItems,
-  //setCartItems,
 }) {
   const { beverages, setBeverages } = useContext(GetBeveragesContext);
   const { cartItems, setCartItems } = useContext(CartItemsContext);

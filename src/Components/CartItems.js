@@ -5,14 +5,7 @@ import { GetBeveragesContext } from "../Contexts/GetBeveragesContext";
 import { CartItemsContext } from "../Contexts/CartItemsContext";
 import "../css/CartItems.css";
 
-function CartItems({
-  // setCartItems,
-  item,
-  // cartItems,
-  //setBeverages,
-  //beverages,
-  setEditedCartItem,
-}) {
+function CartItems({ item, setEditedCartItem }) {
   const { beverages, setBeverages } = useContext(GetBeveragesContext);
   const { cartItems, setCartItems } = useContext(CartItemsContext);
 

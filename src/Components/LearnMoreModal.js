@@ -6,14 +6,7 @@ import { CartItemsContext } from "../Contexts/CartItemsContext";
 
 import { GetBeveragesContext } from "../Contexts/GetBeveragesContext";
 
-function LearnMoreModal({
-  setLearnMoreModalData,
-  learnMoreModalData,
-  // setCartItems,
-  // cartItems,
-  // setBeverages,
-  //beverages,
-}) {
+function LearnMoreModal({ setLearnMoreModalData, learnMoreModalData }) {
   const { beverages, setBeverages } = useContext(GetBeveragesContext);
   const { setCartItems, cartItems } = useContext(CartItemsContext);
 

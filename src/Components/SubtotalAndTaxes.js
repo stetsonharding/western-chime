@@ -2,7 +2,6 @@ import React from "react";
 import GrandTotal from "./GrandTotal";
 
 function SubtotalAndTaxes({
-  //formatPrice,
   taxes,
   grandTotal,
   subTotal,

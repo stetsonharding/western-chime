@@ -12,10 +12,6 @@ import QuickCartButton from "./QuickCartButton";
 import SubtotalAndTaxes from "./SubtotalAndTaxes";
 
 export default function ShoppingCartBadge({
-  //cartItems,
-  //setCartItems,
-  // setBeverages,
-  // beverages,
   grandTotal,
   setGrandTotal,
 
@@ -65,21 +61,15 @@ export default function ShoppingCartBadge({
       />
       {isCartQuickviewShown && (
         <CartQuickView
-          //cartItems={cartItems}
-          //setCartItems={setCartItems}
           setIsCartQuickviewShown={setIsCartQuickviewShown}
-          //setBeverages={setBeverages}
-          //beverages={beverages}
           title={"Your shoppin' cart "}
           setEditedCartItem={setEditedCartItem}
           grandTotal={grandTotal}
           setGrandTotal={setGrandTotal}
-          //formatPrice={formatPrice}
         >
           {cartItems.length !== 0 && (
             <SubtotalAndTaxes
               grandTotal={grandTotal}
-              //formatPrice={formatPrice}
               taxes={taxes}
               subTotal={subTotal}
               totalColor="#7b3018"
@@ -87,10 +77,7 @@ export default function ShoppingCartBadge({
             />
           )}
 
-          <QuickCartButton
-            //cartItems={cartItems}
-            setIsCartQuickviewShown={setIsCartQuickviewShown}
-          />
+          <QuickCartButton setIsCartQuickviewShown={setIsCartQuickviewShown} />
         </CartQuickView>
       )}
     </div>

@@ -8,15 +8,7 @@ import UpdateItem from "./UpdateItem";
 import { GetBeveragesContext } from "../Contexts/GetBeveragesContext";
 import { CartItemsContext } from "../Contexts/CartItemsContext";
 
-function QuantityView({
-  beverage,
-  //beverages,
-  //setBeverages,
-  //cartItems,
-  //setCartItems,
-  setQuantity,
-  quantity,
-}) {
+function QuantityView({ beverage, setQuantity, quantity }) {
   const { beverages, setBeverages } = useContext(GetBeveragesContext);
   const { setCartItems } = useContext(CartItemsContext);
 
@@ -87,23 +79,12 @@ function QuantityView({
       </div>
 
       <div className="quantity-counter">
-        <QuantityCounter
-          //beverage={beverage}
-          //beverages={beverages}
-          //setBeverages={setBeverages}
-          quantity={quantity}
-          setQuantity={setQuantity}
-        />
+        <QuantityCounter quantity={quantity} setQuantity={setQuantity} />
       </div>
       {cartUpdated !== true ? (
         <div className="quantity-confirm">
           {beverage.isAddedToCart ? (
-            <UpdateItem
-              beverage={beverage}
-              quantity={quantity}
-              //cartItems={cartItems}
-              //setCartItems={setCartItems}
-            />
+            <UpdateItem beverage={beverage} quantity={quantity} />
           ) : (
             <button
               className="confirm-btn"

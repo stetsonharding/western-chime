@@ -5,11 +5,7 @@ import CartItems from "./CartItems";
 import { CartItemsContext } from "../Contexts/CartItemsContext";
 
 export default function CartQuickView({
-  //cartItems,
-  //setCartItems,
   setIsCartQuickviewShown,
-  //setBeverages,
-  //beverages,
   redeemTotal,
   setEditedCartItem,
 
@@ -36,10 +32,6 @@ export default function CartQuickView({
             <CartItems
               key={item.id}
               item={item}
-              //setCartItems={setCartItems}
-              //cartItems={cartItems}
-              //setBeverages={setBeverages}
-              //beverages={beverages}
               setEditedCartItem={setEditedCartItem}
             />
           ))}

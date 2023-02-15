@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import "../css/RedeemInput.css";
 
-function RedeemInput({ setGrandTotal, grandTotal }) {
+function RedeemInput({ setGrandTotal }) {
   const [userRedeemCode, setUserRedeemCode] = useState("");
   const [promoCodeError, setPromoCodeError] = useState("");
   const [promoUsed, setPromoUsed] = useState(false);

@@ -13,24 +13,7 @@ import SearchInput from "./SearchInput";
 import Card from "./Card";
 import ViewFavoritedBeveragesBtns from "./ViewFavoritedBeveragesBtns";
 
-function CardContainer({
-  //beverages,
-  // errorMessage,
-  // NextPage,
-  // PreviousPage,
-  // currentPage,
-  //onSearchSubmit,
-  // setBeverages,
-  //setFavoritedBeverages,
-  //favoritedBeverages,
-  // setCartItems,
-  setLearnMoreModalData,
-  //cartItems,
-  //viewItemQuantity,
-  setQuantity,
-  quantity,
-}) {
-  // const [currentPage, setCurrentPage] = useState(1);
+function CardContainer({ setLearnMoreModalData, setQuantity, quantity }) {
   const { beverages, errorMessage, currentPage, setCurrentPage } =
     useContext(GetBeveragesContext);
   const [favoritedBeverages, setFavoritedBeverages] = useState([]);
@@ -94,12 +77,8 @@ function CardContainer({
                 <Card
                   key={beverage.id}
                   beverage={beverage}
-                  // beverages={beverages}
-                  // setBeverages={setBeverages}
                   setFavoritedBeverages={setFavoritedBeverages}
-                  //setCartItems={setCartItems}
                   setLearnMoreModalData={setLearnMoreModalData}
-                  //cartItems={cartItems}
                 />
               ))}
             </div>
@@ -111,13 +90,8 @@ function CardContainer({
                   key={beverage.id}
                   beverage={beverage}
                   index={index}
-                  //beverages={beverages}
-                  //setBeverages={setBeverages}
                   setFavoritedBeverages={setFavoritedBeverages}
-                  //setCartItems={setCartItems}
                   setLearnMoreModalData={setLearnMoreModalData}
-                  //cartItems={cartItems}
-                  //viewItemQuantity={viewItemQuantity}
                   setQuantity={setQuantity}
                   quantity={quantity}
                 />

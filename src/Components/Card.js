@@ -16,13 +16,8 @@ import UpdateQuantityBtn from "./UpdateQuantityBtn";
 
 function Card({
   beverage,
-  //beverages,
-  // setBeverages,
   setFavoritedBeverages,
-  //setCartItems,
   setLearnMoreModalData,
-  //cartItems,
-  //viewItemQuantity,
   setQuantity,
   quantity,
 }) {
@@ -142,10 +137,6 @@ function Card({
       {beverage.quantityConfirm ? (
         <QuantityView
           beverage={beverage}
-          //beverages={beverages}
-          //setBeverages={setBeverages}
-          //setCartItems={setCartItems}
-          //cartItems={cartItems}
           setQuantity={setQuantity}
           quantity={quantity}
         />
