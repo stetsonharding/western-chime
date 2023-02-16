@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
+import { GrandTotalContext } from "../Contexts/GrandTotalContext";
 
-function GrandTotal({ grandTotal, formatPrice, ...props }) {
+function GrandTotal({ ...props }) {
+  const { grandTotal, formatPrice } = useContext(GrandTotalContext);
   return (
     <div
       style={{

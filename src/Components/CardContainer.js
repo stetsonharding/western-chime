@@ -17,6 +17,10 @@ function CardContainer({ setLearnMoreModalData, setQuantity, quantity }) {
   const { beverages, errorMessage, currentPage, setCurrentPage } =
     useContext(GetBeveragesContext);
   const [favoritedBeverages, setFavoritedBeverages] = useState([]);
+  const [isFavoritedBeveragesShown, setIsFavoritedBeveragesShown] =
+    useState(false);
+  //Used for enable/disable next page button.
+  const DISABLED_LENGTH = 15;
 
   // Pagination for next and prev pages
   const PreviousPage = () => {
@@ -25,10 +29,6 @@ function CardContainer({ setLearnMoreModalData, setQuantity, quantity }) {
   const NextPage = () => {
     setCurrentPage(currentPage + 1);
   };
-  //Used for enable/disable next page button.
-  const DISABLED_LENGTH = 15;
-  const [isFavoritedBeveragesShown, setIsFavoritedBeveragesShown] =
-    useState(false);
 
   return (
     <div className="card-container">
@@ -52,8 +52,6 @@ function CardContainer({ setLearnMoreModalData, setQuantity, quantity }) {
         <div className="search-api-container">
           {/* Search Input component */}
           <SearchInput />
-          {/* <SearchInput onSearchSubmit={(query) => onSearchSubmit(query)} /> */}
-
           {/* View Favorite Beverages - Back to the Saloon buttons. */}
           <ViewFavoritedBeveragesBtns
             favoritedBeverages={favoritedBeverages}
@@ -85,11 +83,10 @@ function CardContainer({ setLearnMoreModalData, setQuantity, quantity }) {
           ) : (
             // Mapping all cards
             <div className="all-cards-container">
-              {beverages.map((beverage, index) => (
+              {beverages.map((beverage) => (
                 <Card
                   key={beverage.id}
                   beverage={beverage}
-                  index={index}
                   setFavoritedBeverages={setFavoritedBeverages}
                   setLearnMoreModalData={setLearnMoreModalData}
                   setQuantity={setQuantity}

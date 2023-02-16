@@ -8,7 +8,6 @@ export default function CartQuickView({
   setIsCartQuickviewShown,
   redeemTotal,
   setEditedCartItem,
-
   ...props
 }) {
   const { cartItems } = useContext(CartItemsContext);
@@ -28,7 +27,7 @@ export default function CartQuickView({
           <span id="quickview-cart-length">({cartItems.length})</span>
         </h2>
         <div className="cart-item-quickview-container">
-          {cartItems.map((item, index) => (
+          {cartItems.map((item) => (
             <CartItems
               key={item.id}
               item={item}
@@ -37,7 +36,11 @@ export default function CartQuickView({
           ))}
         </div>
 
-        {cartItems.length <= 0 && <p>Your cart is empty! Let's fix that.</p>}
+        {cartItems.length <= 0 && (
+          <p style={{ fontWeight: "bold" }}>
+            Your cart is empty! Let's fix that.
+          </p>
+        )}
 
         {props.children}
       </div>

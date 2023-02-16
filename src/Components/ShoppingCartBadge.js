@@ -6,22 +6,19 @@ import ShoppingCart from "../Assets/ShoppingCart.png";
 import "../css/ShoppingCartBadge.css";
 //Context
 import { CartItemsContext } from "../Contexts/CartItemsContext";
-
+import { GrandTotalContext } from "../Contexts/GrandTotalContext";
+//Components
 import CartQuickView from "./CartQuickView";
 import QuickCartButton from "./QuickCartButton";
 import SubtotalAndTaxes from "./SubtotalAndTaxes";
 
-export default function ShoppingCartBadge({
-  grandTotal,
-  setGrandTotal,
-
-  setEditedCartItem,
-}) {
+export default function ShoppingCartBadge({ setEditedCartItem }) {
   const [isCartQuickviewShown, setIsCartQuickviewShown] = useState(false);
   const [taxes, setTaxes] = useState(0);
   const [subTotal, setSubTotal] = useState(0);
 
   const { cartItems } = useContext(CartItemsContext);
+  const { setGrandTotal } = useContext(GrandTotalContext);
 
   const OrderCostCalculations = () => {
     let TAX_RATE = 0.1;
@@ -64,12 +61,9 @@ export default function ShoppingCartBadge({
           setIsCartQuickviewShown={setIsCartQuickviewShown}
           title={"Your shoppin' cart "}
           setEditedCartItem={setEditedCartItem}
-          grandTotal={grandTotal}
-          setGrandTotal={setGrandTotal}
         >
           {cartItems.length !== 0 && (
             <SubtotalAndTaxes
-              grandTotal={grandTotal}
               taxes={taxes}
               subTotal={subTotal}
               totalColor="#7b3018"

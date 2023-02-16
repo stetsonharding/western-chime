@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 //contexts
 import { CartItemsContextProvider } from "./Contexts/CartItemsContext";
+import { GrandTotalContextProvider } from "./Contexts/GrandTotalContext";
 //Components
 import Header from "./Components/Header";
 import CardContainer from "./Components/CardContainer";
@@ -28,54 +29,59 @@ function App() {
   });
 
   return (
-    <CartItemsContextProvider>
-      <div className="App">
-        {learnMoreModalData && (
-          <LearnMoreModal
-            setLearnMoreModalData={setLearnMoreModalData}
-            learnMoreModalData={learnMoreModalData}
-          />
-        )}
-        {editedCartItem.image_url && (
-          <EditItemModal
-            setEditedCartItem={setEditedCartItem}
-            editedCartItem={editedCartItem}
-            setQuantity={setQuantity}
-            quantity={quantity}
-          />
-        )}
-        <Header setEditedCartItem={setEditedCartItem} />
+    <GrandTotalContextProvider>
+      <CartItemsContextProvider>
+        <div className="App">
+          {learnMoreModalData && (
+            <LearnMoreModal
+              setLearnMoreModalData={setLearnMoreModalData}
+              learnMoreModalData={learnMoreModalData}
+            />
+          )}
+          {editedCartItem.image_url && (
+            <EditItemModal
+              setEditedCartItem={setEditedCartItem}
+              editedCartItem={editedCartItem}
+              setQuantity={setQuantity}
+              quantity={quantity}
+            />
+          )}
+          <Header setEditedCartItem={setEditedCartItem} />
 
-        <Routes>
-          <Route
-            exact
-            path="/"
-            element={
-              <CardContainer
-                setLearnMoreModalData={setLearnMoreModalData}
-                setQuantity={setQuantity}
-                quantity={quantity}
-              />
-            }
-          ></Route>
+          <Routes>
+            <Route
+              exact
+              path="/"
+              element={
+                <CardContainer
+                  setLearnMoreModalData={setLearnMoreModalData}
+                  setQuantity={setQuantity}
+                  quantity={quantity}
+                />
+              }
+            ></Route>
 
-          <Route
-            path="/Checkout"
-            element={
-              <CheckoutOverview userInfo={userInfo} setUserInfo={setUserInfo} />
-            }
-          ></Route>
+            <Route
+              path="/Checkout"
+              element={
+                <CheckoutOverview
+                  userInfo={userInfo}
+                  setUserInfo={setUserInfo}
+                />
+              }
+            ></Route>
 
-          <Route
-            path="/orderPlaced"
-            element={
-              <OrderPlaced userInfo={userInfo} setUserInfo={setUserInfo} />
-            }
-          ></Route>
-        </Routes>
-        <Footer />
-      </div>
-    </CartItemsContextProvider>
+            <Route
+              path="/orderPlaced"
+              element={
+                <OrderPlaced userInfo={userInfo} setUserInfo={setUserInfo} />
+              }
+            ></Route>
+          </Routes>
+          <Footer />
+        </div>
+      </CartItemsContextProvider>
+    </GrandTotalContextProvider>
   );
 }
 

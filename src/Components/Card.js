@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 
+//Css
 import "../css/Card.css";
-
+//Context
 import { GetBeveragesContext } from "../Contexts/GetBeveragesContext";
 import { CartItemsContext } from "../Contexts/CartItemsContext";
-
 //images
 import ImageNotLiked from "../Assets/imageNotLiked.png";
 import ImageLiked from "../Assets/ImageLiked.png";

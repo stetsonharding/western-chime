@@ -15,7 +15,6 @@ function QuantityView({ beverage, setQuantity, quantity }) {
   //Showing update button if cartUpdated is true
   const [cartUpdated, setCartUpdated] = useState(false);
 
-  //Setting the quantity to the beverage quantity
   useEffect(() => {
     setQuantity(beverage.qty);
   }, [beverage.qty, setQuantity]);

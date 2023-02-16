@@ -1,30 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import GrandTotal from "./GrandTotal";
-
-function SubtotalAndTaxes({
-  taxes,
-  grandTotal,
-  subTotal,
-  totalColor,
-  headingColor,
-}) {
-  function formatPrice(price) {
-    return price.toLocaleString("en-US", {
-      style: "currency",
-      currency: "USD",
-    });
-  }
+//Context
+import { GrandTotalContext } from "../Contexts/GrandTotalContext";
+function SubtotalAndTaxes({ taxes, subTotal, totalColor, headingColor }) {
+  const { formatPrice } = useContext(GrandTotalContext);
 
   return (
     <div className="pricing-container">
       <strong>Subtotal: {formatPrice(subTotal)}</strong>
       <strong>Taxes: {formatPrice(taxes)}</strong>
-      <GrandTotal
-        grandTotal={grandTotal}
-        formatPrice={formatPrice}
-        totalColor={totalColor}
-        headingColor={headingColor}
-      />
+      <GrandTotal totalColor={totalColor} headingColor={headingColor} />
     </div>
   );
 }

@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { GrandTotalContext } from "../Contexts/GrandTotalContext";
 
 import "../css/RedeemInput.css";
 
-function RedeemInput({ setGrandTotal }) {
+function RedeemInput() {
   const [userRedeemCode, setUserRedeemCode] = useState("");
   const [promoCodeError, setPromoCodeError] = useState("");
   const [promoUsed, setPromoUsed] = useState(false);
+
+  const { setGrandTotal } = useContext(GrandTotalContext);
 
   //Checking if users input is the correct PROMO code.
   function UseRedeemCode(usersRedeemCode) {
